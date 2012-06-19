@@ -16,6 +16,9 @@ set wildmenu
 " Auto change current directory
 set autochdir
 
+" set mouse
+set mouse=a
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,7 +105,7 @@ map <F5> o<ESC>78i-<ESC>o<esc>
 imap <F5> <cr><esc>78i-<esc>o
 
 " f6 :add time
-map <F6> :read !date +"[\%Y\%m\%d]"<cr>
+noremap <F6> :read !date +"[\%Y\%m\%d]"<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
