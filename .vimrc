@@ -13,6 +13,9 @@ set encoding=utf-8
 " Set wild menu & mode
 set wildmenu
 
+" set wild mode
+set wildmode=longest:full,full
+
 " Auto change current directory
 set autochdir
 
