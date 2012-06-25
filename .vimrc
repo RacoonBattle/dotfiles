@@ -69,7 +69,8 @@ set incsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Smart indet
-set smartindent
+"set smartindent
+filetype plugin indent on
 
 " tab
 set tabstop=8
