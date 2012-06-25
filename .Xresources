@@ -1,0 +1,39 @@
+! ----------------------------------------------------------------------------
+! file:     ~/.Xresources
+! author:   
+! modified: 
+! vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+! ----------------------------------------------------------------------------
+
+!==============================================================================
+!Xresources and Xdefaults are user-level configuration dotfiles, typically
+!located at ~/.Xresources and ~/.Xdefaults. They can be used to set X
+!resources, which are configuration parameters for X client applications.
+!
+!They can do many operations, including:
+!	defining terminal colours configuring terminal preferences setting DPI,
+!	antialiasing, hinting and other X font settings changing the Xcursor theme
+!	theming xscreensaver altering preferences on low-level X applications
+!	(xclock (xorg-xclock), xpdf, rxvt-unicode, etc.) 
+!
+!You must re-run xrdb ~/.Xresources every time you change the file
+!
+!The syntax of an Xresources file is as follows:
+!name.Class.resource: value
+!==============================================================================
+
+! terminal colors ------------------------------------------------------------
+*background: #111111
+*foreground: #babdb6
+
+! xterm ----------------------------------------------------------------------
+! xterm*background: #<alphanumeric>
+! xterm*foreground: #<alphanumeric>
+
+!xterm*geometry:           85x35
+
+!English font
+XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
+!Chinese font
+XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
+
