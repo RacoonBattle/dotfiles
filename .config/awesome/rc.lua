@@ -187,14 +187,6 @@ awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q s
 awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 awful.key({ modkey,   }, "e", function () awful.util.spawn("pcmanfm") end),
 
--- alt + tab
- awful.key({ "Mod1", }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),

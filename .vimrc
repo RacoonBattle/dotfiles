@@ -90,19 +90,26 @@ set wrap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move one line
+noremap j gj
+noremap k gk
 
-" Tab navigation
-nnoremap H :tabprevious<CR>
-nnoremap L :tabnext<CR>
+" Tab naviation
+nnoremap <A-tab> :tabnext<CR>
 nnoremap to :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
 
 " Move among windows
-noremap <C-h> <C-W>h
+noremap H <C-W>h
 "noremap <C-j> <C-W>j
 "noremap <C-k> <C-W>k
-noremap <C-l> <C-W>l
+noremap L <C-W>l
+
+" Line completion
+inoremap <c-l> <c-x><c-l>
+" Filename completion
+inoremap <c-f> <c-x><c-f>
 
 " write copy and paste
 noremap <F2> :w<CR>
