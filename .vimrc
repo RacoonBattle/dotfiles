@@ -101,19 +101,22 @@ noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
 
 " write copy and paste
-map <F2> :w<CR>
+noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
-map <F3> "+y
-map <F4> o<esc>mpk"+p'pdd
-imap <F4> <cr><esc>"+p
+noremap <F3> "+y
+noremap <F4> o<esc>mpk"+p'pdd
+inoremap <F4> <cr><esc>"+p
 
 " F5 :add separator line
-map <F5> o<ESC>78i-<ESC>o<esc>
-imap <F5> <cr><esc>78i-<esc>o
+noremap <F5> o<ESC>78i-<ESC>o<esc>
+inoremap <F5> <cr><esc>78i-<esc>o
 
 " f6 :add time
-map <F6> :read !date +"[\%Y\%m\%d]"<cr>
-imap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
+noremap <F6> :read !date +"[\%Y\%m\%d]"<cr>
+inoremap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
+
+" insert a <cr>
+nnoremap <cr> o<esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
