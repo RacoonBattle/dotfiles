@@ -100,11 +100,9 @@ nnoremap gf <C-W>gf
 
 " Move among windows
 noremap <C-h> <C-W>h
-inoremap <C-h> <esc><C-W>h
 "noremap <C-j> <C-W>j
 "noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
-inoremap <C-l> <esc><C-W>l
 
 " write copy and paste
 noremap <F2> :w<CR>
