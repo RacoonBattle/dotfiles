@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto reload vimrc
+autocmd bufwritepost .vimrc source $MYVIMRC
 
 " Be IMproved
 set nocompatible
@@ -90,6 +92,8 @@ set wrap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tab navigation
+nnoremap H :tabprevious<CR>
+nnoremap L :tabnext<CR>
 nnoremap to :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
