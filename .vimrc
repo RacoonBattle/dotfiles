@@ -70,13 +70,16 @@ set incsearch
 
 " Smart indet
 "set smartindent
-filetype plugin indent on
 
 " tab
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
 set noexpandtab
+
+filetype plugin indent on
+"for python
+autocmd FileType python setlocal et sta sw=4 sts=4
 
 " Set auto-formating
 set formatoptions+=mM
@@ -109,7 +112,8 @@ map <F5> o<ESC>78i-<ESC>o<esc>
 imap <F5> <cr><esc>78i-<esc>o
 
 " f6 :add time
-noremap <F6> :read !date +"[\%Y\%m\%d]"<cr>
+map <F6> :read !date +"[\%Y\%m\%d]"<cr>
+imap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
