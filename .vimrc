@@ -96,9 +96,11 @@ nnoremap gf <C-W>gf
 
 " Move among windows
 noremap <C-h> <C-W>h
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
+inoremap <C-h> <esc><C-W>h
+"noremap <C-j> <C-W>j
+"noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
+inoremap <C-l> <esc><C-W>l
 
 " write copy and paste
 noremap <F2> :w<CR>
@@ -116,7 +118,8 @@ noremap <F6> :read !date +"[\%Y\%m\%d]"<cr>
 inoremap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
 
 " insert a <cr>
-nnoremap <cr> o<esc>
+nnoremap <c-m> o<esc>
+nnoremap <c-j> i<cr><esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
