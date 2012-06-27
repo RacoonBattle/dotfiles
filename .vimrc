@@ -130,6 +130,11 @@ inoremap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
 nnoremap <c-m> o<esc>
 nnoremap <c-j> i<cr><esc>
 
+" insert a space
+noremap <space> i<space><esc>
+
+" insert a TAB
+noremap <tab> i<tab><esc>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
