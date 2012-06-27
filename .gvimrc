@@ -19,3 +19,5 @@ set lines=55 columns=88
 "line space
 set linespace=3
 
+"Change work dir to current dir
+autocmd BufEnter * cd %:p:h
