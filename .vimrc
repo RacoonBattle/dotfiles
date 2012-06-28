@@ -95,16 +95,17 @@ noremap j gj
 noremap k gk
 
 " Tab naviation
-nnoremap <A-tab> :tabnext<CR>
-nnoremap to :tabnew<CR>
+nnoremap L :tabnext<CR>
+nnoremap H :tabprevious<CR>
+nnoremap tn :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
 
 " Move among windows
-noremap H <C-W>h
+"noremap <c-h> <C-W>h
 "noremap <C-j> <C-W>j
 "noremap <C-k> <C-W>k
-noremap L <C-W>l
+"noremap <c-l> <C-W>l
 
 " Line completion
 inoremap <c-l> <c-x><c-l>
