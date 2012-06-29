@@ -1,0 +1,25 @@
+<?xml version="1.0" ?><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>chmfox@zhuoqiang.me</em:id>
+    <em:type>2</em:type>
+    <em:name>ChmFox</em:name>
+    <em:version>2.2</em:version>
+    <em:creator>ZHUO Qiang</em:creator>
+    <em:contributor/>
+    <em:description>ChmFox brings the best CHM file reading experience to Firefox</em:description>
+    <!-- <em:aboutURL>chrome://chmfox/content/about.xul</em:aboutURL> -->
+    <!-- <em:optionsURL>chrome://chmfox/content/options.xul</em:optionsURL> -->
+    <em:homepageURL>http://bitbucket.org/zhuoqiang/chmfox</em:homepageURL>
+    <em:targetPlatform>Linux_x86-gcc3</em:targetPlatform><em:targetPlatform>Linux_x86_64-gcc3</em:targetPlatform><em:targetPlatform>WINNT_x86-msvc</em:targetPlatform><em:targetPlatform>WINNT_x86_64-msvc</em:targetPlatform><em:targetPlatform>Darwin_x86-gcc3</em:targetPlatform><em:targetPlatform>Darwin_x86_64-gcc3</em:targetPlatform>
+    <em:unpack>true</em:unpack><!-- binary component needs unpack -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id><!-- Firefox -->
+        <em:minVersion>4.0</em:minVersion>
+        <em:maxVersion>9.0a1</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <!-- <em:updateURL></em:updateURL> -->
+    <!-- <em:updateKey></em:updateKey> -->
+  </Description>
+</RDF>
