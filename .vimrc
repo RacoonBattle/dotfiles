@@ -136,6 +136,9 @@ noremap <space> i<space><esc>
 
 " insert a TAB
 noremap <tab> i<tab><esc>
+
+" Taglist
+noremap <F1> :TlistToggle<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
