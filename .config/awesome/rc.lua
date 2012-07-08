@@ -184,9 +184,22 @@ globalkeys = awful.util.table.join(
 awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
 awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
 --awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
+
 -- xscreensaver
 awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+
+-- alt + tab
+awful.key({ "Mod1", }, "Tab",
+function ()
+    awful.client.focus.history.previous()
+    if client.focus then
+	client.focus:raise()
+    end
+end),
+
+-- mod + e :star file maner
 awful.key({ modkey,   }, "e", function () awful.util.spawn("xfe") end),
+
 
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
