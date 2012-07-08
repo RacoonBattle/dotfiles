@@ -10,7 +10,8 @@ require("naughty")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init("./.config/awesome/theme/theme.lua")
+--beautiful.init("./.config/awesome/theme/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -185,7 +186,7 @@ awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q s
 --awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
 -- xscreensaver
 awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
-awful.key({ modkey,   }, "e", function () awful.util.spawn("pcmanfm") end),
+awful.key({ modkey,   }, "e", function () awful.util.spawn("xfe") end),
 
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
@@ -318,6 +319,10 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { class = "feh" },
+      properties = { floating = true } },
+    { rule = { class = "xfe" },
       properties = { floating = true } },
     { rule = { class = "skype" },
       properties = { floating = true } },
