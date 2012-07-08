@@ -65,19 +65,22 @@ for s = 1, screen.count() do
 myawesomemenu = {
 --   { "manual", terminal .. " -e man awesome" },
 --  { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+   { "lock ", "xscreensaver-command -lock" },
    { "restart ", awesome.restart },
    { "quit ", awesome.quit },
-   { "reboot ", "reboot" },
-   { "shutdown ", "shutdown" }
+--   { "reboot ", "reboot" },
+--   { "shutdown ", "shutdown" }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "terminal", terminal },
                                     { "firefox", "firefox"},
                                     { "gvim", "gvim" },
-                                    { "emelfm2", "emelfm2" },
+                                    { "evince", "evince" },
+                                    { "gimageview", "gimv" },
+                                    { "xfe", "xfe" },
                                     --{ "ranger",terminal.." -e ranger" },
-                                    { "audacious", "audacious" },
+                                    --{ "audacious", "audacious" },
                                   }
                         })
 
