@@ -1,0 +1,22 @@
+#repalce prefix to c-o
+escape ^Oo
+
+#scrollback buffer ...
+altscreen on
+
+#turns on the flashing visual bel
+vbell on       
+
+#tab-bar
+hardstatus alwayslastline 
+#A very nice one is this one with hostname, centered tabs and redmarked active windows
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+# Open several named screens at startup and run different commands in each
+#screen -t E-Mail     2   mutt -y
+#screen -t irssi      3   irssi
+#screen -t mp3blaster 4
+#stuff "mp3blaster\015"
+#screen -t news       5   slrn  -h  news.individual.net -f /home/cprior/.jnewsrc
+#screen -t rss        6   raggle
+#screen -t root       1   su -
