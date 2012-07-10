@@ -37,3 +37,5 @@ XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 !Chinese font
 XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
 
+!enable alt key
+XTerm*metaSendsEscape: true
