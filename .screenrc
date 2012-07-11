@@ -1,17 +1,32 @@
 #repalce prefix to c-o
 escape ^Oo
 
-#scrollback buffer ...
+#scrollback buffer ... Refresh the display when exiting vim ..
 altscreen on
 
-#turns on the flashing visual bel
-vbell on       
+#turns off the flashing visual bel
+vbell off       
 
 #tab-bar
 hardstatus alwayslastline 
 #A very nice one is this one with hostname, centered tabs and redmarked active windows
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
 
+# Dynamic title
+shelltitle '$ |bash'
+
+# Set scrollback
+defscrollback 10240
+
+# Set mapping timeout. Fix ESC in vim
+maptimeout 10
+
+# Keyboard binding
+# f11:previous f12:next
+bind s
+bindkey -k F1 prev
+bindkey -k F2 next
+ 
 # Open several named screens at startup and run different commands in each
 #screen -t E-Mail     2   mutt -y
 #screen -t irssi      3   irssi
