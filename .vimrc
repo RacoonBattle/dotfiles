@@ -81,7 +81,8 @@ set noexpandtab
 
 filetype plugin indent on
 "for python
-autocmd FileType python setlocal et sta sw=4 sts=4
+autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4
+autocmd FileType flexwiki setlocal noexpandtab smarttab shiftwidth=4 softtabstop=4
 
 " Set auto-formating
 set formatoptions+=mM
