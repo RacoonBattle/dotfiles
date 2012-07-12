@@ -78,7 +78,8 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "gvim", "gvim" },
                                     { "evince", "evince" },
                                     { "gimageview", "gimv" },
-                                    { "xfe", "xfe" },
+                                    { "pcmanfm", "pcmanfm" },
+                                    { "cmus",terminal.." -e cmus" },
                                     --{ "ranger",terminal.." -e ranger" },
                                     --{ "audacious", "audacious" },
                                   }
@@ -201,8 +202,7 @@ function ()
 end),
 
 -- mod + e :star file maner
-awful.key({ modkey,   }, "e", function () awful.util.spawn("xfe") end),
-
+awful.key({ modkey,   }, "e", function () awful.util.spawn("pcmanfm") end),
 
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
@@ -338,13 +338,11 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "feh" },
       properties = { floating = true } },
-    { rule = { class = "xfe" },
+    { rule = { class = "pcmanfm" },
       properties = { floating = true } },
     { rule = { class = "skype" },
       properties = { floating = true } },
     { rule = { class = "firefox" },
-      properties = { floating = true } },
-    { rule = { class = "emelfm2" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
