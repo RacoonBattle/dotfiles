@@ -112,8 +112,8 @@ xftfont  Arial size=7
 TEXT
 
 
-[gentoo]%_${color lightgrey}hello 
-${color yellow}只要你敢，总有光芒指引你……
+[gentoo]% ${color lightgrey}hello _ 
+#${font :size=14}${color yellow}只要你敢，总有光芒指引你……
 ${offset 50}${stippled_hr}
 ${offset 50}${offset 95} ${color 98fb98}${time %D}${color}
 ${offset 50}${font Arial:style=Bold:pixelsize=34}${color 98fb98} ${voffset -10}${time %R} ${font}${time %A}${color}
@@ -127,16 +127,16 @@ ${offset 55}CPU1: ${cpu cpu1}%
 ${offset 55}CPU2: ${cpu cpu2}%
 
  -----most CPU-----    
-|${color white}${top name 1}${top cpu 1}%${color}
-|${color white}${top name 2}${top cpu 2}%${color}
-|${color white}${top name 3}${top cpu 3}%${color}
+|${color white}${top name 1}			${top cpu 1}%${color}
+|${color white}${top name 2}			${top cpu 2}%${color}
+|${color white}${top name 3}			${top cpu 3}%${color}
 
 mem: ${mem}/${memmax} 
 ${memperc}% ${membar}
  -----most MEM-----
-|${color white}${top_mem name 1}${top_mem mem 1}%${color} 
-|${color white}${top_mem name 2}${top_mem mem 2}%${color}
-|${color white}${top_mem name 3}${top_mem mem 3}%${color}
+|${color white}${top_mem name 1}			${top_mem mem 1}%${color} 
+|${color white}${top_mem name 2}			${top_mem mem 2}%${color}
+|${color white}${top_mem name 3}			${top_mem mem 3}%${color}
 ${offset 120}${voffset 120}${font sans:size=11}${addr eth0}${font}
 ${offset 133}${color #ddaa00}${font sans:size=11}upspeed:${font Impact:size=9}${upspeed eth0} /s
 ${offset 133}${color #ddaa00}${font sans:size=11}downspeed:${font Impact:size=9}${downspeed eth0} /s
