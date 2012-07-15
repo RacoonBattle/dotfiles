@@ -13,6 +13,18 @@ require("naughty")
 --beautiful.init("./.config/awesome/theme/theme.lua")
 beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
+-- Private naughty config
+naughty.config.default_preset.timeout          = 5
+naughty.config.default_preset.screen           = 1
+naughty.config.default_preset.position         = "top_right"
+naughty.config.default_preset.margin           = 13
+naughty.config.default_preset.ontop            = true
+naughty.config.default_preset.font             = "Verdana 13.5"
+naughty.config.default_preset.fg               = '#240b2b'
+naughty.config.default_preset.bg               = '#d8d8d8'
+naughty.config.presets.normal.border_color     = '#df0101'
+naughty.config.default_preset.border_width     = 1
+
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
 editor = os.getenv("EDITOR") or "vim"
