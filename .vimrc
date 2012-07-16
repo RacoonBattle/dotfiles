@@ -44,7 +44,8 @@ set ruler
 set title
 
 " Display line number
-set number
+"set number
+set relativenumber
 
 " Always have a status line
 set laststatus=2
