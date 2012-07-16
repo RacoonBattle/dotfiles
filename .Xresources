@@ -37,5 +37,13 @@ XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 !Chinese font
 XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
 
-!enable alt key
+!fix alt key
+xterm*eightBitInput: false
 XTerm*metaSendsEscape: true
+
+! copy and paste with clipboard
+xterm*translations: #override \
+Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+
+
