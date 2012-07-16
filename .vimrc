@@ -83,7 +83,10 @@ set noexpandtab
 filetype plugin indent on
 "for python
 autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4
+"for wiki
 autocmd FileType flexwiki setlocal noexpandtab smarttab shiftwidth=4 softtabstop=4
+"for mail
+autocmd FileType mail set textwidth=72
 
 " Set auto-formating
 set formatoptions+=mM
