@@ -356,6 +356,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "firefox" },
       properties = { floating = true } },
+    { rule = { class = "evince" },
+      properties = { floating = true } },
     { rule = { class = "stardict" },
       properties = { floating = true } },
     { rule = { class = "gvim" },
