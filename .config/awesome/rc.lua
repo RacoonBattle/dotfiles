@@ -216,7 +216,52 @@ end),
 -- mod + e :star file maner
 awful.key({ modkey,   }, "e", function () awful.util.spawn("pcmanfm") end),
 
+-- mod + d : stardict, shift + mod + d : type a word then querry
+-- {{{ sdcv/stardict
+awful.key({ modkey }, "d", function ()
+    local f = io.popen("xsel -o")
+    local new_word = f:read("*a")
+    f:close()
 
+    if frame ~= nil then
+        naughty.destroy(frame)
+        frame = nil
+        if old_word == new_word then
+            return
+        end
+    end
+    old_word = new_word
+
+    local fc = ""
+    --local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..new_word)
+    --not use a only dict
+    local f  = io.popen("sdcv -n --utf8-output "..new_word)
+    for line in f:lines() do
+        fc = fc .. line .. '\n'
+    end
+    f:close()
+    frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+end),
+awful.key({ modkey, "Shift" }, "d", function ()
+    awful.prompt.run({prompt = "Dict: "}, mypromptbox[mouse.screen].widget, function(cin_word)
+        naughty.destroy(frame)
+        if cin_word == "" then
+            return
+        end
+
+        local fc = ""
+        --local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..cin_word)
+        local f  = io.popen("sdcv -n --utf8-output "..cin_word)
+        for line in f:lines() do
+            fc = fc .. line .. '\n'
+        end
+        f:close()
+        frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+    end, nil, awful.util.getdir("cache").."/dict")
+end),
+-- }}}
+
+------------------------------------------------------------------------------
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
