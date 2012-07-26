@@ -14,7 +14,7 @@ require("naughty")
 beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
 -- Private naughty config
-naughty.config.default_preset.timeout          = 5
+naughty.config.default_preset.timeout          = 8
 naughty.config.default_preset.screen           = 1
 naughty.config.default_preset.position         = "top_right"
 naughty.config.default_preset.margin           = 13
