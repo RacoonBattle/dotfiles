@@ -30,6 +30,8 @@ bind s
 bindkey -k F1 prev
 bindkey -k F2 next
 
+# Set $TERM variable
+term screen-256color
  
 # Open several named screens at startup and run different commands in each
 #screen -t E-Mail     2   mutt -y
