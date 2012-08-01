@@ -72,7 +72,7 @@ set incsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Smart indet
-"set smartindent
+set smartindent
 
 " tab
 set tabstop=8
