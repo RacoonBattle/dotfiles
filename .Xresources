@@ -1,26 +1,5 @@
-! ----------------------------------------------------------------------------
-! file:     ~/.Xresources
-! author:   
-! modified: 
-! vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
-! ----------------------------------------------------------------------------
-
-!==============================================================================
-!Xresources and Xdefaults are user-level configuration dotfiles, typically
-!located at ~/.Xresources and ~/.Xdefaults. They can be used to set X
-!resources, which are configuration parameters for X client applications.
-!
-!They can do many operations, including:
-!	defining terminal colours configuring terminal preferences setting DPI,
-!	antialiasing, hinting and other X font settings changing the Xcursor theme
-!	theming xscreensaver altering preferences on low-level X applications
-!	(xclock (xorg-xclock), xpdf, rxvt-unicode, etc.) 
-!
+!vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
 !You must re-run xrdb ~/.Xresources every time you change the file
-!
-!The syntax of an Xresources file is as follows:
-!name.Class.resource: value
-!==============================================================================
 
 ! terminal colors ------------------------------------------------------------
 *background: #111111
@@ -32,12 +11,12 @@
 
 !xterm*geometry:           85x35
 
-!English font
+! English font
 XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 !Chinese font
 XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
 
-!fix alt key
+! fix alt key
 xterm*eightBitInput: false
 XTerm*metaSendsEscape: true
 
@@ -52,3 +31,20 @@ xterm*termName: xterm-256color
 ! allow selecting email/url by double-click
 xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
 
+! tango color scheme
+xterm*color0: #1e1e1e
+xterm*color1: #cc0000
+xterm*color2: #4e9a06
+xterm*color3: #c4a000
+xterm*color4: #3465a4
+xterm*color5: #75507b
+xterm*color6: #0b939b
+xterm*color7: #d3d7cf
+xterm*color8: #555753
+xterm*color9: #ef2929
+xterm*color10: #8ae234
+xterm*color11: #fce94f
+xterm*color12: #729fcf
+xterm*color13: #ad7fa8
+xterm*color14: #00f5e9
+xterm*color15: #eeeeec
