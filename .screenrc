@@ -1,8 +1,12 @@
+# Set $TERM variable
+term screen-256color
+
 # repalce prefix to c-o
 escape ^Oo
 
 # tab-bar
 hardstatus alwayslastline 
+
 #A very nice one is this one with hostname, centered tabs and redmarked active windows
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
 
@@ -24,21 +28,16 @@ termcapinfo xterm* ti@:te@
 # Set mapping timeout. Fix ESC in vim
 maptimeout 10
 
-# Keyboard binding
-# f11:previous f12:next
-bind s
-bindkey -k F1 prev
-bindkey -k F2 next
+# Keyboard binding --------------------
+# alt-t: create new window
+bindkey "^[t" screen
 
-# Set $TERM variable
-term screen-256color
- 
-# Open several named screens at startup and run different commands in each
-#screen -t E-Mail     2   mutt -y
-#screen -t irssi      3   irssi
-#screen -t mp3blaster 4
-#stuff "mp3blaster\015"
-#screen -t news       5   slrn  -h  news.individual.net -f /home/cprior/.jnewsrc
-#screen -t rss        6   raggle
-#screen -t root       1   su -
-#
+# alt-d: kill the window
+bindkey "^[d" kill
+
+# alt-j next window
+bindkey "^[j" next
+
+# alt-k previous window
+bindkey "^[k" prev
+
