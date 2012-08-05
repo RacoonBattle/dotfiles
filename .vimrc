@@ -41,7 +41,14 @@ set showmode
 set ruler
 
 " Dynamic title
-set title
+if &term == "screen-256color"
+	set title
+	set t_ts=k
+	set t_fs=\
+endif
+if &term == "xterm-256color"
+	set title
+endif
 
 " Display line number
 "set number
@@ -100,8 +107,8 @@ noremap j gj
 noremap k gk
 
 " Tab naviation
-nnoremap L :tabnext<CR>
-nnoremap H :tabprevious<CR>
+"nnoremap L :tabnext<CR>
+"nnoremap H :tabprevious<CR>
 nnoremap tn :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
