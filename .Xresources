@@ -14,7 +14,8 @@
 ! English font
 XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 !Chinese font
-XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
+!XTerm*faceNameDoublesize: WenQuanYi Zen Hei Mono:antialias=True:pixelsize=16
+XTerm*faceNameDoublesize: AR PL UMing TW:antialias=True:pixelsize=18
 
 ! fix alt key
 xterm*eightBitInput: false
