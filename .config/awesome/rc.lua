@@ -16,7 +16,7 @@ beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 -- Private naughty config
 naughty.config.default_preset.timeout          = 8
 naughty.config.default_preset.screen           = 1
-naughty.config.default_preset.position         = "top_right"
+naughty.config.default_preset.position         = "bottom_left"
 naughty.config.default_preset.margin           = 13
 naughty.config.default_preset.ontop            = true
 naughty.config.default_preset.font             = "Verdana 13.5"

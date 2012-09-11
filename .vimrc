@@ -113,6 +113,9 @@ nnoremap tn :tabnew<CR>
 nnoremap tc :tabclose<CR>
 nnoremap gf <C-W>gf
 
+" Textwidth=78
+noremap tw :set textwidth=78
+
 " Move among windows
 "noremap <c-h> <C-W>h
 "noremap <C-j> <C-W>j
@@ -152,6 +155,9 @@ noremap <tab> i<tab><esc>
 
 " Taglist
 noremap <F1> :TlistToggle<cr>
+
+" Toggle number
+nnoremap <F10> :NumbersToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,3 +165,26 @@ au FileType c,cpp so ~/.vim/c.vim
 
 " Ctrl - \ inputmethod
 let g:vimim_map='c-bslash'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+filetype off
+
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'Lokaltog/vim-powerline'
+Bundle "myusuf3/numbers.vim"
+Bundle 'taglist.vim'
+Bundle 'fcitx.vim'
+"Bundle 'autoload_cscope.vim'
+"Bundle 'DrawIt'
+"Bundle 'echofunc.vim'
+"Bundle 'grep.vim'
+"Bundle 'SuperTab-continued.'
+filetype plugin indent on
