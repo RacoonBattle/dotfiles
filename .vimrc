@@ -109,18 +109,19 @@ noremap k gk
 " Tab naviation
 "nnoremap L :tabnext<CR>
 "nnoremap H :tabprevious<CR>
-nnoremap tn :tabnew<CR>
-nnoremap tc :tabclose<CR>
+"nnoremap tn :tabnew<CR>
+"nnoremap tc :tabclose<CR>
+
 nnoremap gf <C-W>gf
 
 " Textwidth=78
 noremap tw :set textwidth=78
 
 " Move among windows
-"noremap <c-h> <C-W>h
-"noremap <C-j> <C-W>j
-"noremap <C-k> <C-W>k
-"noremap <c-l> <C-W>l
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
 
 " Line completion
 inoremap <c-l> <c-x><c-l>
@@ -135,29 +136,31 @@ noremap <F3> "+y
 "inoremap <F4> <cr><esc>"+p
 set pastetoggle=<F4>
 
-" F5 :add separator line
-noremap <F5> o<ESC>78i-<ESC>o<esc>
-inoremap <F5> <cr><esc>78i-<esc>o
+" Save & Make
+nnoremap <F7> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
+inoremap <F7> <ESC>:w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
 
-" f6 :add time
-noremap <F6> :read !date +"[\%Y\%m\%d]"<cr>
-inoremap <F6> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
+" Quickfix window
+"nnoremap <silent> <F7> :botright copen<CR>
+"nnoremap <silent> <F8> :cclose<CR>
+nnoremap <F8> :call ToggleList("Quickfix List", 'c')<CR>
+inoremap <F8> <ESC>:call ToggleList("Quickfix List", 'c')<CR>
 
-" insert a <cr>
-nnoremap <c-m> o<esc>
-nnoremap <c-j> i<cr><esc>
+" Toggle Tagbar
+nnoremap <silent> <F9> :TagbarToggle<CR>
+inoremap <silent> <F9> <ESC>:TagbarToggle<CR>
 
-" insert a space
-noremap <space> i<space><esc>
+" NERDTreeToggle
+nnoremap <silent> <F10> :NERDTreeToggle<CR>
+inoremap <silent> <F10> <ESC>:NERDTreeToggle<CR>
 
-" insert a TAB
-noremap <tab> i<tab><esc>
+" F11 :add separator line
+noremap <F11> o<ESC>78i-<ESC>o<esc>
+inoremap <F11> <cr><esc>78i-<esc>o
 
-" Taglist
-noremap <F1> :TlistToggle<cr>
-
-" Toggle number
-nnoremap <F10> :NumbersToggle<CR>
+" F12 :add time
+noremap <F12> :read !date +"[\%Y\%m\%d]"<cr>
+inoremap <F12> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
 
 " Cscope mappings
 nmap <C-\>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
@@ -169,13 +172,6 @@ nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" my 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType c,cpp so ~/.vim/c.vim
-
-" Ctrl - \ inputmethod
-let g:vimim_map='c-bslash'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
@@ -191,11 +187,59 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle "myusuf3/numbers.vim"
-Bundle 'taglist.vim'
+Bundle 'Tagbar'
+"Bundle 'taglist.vim'
 Bundle 'fcitx.vim'
+Bundle 'The-NERD-tree'
+Bundle 'snipMate'
+Bundle 'SuperTab-continued.'
+"Bundle 'xptemplate'
 "Bundle 'autoload_cscope.vim'
 "Bundle 'DrawIt'
 "Bundle 'echofunc.vim'
 "Bundle 'grep.vim'
-"Bundle 'SuperTab-continued.'
 filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" au FileType c,cpp so ~/.vim/c.vim
+
+" Ctrl - \ inputmethod
+let g:vimim_map='c-bslash'
+
+" Set Tagbar width
+let tagbar_width = 25
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle Quickfix function
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+"nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+"nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
