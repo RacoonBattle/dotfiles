@@ -122,6 +122,7 @@ noremap <C-h> <C-W>h
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
+noremap <C-W> <C-W><C-W>
 
 " Line completion
 inoremap <c-l> <c-x><c-l>
@@ -135,6 +136,9 @@ noremap <F3> "+y
 "noremap <F4> o<esc>mpk"+p'pdd
 "inoremap <F4> <cr><esc>"+p
 set pastetoggle=<F4>
+
+" Grep search tools
+nnoremap <F6> :Rgrep<CR>
 
 " Save & Make
 nnoremap <F7> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
@@ -193,11 +197,11 @@ Bundle 'fcitx.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'SuperTab-continued.'
+Bundle 'grep.vim'
 "Bundle 'xptemplate'
 "Bundle 'autoload_cscope.vim'
 "Bundle 'DrawIt'
 "Bundle 'echofunc.vim'
-"Bundle 'grep.vim'
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
