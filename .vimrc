@@ -176,6 +176,7 @@ nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
 
+" 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
@@ -214,6 +215,9 @@ let g:vimim_map='c-bslash'
 
 " Set Tagbar width
 let tagbar_width = 25
+
+" Super tab completion type
+let g:SuperTabDefaultCompletionType = "context"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle Quickfix function
