@@ -160,7 +160,7 @@ inoremap <silent> <F10> <ESC>:NERDTreeToggle<CR>
 
 " F11 :add separator line
 noremap <F11> o<ESC>78i-<ESC>o<esc>
-inoremap <F11> <cr><esc>78i-<esc>o
+inoremap <F11> <ESC>78a-<ESC>a
 
 " F12 :add time
 noremap <F12> :read !date +"[\%Y\%m\%d]"<cr>
