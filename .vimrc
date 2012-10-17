@@ -24,6 +24,9 @@ set autochdir
 " set mouse
 set mouse=a
 
+" quickfix list launch files in new tab
+set switchbuf+=usetab,newtab
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
