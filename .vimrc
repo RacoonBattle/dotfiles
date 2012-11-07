@@ -54,8 +54,8 @@ if &term == "xterm-256color"
 endif
 
 " Display line number
-"set number
-set relativenumber
+set number
+"set relativenumber
 
 " Always have a status line
 set laststatus=2
@@ -198,7 +198,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle "myusuf3/numbers.vim"
+"Bundle "myusuf3/numbers.vim"
 Bundle 'Tagbar'
 Bundle 'fcitx.vim'
 Bundle 'The-NERD-tree'
