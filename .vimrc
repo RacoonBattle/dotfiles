@@ -179,7 +179,10 @@ nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
 
-" 
+" change leader key to ,
+let mapleader = ","
+" vim-EasyMotion_leader_key 
+let g:EasyMotion_leader_key = '<Leader>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
