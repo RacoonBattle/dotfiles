@@ -2,7 +2,9 @@
 term screen-256color
 
 # repalce prefix to c-o
-escape ^Oo
+# escape ^Oo
+# alt-o:  Toggle to the window displayed previously
+# bindkey "^[o" other 
 
 # tab-bar
 hardstatus alwayslastline 
@@ -56,5 +58,3 @@ bindkey "^[7" select 7
 bindkey "^[8" select 8
 bindkey "^[9" select 9
 
-# alt-o:  Toggle to the window displayed previously
-bindkey "^[o" other 
