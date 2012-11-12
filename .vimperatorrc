@@ -19,4 +19,4 @@ set editor=xterm\ -e\ vim
 " vim: set ft=vimperator:
 
 " for gmail and google reader
-autocmd LocationChange .* js modes.passAllKeys = /.(mail.google.com|www.google.com\/reader)./.test(buffer.URL)
+" autocmd LocationChange .* js modes.passAllKeys = /.(mail.google.com|www.google.com\/reader)./.test(buffer.URL)
