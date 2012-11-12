@@ -17,3 +17,6 @@ set previouspattern=s*上一页|上一頁|上一张|上页s*,bprev|previousb,^<$
 set editor=xterm\ -e\ vim
 
 " vim: set ft=vimperator:
+
+" for gmail and google reader
+autocmd LocationChange .* js modes.passAllKeys = /.(mail.google.com|www.google.com\/reader)./.test(buffer.URL)
