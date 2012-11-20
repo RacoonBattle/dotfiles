@@ -1,16 +1,11 @@
 !vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
 !You must re-run xrdb ~/.Xresources every time you change the file
 
-! terminal colors ------------------------------------------------------------
+! colors ------------------------------------------------------------
 *background: #111111
 *foreground: #babdb6
 
 ! xterm ----------------------------------------------------------------------
-! xterm*background: #<alphanumeric>
-! xterm*foreground: #<alphanumeric>
-
-!xterm*geometry:           85x35
-
 ! English font
 XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
 !Chinese font
@@ -26,8 +21,16 @@ xterm*translations: #override \
 Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
 Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
 
-! 256color
+! general settings
 xterm*termName: xterm-256color
+xterm*geometry: 80x24
+xterm*saveLines: 1024
+xterm*scrollBar: false
+xterm*loginshell: false
+xterm*background: black
+xterm*foreground: gray
+xterm*cursorBlink: false
+xterm*bellIsUrgent: true
 
 ! allow selecting email/url by double-click
 xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
