@@ -110,8 +110,8 @@ noremap j gj
 noremap k gk
 
 " Tab naviation
-"nnoremap L :tabnext<CR>
-"nnoremap H :tabprevious<CR>
+nnoremap J gt
+nnoremap K gT
 "nnoremap tn :tabnew<CR>
 "nnoremap tc :tabclose<CR>
 
