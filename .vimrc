@@ -27,6 +27,10 @@ set mouse=a
 " quickfix list launch files in new tab
 set switchbuf+=usetab,newtab
 
+" Lines folding
+" set foldenable
+" set foldnestmax=1
+" set foldmethod=syntax
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -183,6 +187,8 @@ let mapleader = ","
 " vim-EasyMotion_leader_key 
 let g:EasyMotion_leader_key = '<Leader>'
 
+" Use <space> to toggle fold
+nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
