@@ -4,9 +4,15 @@
 noremap j 5j
 noremap k 5k
 noremap h gT
+noremap <S-space> gT
 noremap l gt
+noremap <C-space> gt
 noremap . ]]
 noremap , [[
+" press e to open tab-group
+noremap e <C-S-e>
+" press ctrl-e to next tab-group
+noremap <C-e> <C-`>
 
 "set fullscreen
 "set defsearch=百度
