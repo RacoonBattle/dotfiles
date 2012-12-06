@@ -226,11 +226,6 @@ let tagbar_width = 25
 " Super tab completion type
 let g:SuperTabDefaultCompletionType = "context"
 
-"autopen NERDTree and focus cursor in new document
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd p
-"NERDTree tab open a file, also open NERDTree
-autocmd BufEnter * NERDTreeMirror
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle Quickfix function
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
