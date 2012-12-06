@@ -203,16 +203,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-"Bundle "myusuf3/numbers.vim"
 Bundle 'Tagbar'
 Bundle 'fcitx.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'SuperTab-continued.'
 Bundle 'grep.vim'
-"Bundle 'taglist.vim'
-"Bundle 'xptemplate'
-"Bundle 'DrawIt'
+Bundle 'DrawIt'
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
