@@ -77,7 +77,6 @@ for s = 1, screen.count() do
 myawesomemenu = {
 --   { "manual", terminal .. " -e man awesome" },
 --  { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
-   { "lock ", "xscreensaver-command -lock" },
    { "restart ", awesome.restart },
    { "quit ", awesome.quit },
 --   { "reboot ", "reboot" },
@@ -201,8 +200,8 @@ awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q s
 awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
 --awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
 
--- xscreensaver
-awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+-- lock screen
+awful.key({ modkey }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
 
 -- alt + tab
 awful.key({ "Mod1", }, "Tab",

@@ -20,8 +20,5 @@ fcitx &
 #conky
 conky &
 
-#xscreensaver
-xscreensaver &
-
 #awesome
 exec awesome -c ~/.config/awesome/rc.lua
