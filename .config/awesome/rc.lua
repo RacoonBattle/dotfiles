@@ -201,7 +201,7 @@ awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q s
 --awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
 
 -- lock screen
-awful.key({ modkey }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
+awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
 
 -- alt + tab
 awful.key({ "Mod1", }, "Tab",
