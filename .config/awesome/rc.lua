@@ -248,7 +248,14 @@ globalkeys = awful.util.table.join(
     		client.focus:raise()
     	end
     end),
-    
+
+    -- modkey + q: previous window
+    awful.key({ modkey,           }, "q",   awful.tag.viewprev       ),
+    -- modkey + w: next window
+    awful.key({ modkey,           }, "w",  awful.tag.viewnext       ),
+    -- modkey + `: history window
+    awful.key({ modkey,           }, "`", awful.tag.history.restore),
+
     -- modkey + Print: print full screen
     awful.key({ modkey }, "Print",
     function ()
@@ -326,7 +333,6 @@ globalkeys = awful.util.table.join(
     	awful.client.focus.byidx(-1)
     	if client.focus then client.focus:raise() end
     end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
     
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
