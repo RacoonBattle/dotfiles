@@ -8,9 +8,6 @@
 # Merge Xresources file
 xrdb -merge ~/.Xresources
 
-#volum control
-volumeicon &
-
 #fcitx
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE=xim
