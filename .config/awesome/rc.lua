@@ -6,11 +6,11 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+-- Using Vicious 
+vicious = require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
---beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
---beautiful.init("./.config/awesome/theme/theme.lua")
 beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
 -- Private naughty config
@@ -24,6 +24,31 @@ naughty.config.default_preset.fg               = '#240b2b'
 naughty.config.default_preset.bg               = '#d8d8d8'
 naughty.config.presets.normal.border_color     = '#df0101'
 naughty.config.default_preset.border_width     = 1
+
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.add_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = err })
+        in_error = false
+    end)
+end
+-- }}}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -56,13 +81,6 @@ layouts =
 -- }}}
 
 -- {{{ Tags
--- Define a tag table which hold all screen tags.
---tags = {}
---for s = 1, screen.count() do
---    -- Each screen has its own tag table.
---    --tags[s] = awful.tag({ 1, 2, 3, 4, 5}, s, layouts[1])
---    tags[s] = awful.tag({ " 1 ", " 2", " 3", " 4", " 5"}, s, layouts[1])
---end
 tags = {
 	names = { " 1 ", " 2 ", " 3 ", " 4 "," 5 " },
 	layout = { layouts[1], layouts[2], layouts[2], layouts[4], layouts[4] }
@@ -74,25 +92,12 @@ for s = 1, screen.count() do
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
---   { "manual", terminal .. " -e man awesome" },
---  { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
-   { "restart ", awesome.restart },
-   { "quit ", awesome.quit },
---   { "reboot ", "reboot" },
---   { "shutdown ", "shutdown" }
-}
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "terminal", terminal },
+mymainmenu = awful.menu({ items = { { "screen",terminal.." -e screen" },
                                     { "firefox", "firefox"},
-                                    { "gvim", "gvim" },
-                                    { "evince", "evince" },
-                                    { "gimageview", "gimv" },
-                                    { "pcmanfm", "pcmanfm" },
-                                    { "cmus",terminal.." -e cmus" },
-                                    --{ "ranger",terminal.." -e ranger" },
-                                    --{ "audacious", "audacious" },
+                                    { "ranger",terminal.." -e ranger" },
+                                    { "alsamixer",terminal.." -e alsamixer" },
+	
                                   }
                         })
 
@@ -100,12 +105,36 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
 -- }}}
 
+-- Initialize widget
+
+mytempwidget = widget({ type = "textbox", name = "thermalwidget", align = 'right' })
+vicious.register(mytempwidget, vicious.widgets.thermal, "$1°C", 10, "thermal_zone0")
+-- }}}
+
+-- {{{ Battery
+mybatwidget = widget({ type = 'textbox', name = 'mybatwidget'})
+vicious.register(mybatwidget, vicious.widgets.bat, "$1 $2", 10, "BAT0")
+-- }}}
+
+-- {{{ Volume
+myvolwidget = widget({ type = 'textbox', name = 'myvolwidget'})
+vicious.register(myvolwidget, vicious.widgets.volume, "$2 $1", 2, "Master")
+-- }}}
+
+
+
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
+
+-- Private decoration
+myicon = widget({ type = "imagebox" })
+myicon.image = image(beautiful.awesome_icon)
+myspace = widget({ type = "textbox" })
+myspace.text = " "
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -170,14 +199,19 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
+  	    myspace,myspace,
+	    mylayoutbox[s],
+	    myspace,myspace,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
-        mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+
+	-- Private widgets
+	myspace,myvolwidget,myspace,
+	
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -195,88 +229,105 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 
 globalkeys = awful.util.table.join(
+-- {{{ personal key binding
 -- volume keys
-awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 2dB-") end),
-awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 2dB+") end),
---awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
-
--- lock screen
-awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
-
--- alt + tab
-awful.key({ "Mod1", }, "Tab",
-function ()
-    awful.client.focus.history.previous()
-    if client.focus then
-	client.focus:raise()
-    end
-end),
-
--- mod + e :star file maner
-awful.key({ modkey,   }, "e", function () awful.util.spawn("pcmanfm") end),
-
--- mod + d : stardict, shift + mod + d : type a word then querry
--- {{{ sdcv/stardict
-awful.key({ modkey }, "d", function ()
-    local f = io.popen("xsel -o")
-    local new_word = f:read("*a")
-    f:close()
-
-    if frame ~= nil then
-        naughty.destroy(frame)
-        frame = nil
-        if old_word == new_word then
-            return
-        end
-    end
-    old_word = new_word
-
-    local fc = ""
-    --local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..new_word)
-    --not use a only dict
-    local f  = io.popen("sdcv -n --utf8-output "..new_word)
-    for line in f:lines() do
-        fc = fc .. line .. '\n'
-    end
-    f:close()
-    frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
-end),
-awful.key({ modkey, "Shift" }, "d", function ()
-    awful.prompt.run({prompt = "Dict: "}, mypromptbox[mouse.screen].widget, function(cin_word)
-        naughty.destroy(frame)
-        if cin_word == "" then
-            return
-        end
-
-        local fc = ""
-        --local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..cin_word)
-        local f  = io.popen("sdcv -n --utf8-output "..cin_word)
-        for line in f:lines() do
-            fc = fc .. line .. '\n'
-        end
-        f:close()
-        frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
-    end, nil, awful.util.getdir("cache").."/dict")
-end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
+    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
+    awful.key({ modkey }, "Up", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
+    awful.key({ modkey }, "Down", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
+    
+    -- alt + contrl+l: lock screen
+    awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
+    
+    -- alt + tab
+    awful.key({ "Mod1", }, "Tab",
+    function ()
+    	awful.client.focus.history.previous()
+    	if client.focus then
+    		client.focus:raise()
+    	end
+    end),
+    
+    -- modkey + Print: print full screen
+    awful.key({ modkey }, "Print",
+    function ()
+    	awful.util.spawn("scrot -e 'mv $f ~/Pictures/Shot/'")
+    	os.execute("sleep 0.5")
+    	naughty.notify({ title="Screenshot", text="The full screen captured" })
+    end),
+    
+    -- alt + Print: print focused window
+    awful.key({ "Mod1" }, "Print",
+    function ()
+    	awful.util.spawn("scrot -u -e 'mv $f ~/Pictures/Shot/'")
+    	os.execute("sleep 0.5")
+    	naughty.notify({ title="Screenshot", text="The focused window captured" })
+    end),
+    
+    -- mod + e :star file maner
+    awful.key({ modkey,   }, "e", function () awful.util.spawn("xterm -e ranger") end),
+    
+    -- mod + d : stardict, shift + mod + d : type a word then querry
+    awful.key({ modkey }, "d", function ()
+    	local f = io.popen("xsel -o")
+    	local new_word = f:read("*a")
+    	f:close()
+    
+    	if frame ~= nil then
+    		naughty.destroy(frame)
+    		frame = nil
+    		if old_word == new_word then
+    			return
+    		end
+    	end
+    	old_word = new_word
+    
+    	local fc = ""
+    	--local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..new_word)
+    	--not use a only dict
+    	local f  = io.popen("sdcv -n --utf8-output "..new_word)
+    	for line in f:lines() do
+    		fc = fc .. line .. '\n'
+    	end
+    	f:close()
+    	frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+    end),
+    awful.key({ modkey, "Shift" }, "d", function ()
+    	awful.prompt.run({prompt = "Dict: "}, mypromptbox[mouse.screen].widget, function(cin_word)
+    		naughty.destroy(frame)
+    		if cin_word == "" then
+    			return
+    		end
+    
+    		local fc = ""
+    		--local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..cin_word)
+    		local f  = io.popen("sdcv -n --utf8-output "..cin_word)
+    		for line in f:lines() do
+    			fc = fc .. line .. '\n'
+    		end
+    		f:close()
+    		frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+    	end, nil, awful.util.getdir("cache").."/dict")
+    end),
 -- }}}
-
-------------------------------------------------------------------------------
+    
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
+    
     awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
+    function ()
+    	awful.client.focus.byidx( 1)
+    	if client.focus then client.focus:raise() end
+    end),
     awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
+    function ()
+    	awful.client.focus.byidx(-1)
+    	if client.focus then client.focus:raise() end
+    end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
-
+    
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
@@ -284,18 +335,18 @@ end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
-
+    function ()
+    	awful.client.focus.history.previous()
+    	if client.focus then
+    		client.focus:raise()
+    	end
+    end),
+    
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-
+    
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -304,17 +355,17 @@ end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-
+    
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-
+    
     awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end)
+    function ()
+    	awful.prompt.run({ prompt = "Run Lua code: " },
+    	mypromptbox[mouse.screen].widget,
+    	awful.util.eval, nil,
+    	awful.util.getdir("cache") .. "/history_eval")
+    end)
 )
 
 clientkeys = awful.util.table.join(
