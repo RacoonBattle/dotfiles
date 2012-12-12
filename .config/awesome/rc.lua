@@ -229,7 +229,7 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 
 globalkeys = awful.util.table.join(
--- {{{ personal key binding
+-- {{{ Private global key bindings
 -- volume keys
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
@@ -249,10 +249,10 @@ globalkeys = awful.util.table.join(
     	end
     end),
 
-    -- modkey + q: previous window
-    awful.key({ modkey,           }, "q",   awful.tag.viewprev       ),
-    -- modkey + w: next window
-    awful.key({ modkey,           }, "w",  awful.tag.viewnext       ),
+    -- modkey + control + k: previous window
+    awful.key({ modkey,"Control"     }, "k",   awful.tag.viewprev       ),
+    -- modkey + control + j: next window
+    awful.key({ modkey,"Control"     }, "j",  awful.tag.viewnext       ),
     -- modkey + `: history window
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
 
@@ -375,6 +375,10 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
+    -- {{{ Private client key bindings
+    awful.key({ "Mod1" }, "F4", function (c) c:kill() end),
+
+    -- }}}
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
