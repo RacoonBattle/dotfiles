@@ -31,6 +31,23 @@ set switchbuf+=usetab,newtab
 " set foldenable
 " set foldnestmax=1
 " set foldmethod=syntax
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Backup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable backup
+set backup
+
+" Set backup directory
+set backupdir=~/.vim/backup
+
+" Set swap file directory
+set directory=~/.vim/swap,/tmp
+
+" Keep more backups for one file
+autocmd BufWritePre * let &backupext = strftime(".%m-%d-%H-%M")
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
