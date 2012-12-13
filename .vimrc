@@ -207,29 +207,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-filetype off
-
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Tagbar'
-Bundle 'fcitx.vim'
-Bundle 'The-NERD-tree'
-Bundle 'snipMate'
-Bundle 'SuperTab-continued.'
-Bundle 'grep.vim'
-Bundle 'DrawIt'
-filetype plugin indent on
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " au FileType c,cpp so ~/.vim/c.vim
@@ -275,3 +252,29 @@ endfunction
 
 "nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 "nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+filetype off
+
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Tagbar'
+Bundle 'fcitx.vim'
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
+Bundle 'snipMate'
+Bundle 'SuperTab-continued.'
+Bundle 'grep.vim'
+Bundle 'DrawIt'
+filetype plugin indent on
+
