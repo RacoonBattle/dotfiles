@@ -1,11 +1,6 @@
 # Set $TERM variable
 term screen-256color
 
-# repalce prefix to c-o
-# escape ^Oo
-# alt-o:  Toggle to the window displayed previously
-# bindkey "^[o" other 
-
 # tab-bar
 hardstatus alwayslastline 
 
@@ -43,18 +38,6 @@ bindkey "^[j" next
 # alt-k previous window
 bindkey "^[k" prev
 
-# alt-i: window list
+# alt-w: window list
 bindkey "^[w" windowlist -b
-
-# alt-num: select window
-bindkey "^[0" select 0
-bindkey "^[1" select 1
-bindkey "^[2" select 2
-bindkey "^[3" select 3
-bindkey "^[4" select 4
-bindkey "^[5" select 5
-bindkey "^[6" select 6
-bindkey "^[7" select 7
-bindkey "^[8" select 8
-bindkey "^[9" select 9
 
