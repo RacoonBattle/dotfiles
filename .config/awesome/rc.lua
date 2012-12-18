@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 -- Using Vicious 
+	-- cd .config/awesome
+	-- git clone http://git.sysphere.org/vicious
 vicious = require("vicious")
 
 -- {{{ Variable definitions
@@ -105,11 +107,7 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
 -- }}}
 
--- Initialize widget
-
-mytempwidget = widget({ type = "textbox", name = "thermalwidget", align = 'right' })
-vicious.register(mytempwidget, vicious.widgets.thermal, "$1°C", 10, "thermal_zone0")
--- }}}
+-- {{{ Initialize widget
 
 -- {{{ Battery
 mybatwidget = widget({ type = 'textbox', name = 'mybatwidget'})
@@ -120,7 +118,7 @@ vicious.register(mybatwidget, vicious.widgets.bat, "$1 $2", 10, "BAT0")
 myvolwidget = widget({ type = 'textbox', name = 'myvolwidget'})
 vicious.register(myvolwidget, vicious.widgets.volume, "$2 $1", 2, "Master")
 -- }}}
-
+-- }}}
 
 
 -- {{{ Wibox
@@ -210,6 +208,7 @@ for s = 1, screen.count() do
         s == 1 and mysystray or nil,
 
 	-- Private widgets
+	--myspace,mybatwidget,myspace,
 	myspace,myvolwidget,myspace,
 	
         mytasklist[s],
