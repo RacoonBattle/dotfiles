@@ -24,9 +24,6 @@ set autochdir
 " set mouse
 set mouse=a
 
-" quickfix list launch files in new tab
-set switchbuf+=usetab,newtab
-
 " Lines folding
 " set foldenable
 " set foldnestmax=1
@@ -181,13 +178,11 @@ inoremap <silent> <F9> <ESC>:TagbarToggle<CR>
 nnoremap <silent> <F10> :NERDTreeToggle<CR>
 inoremap <silent> <F10> <ESC>:NERDTreeToggle<CR>
 
-" F11 :add separator line
-noremap <F11> o<ESC>78i-<ESC>o<esc>
-inoremap <F11> <ESC>78a-<ESC>a
-
-" F12 :add time
-noremap <F12> :read !date +"[\%Y\%m\%d]"<cr>
-inoremap <F12> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
+" quickfix, cn cp
+nnoremap <silent> <F11> :cprev<CR>
+inoremap <silent> <F11> <ESC>:cprev<CR>
+nnoremap <silent> <F12> :cnext<CR>
+inoremap <silent> <F12> <ESC>:cnext<CR>
 
 " Cscope mappings
 nmap <C-\>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
