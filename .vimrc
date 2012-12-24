@@ -157,6 +157,11 @@ noremap <F3> "+y
 "inoremap <F4> <cr><esc>"+p
 set pastetoggle=<F4>
 
+" F5 : insert [time]
+noremap <F5> :read !date +"[\%Y\%m\%d]"<cr>
+inoremap <F5> <ESC>:read !date +"[\%Y\%m\%d]"<cr>o
+
+
 " Grep search tools
 nnoremap <F6> :Rgrep<CR>
 
