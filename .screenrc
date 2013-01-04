@@ -1,29 +1,48 @@
-# Set $TERM variable
-term screen-256color
+# Set encoding
+defutf8 on
 
-# tab-bar
-hardstatus alwayslastline 
+# Disable vbell
+vbell off
 
-#A very nice one is this one with hostname, centered tabs and redmarked active windows
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+# Disable login
+deflogin off
 
 # Dynamic title
 shelltitle '$ |bash'
 
-#scrollback buffer ... Refresh the display when exiting programs, like vi ..
-altscreen on
-
-# turns off the flashing visual bel
-vbell off       
+# Caption String
+caption always "%{= kR}[ %{G}%H %{r}][ %{=b b}%-w%{=rb db}%>%n %t%{-}%+w%{-b}%< %=%{R}][%{M}%D %M %d %{G}%c%{R}]"
+#caption always '%{= kG}[%= %{= kw}%?%-Lw%?%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#caption always "%{= kR}[ %{=b b}%-w%{=rb db}%>%n %t%{-}%+w%{-b}%< %=%{R}][%{M}%D %M %d %{G}%c%{R}]"
 
 # Set scrollback
 defscrollback 10240
 
+# Startup message
+startup_message off
+
+# Set xterm's title
+hardstatus off
+hardstatus string "screen(@%H): %t"
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+
+# Set $TERM variable
+term screen-256color
+
+# Set message timeout
+msgwait 2
+
+# Set mapping timeout
+maptimeout 10
+
+# Automatically detach upon hangup
+autodetach on
+
 # Make the xterm scroller work in screen
 termcapinfo xterm* ti@:te@
 
-# Set mapping timeout. Fix ESC in vim
-maptimeout 10
+# Refresh the display when exiting programs
+altscreen on
 
 # Keyboard binding --------------------
 # alt-t: create new window
