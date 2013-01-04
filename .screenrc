@@ -38,6 +38,9 @@ bindkey "^[j" next
 # alt-k previous window
 bindkey "^[k" prev
 
+# alt-q: other window
+bindkey "^[q" other
+
 # alt-w: window list
 bindkey "^[w" windowlist -b
 
