@@ -45,8 +45,6 @@ termcapinfo xterm* ti@:te@
 altscreen on
 
 # Keyboard binding --------------------
-# alt-t: create new window
-bindkey "^[t" screen
 
 # alt-d: kill the window
 bindkey "^[d" kill
@@ -63,3 +61,24 @@ bindkey "^[q" other
 # alt-w: window list
 bindkey "^[w" windowlist -b
 
+# Get rid of screen 0
+bind c screen 1
+bind 0 select 10
+
+# Create initial window
+screen 1
+
+# alt-t: create new window
+bindkey "^[t" screen 1
+
+# alt-num: select window
+bindkey "^[0" select 10
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
