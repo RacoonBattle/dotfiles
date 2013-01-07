@@ -84,10 +84,10 @@ layouts =
 
 -- {{{ Tags
 tags = {
-	names = { " 1 ", " 2 ", " 3 ", " 4 "," 5 " },
+	names = { " Firefox ", " Mail_IRC ", " Terminals ", " Vim "," Misc ","","","","" },
 }
 for s = 1, screen.count() do
-	tags[s] = awful.tag(tags.names, s, layouts[1])
+	tags[s] = awful.tag(tags.names, s, layouts[5])
 	end
 -- }}}
 
