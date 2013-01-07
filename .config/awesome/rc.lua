@@ -107,16 +107,27 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- }}}
 
 -- {{{ Initialize widget
+-- vicious.register(widget, wtype, format, interval, warg)
 
--- {{{ Battery
-mybatwidget = widget({ type = 'textbox', name = 'mybatwidget'})
-vicious.register(mybatwidget, vicious.widgets.bat, "$1 $2", 10, "BAT0")
--- }}}
+-- Battery
+batwidget = widget({ type = 'textbox', })
+vicious.register(batwidget, vicious.widgets.bat, "$1 $2", 10, "BAT0")
 
--- {{{ Volume
-myvolwidget = widget({ type = 'textbox', name = 'myvolwidget'})
-vicious.register(myvolwidget, vicious.widgets.volume, "$2 $1", 2, "Master")
--- }}}
+-- Volume
+volwidget = widget({ type = 'textbox'})
+vicious.register(volwidget, vicious.widgets.volume, "$2 $1", 1, "Master")
+
+-- Uptime
+uptimewidget = widget({ type = 'textbox', })
+vicious.register(uptimewidget, vicious.widgets.uptime, "load avg: $4 $5 $6  | up: $1d, $2:$3", 2)
+
+-- Memory usage
+memwidget = widget({ type = "textbox" })
+vicious.register(memwidget, vicious.widgets.mem, "mem: $1%", 2)
+
+-- Cpu usage
+cpuwidget = widget({ type = "textbox" })
+vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
 -- }}}
 
 
@@ -132,6 +143,8 @@ myicon = widget({ type = "imagebox" })
 myicon.image = image(beautiful.awesome_icon)
 myspace = widget({ type = "textbox" })
 myspace.text = " "
+myseperator= widget({ type = "textbox" })
+myseperator.text = " | "
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -192,7 +205,8 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = 25,  screen = s })
+
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -203,12 +217,16 @@ for s = 1, screen.count() do
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
-        mytextclock,
+	batwidget,
         s == 1 and mysystray or nil,
+	myseperator,volwidget,
 
 	-- Private widgets
-	--myspace,mybatwidget,myspace,
-	myspace,myvolwidget,myspace,
+	myseperator,mytextclock, 
+	myseperator,uptimewidget,
+	myseperator,cpuwidget,
+	myseperator,memwidget,
+	myseperator,myspace,myspace,myspace,myspace,
 	
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
