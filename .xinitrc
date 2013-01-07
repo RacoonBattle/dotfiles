@@ -14,8 +14,5 @@ export QT_IM_MODULE=xim
 export GTK_IM_MODULE=xim
 fcitx &
 
-#conky
-conky &
-
 #awesome
 exec awesome -c ~/.config/awesome/rc.lua
