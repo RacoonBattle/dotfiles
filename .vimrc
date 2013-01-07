@@ -62,14 +62,7 @@ set showmode
 set ruler
 
 " Dynamic title
-if &term == "screen-256color"
-	set title
-	set t_ts=k
-	set t_fs=\
-endif
-if &term == "xterm-256color"
-	set title
-endif
+set title
 
 " Display line number
 set number
