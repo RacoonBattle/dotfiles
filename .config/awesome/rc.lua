@@ -111,11 +111,11 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 
 -- Battery
 batwidget = widget({ type = 'textbox', })
-vicious.register(batwidget, vicious.widgets.bat, "$1 $2", 10, "BAT0")
+vicious.register(batwidget, vicious.widgets.bat, "$2 $1", 10, "BAT1")
 
 -- Volume
 volwidget = widget({ type = 'textbox'})
-vicious.register(volwidget, vicious.widgets.volume, "$2 $1", 1, "Master")
+vicious.register(volwidget, vicious.widgets.volume, "$1$2", 1, "Master")
 
 -- Uptime
 uptimewidget = widget({ type = 'textbox', })
@@ -220,9 +220,9 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
 	batwidget,
+	myseperator,volwidget,
         s == 1 and mysystray or nil,
 	-- Private widgets
-	myseperator,volwidget,
 	myseperator,mytextclock, 
 	myseperator,uptimewidget,
 	myseperator,cpuwidget,
