@@ -134,6 +134,8 @@ vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
+require('calendar2')
+calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -219,9 +221,8 @@ for s = 1, screen.count() do
         },
 	batwidget,
         s == 1 and mysystray or nil,
-	myseperator,volwidget,
-
 	-- Private widgets
+	myseperator,volwidget,
 	myseperator,mytextclock, 
 	myseperator,uptimewidget,
 	myseperator,cpuwidget,
