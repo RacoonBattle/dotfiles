@@ -18,13 +18,13 @@ beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 -- Private naughty config
 naughty.config.default_preset.timeout          = 8
 naughty.config.default_preset.screen           = 1
-naughty.config.default_preset.position         = "bottom_left"
+naughty.config.default_preset.font             = "sans 12"
+naughty.config.default_preset.position         = "top_left"
 naughty.config.default_preset.margin           = 13
 naughty.config.default_preset.ontop            = true
-naughty.config.default_preset.font             = "Verdana 13.5"
-naughty.config.default_preset.fg               = '#240b2b'
-naughty.config.default_preset.bg               = '#d8d8d8'
-naughty.config.presets.normal.border_color     = '#df0101'
+naughty.config.default_preset.fg = beautiful.fg_focus
+naughty.config.default_preset.bg = beautiful.bg_focus
+naughty.config.presets.normal.border_color     = '#cc6699'
 naughty.config.default_preset.border_width     = 1
 
 -- {{{ Error handling
@@ -293,6 +293,7 @@ globalkeys = awful.util.table.join(
     
     -- mod + d : stardict, shift + mod + d : type a word then querry
     awful.key({ modkey }, "d", function ()
+
     	local f = io.popen("xsel -o")
     	local new_word = f:read("*a")
     	f:close()
@@ -314,7 +315,14 @@ globalkeys = awful.util.table.join(
     		fc = fc .. line .. '\n'
     	end
     	f:close()
-    	frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+    	frame = naughty.notify({
+		text = fc,
+		position = "top_left",
+		timeout = 10,
+		fg = "#000000",
+		bg = "#FFFFCC",
+		border_color = 0
+	})
     end),
     awful.key({ modkey, "Shift" }, "d", function ()
     	awful.prompt.run({prompt = "Dict: "}, mypromptbox[mouse.screen].widget, function(cin_word)
