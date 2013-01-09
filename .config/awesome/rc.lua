@@ -220,7 +220,7 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
 	batwidget,
-	myseperator,volwidget,
+	myseperator,volwidget,myspace,
         s == 1 and mysystray or nil,
 	-- Private widgets
 	myseperator,mytextclock, 
