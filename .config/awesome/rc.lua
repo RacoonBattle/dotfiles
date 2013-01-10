@@ -128,6 +128,22 @@ vicious.register(memwidget, vicious.widgets.mem, "mem: $1%", 2)
 -- Cpu usage
 cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
+
+-- Network
+netwidget = widget({ type = 'textbox' })
+function get_netspeed()
+    local netspeed = {}
+    local deviceinfo = vicious.widgets.net()
+    for device in io.popen("ls /sys/class/net/"):lines() do
+        if device and device ~= "lo" then
+            netspeed['{down_kb}'] = (netspeed['{down_kb}'] or 0) + deviceinfo['{' .. device .. " " .. "down_kb" .. '}']
+            netspeed['{up_kb}'] = (netspeed['{up_kb}'] or 0) + deviceinfo['{' .. device .. " " .. "up_kb" .. '}']
+        end
+    end
+    return netspeed
+end
+vicious.register(netwidget, get_netspeed, "${down_kb} kb↓  ${up_kb} kb↑", 1)
+
 -- }}}
 
 
@@ -227,6 +243,7 @@ for s = 1, screen.count() do
 	myseperator,uptimewidget,
 	myseperator,cpuwidget,
 	myseperator,memwidget,
+	myseperator,netwidget,
 	myseperator,myspace,myspace,myspace,myspace,
 	
         mytasklist[s],
