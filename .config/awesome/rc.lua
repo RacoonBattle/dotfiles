@@ -355,7 +355,14 @@ globalkeys = awful.util.table.join(
     			fc = fc .. line .. '\n'
     		end
     		f:close()
-    		frame = naughty.notify({ text = fc, timeout = 10, width = 520 })
+		frame = naughty.notify({
+			text = fc,
+			position = "top_left",
+			timeout = 10,
+			fg = "#000000",
+			bg = "#FFFFCC",
+			border_color = 0
+		})
     	end, nil, awful.util.getdir("cache").."/dict")
     end),
 -- }}}
