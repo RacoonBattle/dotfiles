@@ -74,6 +74,9 @@ set laststatus=2
 " Allow to display incomplete line
 set display=lastline
 
+" cursor line
+set cursorline
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
