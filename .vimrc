@@ -145,10 +145,10 @@ inoremap <c-f> <c-x><c-f>
 " write copy and paste
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
-noremap <F3> "+y
-"noremap <F4> o<esc>mpk"+p'pdd
-"inoremap <F4> <cr><esc>"+p
-set pastetoggle=<F4>
+
+" f4 paste through xsel
+noremap <F4> :r!xsel -p<CR>
+inoremap <F4> <ESC>:r!xsel -p<CR>
 
 "insert [time]
 noremap ,date :read !date +"[\%Y\%m\%d]"<cr>
