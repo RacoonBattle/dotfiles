@@ -152,27 +152,26 @@ inoremap <F4> <ESC>:r!xsel -p<CR>
 
 "insert [time]
 noremap ,date :read !date +"[\%Y\%m\%d]"<cr>
-
-" Grep search tools
-nnoremap <F6> :Rgrep<CR>
-
-" Save & Make
-nnoremap <F7> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
-inoremap <F7> <ESC>:w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
-
-" Quickfix window
-"nnoremap <silent> <F7> :botright copen<CR>
-"nnoremap <silent> <F8> :cclose<CR>
-nnoremap <F8> :call ToggleList("Quickfix List", 'c')<CR>
-inoremap <F8> <ESC>:call ToggleList("Quickfix List", 'c')<CR>
-
-" Toggle Tagbar
-nnoremap <silent> <F9> :TagbarToggle<CR>
-inoremap <silent> <F9> <ESC>:TagbarToggle<CR>
+noremap <F5> :read !date +"[\%Y\%m\%d]"<cr>
 
 " NERDTreeToggle
-nnoremap <silent> <F10> :NERDTreeToggle<CR>
-inoremap <silent> <F10> <ESC>:NERDTreeToggle<CR>
+nnoremap <silent> <F6> :NERDTreeToggle<CR>
+inoremap <silent> <F6> <ESC>:NERDTreeToggle<CR>
+
+" Quickfix window
+nnoremap <F7> :call ToggleList("Quickfix List", 'c')<CR>
+inoremap <F7> <ESC>:call ToggleList("Quickfix List", 'c')<CR>
+
+" Toggle Tagbar
+nnoremap <silent> <F8> :TagbarToggle<CR>
+inoremap <silent> <F8> <ESC>:TagbarToggle<CR>
+
+" Grep search tools
+nnoremap <F9> :Rgrep<CR>
+
+" Save & Make
+nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
+inoremap <F10> <ESC>:w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
 
 " quickfix, cn cp
 nnoremap <silent> <F11> :cprev<CR>
