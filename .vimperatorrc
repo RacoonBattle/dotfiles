@@ -1,26 +1,61 @@
 " vim: set ft=vimperator:
 
+" No toolbars or menus by default
+set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
+
+"Editor, C-i invokes it in text fields
+set editor=xterm\ -geometry\ 123x55\ -e\ vim
+
+" move faster
 noremap j 5j
 noremap k 5k
+
+" tab browser
 noremap h gT
-noremap <S-space> gT
 noremap l gt
-noremap <C-space> gt
-noremap . ]]
-noremap , [[
-" press e to open tab-group
+
+" left hand navigation only
+noremap x gT
+noremap v gt
+noremap c 5k
+
+" open tab-group
 noremap e <C-S-e>
-" press ctrl-e to next tab-group
+
+" next tab-group
 noremap <C-e> <C-`>
 
-"set defsearch=百度
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
+" tab number
+set tabnumbers=true
+
+" toggle between two tabs
+noremap <A-Tab> <C-6>
+inoremap <A-Tab> <ESC><C-6>
+
+" prev/next page
+noremap . ]]
+noremap , [[
+
 set nextpattern=s*下一页|下一頁|下一张|下页s*,bnextb,^>$,^(>>|»)$,^(>|»),(>|»)$,bmoreb,NEXT
 set previouspattern=s*上一页|上一頁|上一张|上页s*,bprev|previousb,^<$,^(<<|«)$,^(<|«),(<|«)$,PREVIOUS
 
-set editor=xterm\ -geometry\ 123x55\ -e\ vim
-set ignorecase
+" hint chars
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
 
+" Show pattern matches as you type
+set incsearch
 
-" for gmail and google reader
-" autocmd LocationChange .* js modes.passAllKeys = /.(mail.google.com|www.google.com\/reader)./.test(buffer.URL)
+" Hilight previous search pattern matches
+set hlsearch
+
+" Override ignorecase if pattern has uppercase chars
+set smartcase
+
+" Focus content after a page has loaded
+set focuscontent
+
+" Emacs navigation in command line and insert mode
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
