@@ -15,9 +15,8 @@ noremap h gT
 noremap l gt
 
 " left hand navigation only
-noremap x gT
-noremap v gt
-noremap c 5k
+noremap q gT
+noremap w gt
 
 " open tab-group
 noremap e <C-S-e>
