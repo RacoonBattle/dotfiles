@@ -149,6 +149,9 @@ inoremap <c-f> <c-x><c-f>
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
 
+" f3 copy sesected to xsel
+vmap <F3> :w !xsel -i -p<CR><CR>
+
 " f4 paste through xsel
 noremap <F4> :r!xsel -p<CR>
 inoremap <F4> <ESC>:r!xsel -p<CR>
@@ -156,6 +159,7 @@ inoremap <F4> <ESC>:r!xsel -p<CR>
 "insert [time]
 noremap ,date :read !date +"[\%Y\%m\%d]"<cr>
 noremap <F5> :read !date +"[\%Y\%m\%d]"<cr>
+inoremap <F5> <esc>:read !date +"[\%Y\%m\%d]"<cr>
 
 " NERDTreeToggle
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
