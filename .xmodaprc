@@ -1,0 +1,2 @@
+! Map F1 to Escape
+keysym F1 = Escape
