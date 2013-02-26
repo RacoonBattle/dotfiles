@@ -14,5 +14,8 @@ export QT_IM_MODULE=xim
 export GTK_IM_MODULE=xim
 fcitx &
 
+# xmodmap
+xmodmap ~/.xmodmaprc
+
 #awesome
 exec awesome -c ~/.config/awesome/rc.lua
