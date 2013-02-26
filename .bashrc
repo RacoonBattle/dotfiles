@@ -9,8 +9,12 @@ export EDITOR=vim
 
 # completion
 if [ -f /etc/bash_completion ]
-then
+then	#fedora
 	. /etc/bash_completion
+fi
+if [ -f /etc/profile.d/bash-completion.sh ]
+then	#gentoo
+	. /etc/profile.d/bash-completion.sh
 fi
 
 # history append
