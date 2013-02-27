@@ -84,7 +84,7 @@ layouts =
 
 -- {{{ Tags
 tags = {
-	names = { " Firefox ", " Mail_IRC ", " Terminals ", " Vim "," Misc ","","","","" },
+	names = { " Firefox ", " Mail_IRC ", " Terminals ", " Vim "," Misc ","","" },
 }
 for s = 1, screen.count() do
 	tags[s] = awful.tag(tags.names, s, layouts[5])
@@ -94,13 +94,26 @@ for s = 1, screen.count() do
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 
-mymainmenu = awful.menu({ items = { { "screen",terminal.." -e screen" },
-                                    { "firefox", "firefox"},
-                                    { "ranger",terminal.." -e ranger" },
-                                    { "alsamixer",terminal.." -e alsamixer" },
-	
-                                  }
-                        })
+my_term_menu = {
+	{ "Xterm", terminal },
+	{ "Screen", terminal.." -e screen" },
+}
+my_fm_menu = {
+	{ "Ranger", terminal.." -e ranger" },
+	{ "Pcmanfm", "pcmanfm" },
+}
+my_media_menu = {
+	{ "Audaicous", "audaicous"},
+	{ "Alsamixer",terminal.." -e alsamixer" },
+}
+mymainmenu = awful.menu({ items = { 
+	{ "Terminal", my_term_menu },
+	{ "File", my_fm_menu },
+	{ "Media", my_media_menu },
+	{ "Firefox", "firefox"},
+	{ "Mirage", "mirage"},
+}
+})
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
@@ -302,7 +315,10 @@ globalkeys = awful.util.table.join(
     end),
     
     -- mod + e :star file maner
-    awful.key({ modkey,   }, "e", function () awful.util.spawn("xterm -e ranger") end),
+    awful.key({ modkey }, "e", function () awful.util.spawn("xterm -e ranger") end),
+    
+    -- mod + s :xterm with screen
+    awful.key({ modkey }, "s", function () awful.util.spawn("xterm -e screen") end),
     
     -- mod + d : stardict, shift + mod + d : type a word then querry
     awful.key({ modkey }, "d", function ()
