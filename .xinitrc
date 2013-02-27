@@ -8,14 +8,18 @@
 # Merge Xresources file
 xrdb -merge ~/.Xresources
 
-# xmodmap
-xmodmap ~/.xmodmaprc
+# disable screensaver/screen blanking
+xset s off
+xset dpms 0 0 0
 
 #fcitx
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE=xim
 export GTK_IM_MODULE=xim
 fcitx &
+
+# xmodmap
+xmodmap ~/.xmodmaprc
 
 # dropbox
 if [ -f ~/bin/dropbox.py ]; then
