@@ -103,7 +103,7 @@ my_fm_menu = {
 	{ "Pcmanfm", "pcmanfm" },
 }
 my_media_menu = {
-	{ "Audaicous", "audaicous"},
+	{ "Audacious", "audacious"},
 	{ "Alsamixer",terminal.." -e alsamixer" },
 }
 mymainmenu = awful.menu({ items = { 
