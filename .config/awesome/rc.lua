@@ -119,7 +119,7 @@ vicious.register(volwidget, vicious.widgets.volume, "$1$2", 1, "Master")
 
 -- Uptime
 uptimewidget = widget({ type = 'textbox', })
-vicious.register(uptimewidget, vicious.widgets.uptime, "load avg: $4 $5 $6  | up: $1d, $2:$3", 2)
+vicious.register(uptimewidget, vicious.widgets.uptime, "load: $4 | up: $1d, $2:$3", 2)
 
 -- Memory usage
 memwidget = widget({ type = "textbox" })
@@ -128,6 +128,11 @@ vicious.register(memwidget, vicious.widgets.mem, "mem: $1%", 2)
 -- Cpu usage
 cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
+
+-- {{{ CPU temperature
+local thermalwidget = widget({ type = "textbox" })
+vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 20, { "coretemp.0", "core"} )
+-- }}}
 
 -- Network
 netwidget = widget({ type = 'textbox' })
@@ -240,7 +245,7 @@ for s = 1, screen.count() do
 	-- Private widgets
 	myseperator,mytextclock, 
 	myseperator,uptimewidget,
-	myseperator,cpuwidget,
+	myseperator,thermalwidget,cpuwidget,
 	myseperator,memwidget,
 	myseperator,netwidget,
 	myseperator,myspace,myspace,myspace,myspace,
