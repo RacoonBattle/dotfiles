@@ -299,7 +299,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
 
     -- modkey + Print: print full screen
-    awful.key({ modkey }, "Print",
+    awful.key({ }, "Print",
     function ()
     	awful.util.spawn("scrot -e 'mv $f ~/Pictures/Shot/'")
     	os.execute("sleep 0.5")
@@ -309,9 +309,10 @@ globalkeys = awful.util.table.join(
     -- alt + Print: print focused window
     awful.key({ "Mod1" }, "Print",
     function ()
-    	awful.util.spawn("scrot -u -e 'mv $f ~/Pictures/Shot/'")
     	os.execute("sleep 0.5")
-    	naughty.notify({ title="Screenshot", text="The focused window captured" })
+    	awful.util.spawn("scrot -s -e 'mv $f ~/Pictures/Shot/'")
+    	os.execute("sleep 0.5")
+    	naughty.notify({ title="Screenshot", text="The selected window captured" })
     end),
     
     -- mod + e :star file maner
