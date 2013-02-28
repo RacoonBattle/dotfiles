@@ -112,6 +112,7 @@ mymainmenu = awful.menu({ items = {
 	{ "Media", my_media_menu },
 	{ "Firefox", "firefox"},
 	{ "Mirage", "mirage"},
+	{ "Freemind", "freemind"},
 }
 })
 
@@ -124,7 +125,7 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 
 -- Battery
 batwidget = widget({ type = 'textbox', })
-vicious.register(batwidget, vicious.widgets.bat, "$2 $1", 10, "BAT1")
+vicious.register(batwidget, vicious.widgets.bat, "$2 $1", 10, "BAT0")
 
 -- Volume
 volwidget = widget({ type = 'textbox'})
