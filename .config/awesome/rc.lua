@@ -282,13 +282,33 @@ root.buttons(awful.util.table.join(
 
 globalkeys = awful.util.table.join(
 -- {{{ Private global key bindings
--- volume keys
+-- modkey: Mod4(win)
+-- mod1: alt
+    -- volume keys
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
     awful.key({ modkey }, "Up", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
     awful.key({ modkey }, "Down", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
     
+    -- mpc control
+    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
+    awful.key({}, "XF86AudioStop", function () awful.util.spawn("mpc stop") end),
+    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("mpc prev") end),
+    awful.key({}, "XF86AudioNext", function () awful.util.spawn("mpc next") end),
+    awful.key({ "Mod1" }, "Down", function () awful.util.spawn("mpc toggle") end),
+    awful.key({ "Mod1" }, "Up", function () awful.util.spawn("mpc stop") end),
+    awful.key({ "Mod1" }, "Left", function () awful.util.spawn("mpc prev") end),
+    awful.key({ "Mod1" }, "Right", function () awful.util.spawn("mpc next") end),
+
+    awful.key({ "Mod1" }, "i", function()
+	    local song = awful.util.pread("mpc status"):sub(1,-2)
+	    if song:len() == 0 then
+		    song = "- nothing playing -"
+	    end
+	    naughty.notify({ text = song, title = "Currently playing:", timeout = 5 })
+    end),
+
     -- alt + contrl+l: lock screen
     awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     
