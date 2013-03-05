@@ -5,7 +5,7 @@
 #	   so update these config and apply relevant patch.
 
 # link files
-home_conf_files=".bash_profile .gitconfig .gtcrc-2.0 .gvimrc 
+home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
 .screenrc .vimperatorrc .vimrc .xinitrc .xmodmaprc .Xresources
 .config/user-dirs.dirs
 .config/ranger/rifle.conf
