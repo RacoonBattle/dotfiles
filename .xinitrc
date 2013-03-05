@@ -22,9 +22,7 @@ fcitx &
 xmodmap ~/.xmodmaprc
 
 # dropbox
-if [ -f ~/bin/dropbox.py ]; then
-	python2.7 ~/bin/dropbox.py start
-fi
+~/.dropbox-dist/dropboxd &
 
 #awesome
 exec awesome -c ~/.config/awesome/rc.lua
