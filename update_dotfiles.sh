@@ -11,7 +11,9 @@ home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/ranger/rifle.conf
 .config/awesome/calendar2.lua
 .config/awesome/rc.lua
-.config/awesome/theme"
+.config/awesome/theme
+.config/fcitx/config
+.config/fcitx/profile"
 
 for i in $home_conf_files; do
 	rm -rf ~/$i
