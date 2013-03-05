@@ -1,7 +1,8 @@
 "gvim---------------------------------------------------
 "fonts set
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
-"set guifont=幼圆\ 12
+
+set guifont=DejaVu\ Sans\ Mono\ 12
+set guifontwide=AR\ PL\ UMing\ TW\ 13
 
 "Toggle Menu and Toolbar
 set guioptions-=T
