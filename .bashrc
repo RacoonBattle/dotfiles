@@ -36,9 +36,8 @@ alias gs='git status'
 alias gu='git pull'
 alias gw='git show'
 
-alias la='ls -lA --color=auto'
+alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
-alias lah='ls -lAh --color=auto'
 
 alias vi='vim'
 
