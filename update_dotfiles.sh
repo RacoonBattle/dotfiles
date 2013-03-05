@@ -13,11 +13,12 @@ home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/awesome/rc.lua
 .config/awesome/theme
 .config/fcitx/config
-.config/fcitx/profile"
+.config/fcitx/profile
+.config/fcitx/skin/dark/fcitx_skin.conf"
 
 for i in $home_conf_files; do
 	rm -rf ~/$i
-	ln -s ~/dotfiles/$i ~/$i
+	cp -rs ~/dotfiles/$i ~/$i
 	ls -l --color=auto ~/$i
 done
 echo "create symlinks done"
