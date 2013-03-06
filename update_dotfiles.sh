@@ -16,6 +16,8 @@ home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/fcitx/profile
 .config/fcitx/skin/dark/fcitx_skin.conf"
 
+mkdir -p ~/.config/fcitx/skin/dark/
+
 for i in $home_conf_files; do
 	rm -rf ~/$i
 	cp -rs ~/dotfiles/$i ~/$i
