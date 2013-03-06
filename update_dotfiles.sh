@@ -4,6 +4,11 @@
 #	2. some config should be different ( eg: irc and mail config in laptop and company)
 #	   so update these config and apply relevant patch.
 
+# mkdir
+mkdir -p ~/.config/fcitx/skin/dark/
+mkdir -p ~/Pictures/Shot
+mkdir -p ~/.vim/backup/
+
 # link files
 home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
 .screenrc .vimperatorrc .vimrc .xinitrc .xmodmaprc .Xresources
@@ -15,8 +20,6 @@ home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/fcitx/config
 .config/fcitx/profile
 .config/fcitx/skin/dark/fcitx_skin.conf"
-
-mkdir -p ~/.config/fcitx/skin/dark/
 
 for i in $home_conf_files; do
 	rm -rf ~/$i
