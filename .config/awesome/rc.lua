@@ -336,8 +336,11 @@ globalkeys = awful.util.table.join(
     	naughty.notify({ title="Screenshot", text="The selected window captured" })
     end),
     
-    -- mod + e :star file maner
+    -- mod + e :start ranger
     awful.key({ modkey }, "e", function () awful.util.spawn("xterm -e ranger") end),
+    
+    -- mod + w :start pcmanfm
+    awful.key({ modkey }, "w", function () awful.util.spawn("pcmanfm") end),
     
     -- mod + s :xterm with screen
     awful.key({ modkey }, "s", function () awful.util.spawn("xterm -e screen") end),
