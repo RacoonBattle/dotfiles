@@ -5,23 +5,20 @@
 #	   so update these config and apply relevant patch.
 
 # mkdir
-mkdir -p ~/.config/fcitx/skin/dark/
 mkdir -p ~/Pictures/Shot
 mkdir -p ~/.vim/backup/
 
 # link files
-home_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
+link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
 .screenrc .vimperatorrc .vimrc .xinitrc .xmodmaprc .Xresources
 .config/user-dirs.dirs
 .config/ranger/rifle.conf
 .config/awesome/calendar2.lua
 .config/awesome/rc.lua
-.config/awesome/theme
 .config/fcitx/config
-.config/fcitx/profile
-.config/fcitx/skin/dark/fcitx_skin.conf"
+.config/fcitx/conf/fcitx-classic-ui.config"
 
-for i in $home_conf_files; do
+for i in $link_conf_files; do
 	rm -rf ~/$i
 	cp -rs ~/dotfiles/$i ~/$i
 	ls -l --color=auto ~/$i
@@ -30,7 +27,15 @@ echo "create symlinks done"
 echo 
 
 # copy files
-cp ~/dotfiles/.bashrc ~/.bashrc
+copy_conf_files=".bashrc
+.config/awesome/theme
+.config/fcitx/profile
+.config/fcitx/skin/anran"
+for i in $copy_conf_files; do
+	rm -rf ~/$i
+	cp -rf ~/dotfiles/$i ~/$i
+	echo "overwrite $i"
+done
 
 # apply patch
 if [ $HOSTNAME = optiplex-760 ];then
