@@ -6,7 +6,8 @@
 
 # mkdir
 mkdir -p ~/Pictures/Shot
-mkdir -p ~/.vim/backup/
+mkdir -p ~/.vim/backup
+mkdir -p ~/.config/fcitx/skin
 
 # link files
 link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
@@ -16,6 +17,7 @@ link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/awesome/calendar2.lua
 .config/awesome/rc.lua
 .config/fcitx/config
+.config/fcitx/conf/fcitx-cloudpinyin.config
 .config/fcitx/conf/fcitx-classic-ui.config"
 
 for i in $link_conf_files; do
