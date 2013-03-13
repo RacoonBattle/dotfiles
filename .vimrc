@@ -111,6 +111,8 @@ autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4
 autocmd FileType flexwiki setlocal noexpandtab smarttab shiftwidth=4 softtabstop=4
 "for mail
 autocmd FileType mail set textwidth=72
+"for markdown
+autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 " Set auto-formating
 set formatoptions+=mM
@@ -274,5 +276,6 @@ Bundle 'snipMate'
 Bundle 'SuperTab-continued.'
 Bundle 'grep.vim'
 Bundle 'DrawIt'
+Bundle 'git://github.com/plasticboy/vim-markdown.git'
 filetype plugin indent on
 
