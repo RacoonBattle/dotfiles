@@ -159,9 +159,8 @@ noremap <F4> :r!xsel -p<CR>
 inoremap <F4> <ESC>:r!xsel -p<CR>
 
 "insert [time]
-noremap ,date :read !date +"[\%Y\%m\%d]"<cr>
-noremap <F5> :read !date +"[\%Y\%m\%d]"<cr>
-inoremap <F5> <esc>:read !date +"[\%Y\%m\%d]"<cr>
+noremap <F5> :read !date +"\%Y\%m\%d"<cr>o- - -<esc>o<esc>
+inoremap <F5> <esc>:read !date +"\%Y\%m\%d"<cr>o- - -<esc>o<esc>
 
 " NERDTreeToggle
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
