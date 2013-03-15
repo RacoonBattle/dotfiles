@@ -19,7 +19,7 @@ export GTK_IM_MODULE=xim
 fcitx &
 
 # xmodmap
-xmodmap ~/.xmodmaprc
+(sleep 2 && xmodmap ~/.xmodmaprc)&
 
 # dropbox
 ~/.dropbox-dist/dropboxd &
