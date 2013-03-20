@@ -285,11 +285,11 @@ globalkeys = awful.util.table.join(
 -- modkey: Mod4(win)
 -- mod1: alt
     -- volume keys
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 5%- unmute") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 5%+ unmute") end),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master mute") end),
-    awful.key({ modkey }, "Up", function () awful.util.spawn("amixer -q sset Master 10%+ unmute") end),
-    awful.key({ modkey }, "Down", function () awful.util.spawn("amixer -q sset Master 10%- unmute") end),
+    awful.key({ modkey }, "Up", function () awful.util.spawn("amixer -q sset Master 5%+ unmute") end),
+    awful.key({ modkey }, "Down", function () awful.util.spawn("amixer -q sset Master 5%- unmute") end),
     
     -- mpc control
     awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
