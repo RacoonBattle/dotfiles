@@ -261,7 +261,7 @@ for s = 1, screen.count() do
 	myseperator,uptimewidget,
 	myseperator,thermalwidget,cpuwidget,
 	myseperator,memwidget,
-	myseperator,netwidget,
+	-- myseperator,netwidget,
 	myseperator,myspace,myspace,myspace,myspace,
 	
         mytasklist[s],
