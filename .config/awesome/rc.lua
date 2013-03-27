@@ -111,7 +111,7 @@ mymainmenu = awful.menu({ items = {
 	{ "File", my_fm_menu },
 	{ "Media", my_media_menu },
 	{ "Firefox", "firefox"},
-	{ "Mirage", "mirage"},
+	{ "Gqview", "gqview"},
 	{ "Freemind", "freemind"},
 }
 })
