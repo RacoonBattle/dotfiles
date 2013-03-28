@@ -8,10 +8,12 @@
 mkdir -p ~/Pictures/Shot
 mkdir -p ~/.vim/backup
 mkdir -p ~/.config/fcitx/skin
+mkdir -p ~/.config/gtk-3.0
 
 # link files
 link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
 .screenrc .vimperatorrc .vimrc .xinitrc .xmodmaprc .Xresources
+.config/gtk-3.0/settings.ini
 .config/user-dirs.dirs
 .config/ranger/rifle.conf
 .config/awesome/calendar2.lua
