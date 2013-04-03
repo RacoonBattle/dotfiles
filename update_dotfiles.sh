@@ -8,6 +8,7 @@
 mkdir -p ~/Pictures/Shot
 mkdir -p ~/.vim/backup
 mkdir -p ~/.config/fcitx/skin
+mkdir -p ~/.config/fcitx/table
 mkdir -p ~/.config/gtk-3.0
 
 # link files
@@ -19,6 +20,7 @@ link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/awesome/calendar2.lua
 .config/awesome/rc.lua
 .config/fcitx/config
+.config/fcitx/table/cangjie5.conf
 .config/fcitx/conf/fcitx-cloudpinyin.config
 .config/fcitx/conf/fcitx-classic-ui.config"
 
@@ -34,6 +36,7 @@ echo
 copy_conf_files=".bashrc
 .config/awesome/theme
 .config/fcitx/profile
+.config/fcitx/table/cj5.mb
 .config/fcitx/skin/anran"
 for i in $copy_conf_files; do
 	rm -rf ~/$i
