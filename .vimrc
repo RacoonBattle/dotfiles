@@ -21,9 +21,6 @@ set wildmode=longest:full,full
 " Auto change current directory
 set autochdir
 
-" set mouse
-set mouse=a
-
 " Lines folding
 " set foldenable
 " set foldnestmax=1
