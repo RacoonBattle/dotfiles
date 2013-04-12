@@ -148,12 +148,16 @@ inoremap <c-f> <c-x><c-f>
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
 
-" f3 copy sesected to xsel
-vmap <F3> :w !xsel -i -p<CR><CR>
+" F3 and F4: copy and paste from 'the selection buffer'
+vmap <F3> "*y
+noremap <F4> "*p
+inoremap <F4> <ESC>"*p
 
-" f4 paste through xsel
-noremap <F4> :r!xsel -p<CR>
-inoremap <F4> <ESC>:r!xsel -p<CR>
+" SHIFT + F3 and F4: copy and paste from 'the system clipboard'
+" note <S-F3> need type by ctrl+v and shift+f3, same to <S-F4>
+ vmap [1;2R "+y
+ noremap [1;2S "+p
+ inoremap [1;2S <ESC>"+p
 
 "insert [time]
 noremap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
@@ -201,10 +205,10 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au FileType c,cpp so ~/.vim/c.vim
 
 " Ctrl - \ inputmethod
 let g:vimim_map='c-bslash'
@@ -244,9 +248,6 @@ function! ToggleList(bufname, pfx)
     wincmd p
   endif
 endfunction
-
-"nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
-"nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
