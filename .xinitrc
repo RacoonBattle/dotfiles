@@ -18,9 +18,6 @@ export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 fcitx &
 
-# xmodmap
-(sleep 2 && xmodmap ~/.xmodmaprc)&
-
 # dropbox
 ~/.dropbox-dist/dropboxd &
 
