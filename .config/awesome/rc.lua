@@ -145,7 +145,7 @@ vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
 
 -- {{{ CPU temperature
 local thermalwidget = widget({ type = "textbox" })
-vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 20, { "coretemp.0", "core"} )
+vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 2, { "coretemp.0", "core"} )
 -- }}}
 
 -- Network
