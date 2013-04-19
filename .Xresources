@@ -1,10 +1,6 @@
 !vim: set fenc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
 !You must re-run xrdb ~/.Xresources every time you change the file
 
-! colors ------------------------------------------------------------
-*background: #111111
-*foreground: #babdb6
-
 ! xterm ----------------------------------------------------------------------
 ! English font
 XTerm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=16
