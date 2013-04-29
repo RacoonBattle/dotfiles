@@ -539,7 +539,7 @@ awful.rules.rules = {
     -- Private rules
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
-    { rule = { class = "Feh" },
+    { rule = { class = "feh" },
       properties = { floating = true } },
     { rule = { class = "Skype" },
       properties = { floating = true } },
