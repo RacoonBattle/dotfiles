@@ -14,6 +14,7 @@ mkdir -p ~/.config/gtk-3.0
 # link files
 link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc 
 .screenrc .vimperatorrc .vimrc .xinitrc .xmodmaprc .Xresources
+.battery_alarm.sh
 .config/gtk-3.0/settings.ini
 .config/user-dirs.dirs
 .config/ranger/rifle.conf

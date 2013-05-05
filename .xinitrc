@@ -21,5 +21,8 @@ fcitx &
 # dropbox
 ~/.dropbox-dist/dropboxd &
 
+# battery alarm
+~/.battery_alarm.sh &
+
 #awesome
 exec awesome -c ~/.config/awesome/rc.lua
