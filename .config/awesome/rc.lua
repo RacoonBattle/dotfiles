@@ -312,10 +312,10 @@ globalkeys = awful.util.table.join(
     -- alt + contrl+l: lock screen
     awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     
-    -- modkey + control + k: previous window
-    awful.key({ modkey,"Control"     }, "k",   awful.tag.viewprev       ),
-    -- modkey + control + j: next window
-    awful.key({ modkey,"Control"     }, "j",  awful.tag.viewnext       ),
+    -- modkey + h/l: tag previous/next 
+    awful.key({ modkey,     }, "h",  awful.tag.viewprev       ),
+    awful.key({ modkey,     }, "l",  awful.tag.viewnext       ),
+
     -- modkey + `: history window
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
 
