@@ -14,6 +14,10 @@ noremap k 5k
 noremap h gT
 noremap l gt
 
+" tab move
+noremap > :tabmove +1<cr>
+noremap < :tabmove -1<cr>
+
 " left hand navigation only
 noremap q gT
 noremap w gt
