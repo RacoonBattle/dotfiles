@@ -12,8 +12,6 @@ shelltitle '$ |bash'
 
 # Caption String
 caption always "%{= kR}[ %{G}%H %{r}][ %{=b b}%-w%{=rb db}%>%n %t%{-}%+w%{-b}%< %=%{R}][%{M}%D %M %d %{G}%c%{R}]"
-#caption always '%{= kG}[%= %{= kw}%?%-Lw%?%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
-#caption always "%{= kR}[ %{=b b}%-w%{=rb db}%>%n %t%{-}%+w%{-b}%< %=%{R}][%{M}%D %M %d %{G}%c%{R}]"
 
 # Set scrollback
 defscrollback 10240
@@ -50,10 +48,10 @@ altscreen on
 bindkey "^[d" kill
 
 # alt-j next window
-bindkey "^[j" next
+bindkey "^[l" next
 
 # alt-k previous window
-bindkey "^[k" prev
+bindkey "^[h" prev
 
 # alt-q: other window
 bindkey "^[q" other
