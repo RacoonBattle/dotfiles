@@ -540,14 +540,7 @@ awful.rules.rules = {
     { rule = { class = "MPlayer" },},
       properties = { floating = true },
     { rule = { class = "Flashplayer" },
-      properties = { floating = true },
-    callback = function( c )
-      local w_area = screen[ c.screen ].workarea
-      local winwidth = 340
-      c:struts( { right = winwidth } )
-      c:geometry( { x = w_area.width - winwidth, width = winwidth, y = w_area.y, height = w_area.height } )
-    end
-      },
+      properties = { floating = true }, },
     { rule = { class = "feh" },
       properties = { floating = true } },
     { rule = { class = "Skype" },
