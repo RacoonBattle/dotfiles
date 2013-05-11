@@ -13,24 +13,37 @@ ACTION="sudo shutdown -h now"
 
 MAX_BATTERY=$(cat /proc/acpi/battery/$BAT/info | grep 'last full' | awk '{print$4}')
 
+function get_current_info ()
+{
+	PRESENT=$(grep "present:" /proc/acpi/battery/$BAT/state | awk '{print $2}')
+	STATE=$(grep "charging state" /proc/acpi/battery/$BAT/state | awk '{print $3}')
+	CAPACITY=$(grep "remaining capacity" /proc/acpi/battery/$BAT/state | awk '{print $3}')
+	PERCENT=$(($CAPACITY*100/$MAX_BATTERY))
+}
+
 while [ true ]; do
+	get_current_info
 	if [ -e "/proc/acpi/battery/$BAT/state" ]; then
-		PRESENT=$(grep "present:" /proc/acpi/battery/$BAT/state | awk '{print $2}')
 		if [ "$PRESENT" = "yes" ]; then
 
-			STATE=$(grep "charging state" /proc/acpi/battery/$BAT/state | awk '{print $3}')
-			CAPACITY=$(grep "remaining capacity" /proc/acpi/battery/$BAT/state | awk '{print $3}')
-			PERCENT=$(($CAPACITY*100/$MAX_BATTERY))
-
-			if [ "$PERCENT" -lt "$LOW_BATTERY" ] && [ "$STATE" = "discharging" ]; then
-				notify-send -u critical -t 5000 "Battery is LOW." "remaining $PERCENT% "
+			if [ $(($PERCENT % 10)) -eq 0 ] && [ "$STATE" = "discharging" ]; then
+				notify-send  -t 5000 "Battery Information" "remaining $PERCENT% "
+				while [ $(($PERCENT % 10)) -eq 0 ] && [ "$STATE" = "discharging" ]; do
+					get_current_info
+					sleep 60
+					get_current_info
+				done
 			fi
 
-			if [ "$PERCENT" -lt "$CRITICAL_BATTERY" ] && [ "$STATE" = "discharging" ]; then
-				notify-send -u critical -t 9000 "Battery is less than $CRITICAL_BATTERY." "System will shutdown in 30s"
+			if [ $PERCENT -lt $LOW_BATTERY ] && [ "$STATE" = "discharging" ]; then
+				notify-send -u critical -t 10000 "Battery is LOW." "remaining $PERCENT% "
+			fi
+
+			if [ $PERCENT -lt $CRITICAL_BATTERY ] && [ "$STATE" = "discharging" ]; then
+				notify-send -u critical -t 15000 "Battery is less than $CRITICAL_BATTERY." "System have to shutdown"
 				sleep 30
 				notify-send -u critical -t 9000 "LOW Battery" "Power Off" 
-				sleep 3
+				sleep 9
 				$($ACTION)
 			fi
 		fi
