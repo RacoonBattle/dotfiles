@@ -537,17 +537,13 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     -- Private rules
-    { rule = { class = "MPlayer" },},
-      properties = { floating = true },
+    { rule = { class = "MPlayer" },
+      properties = { floating = true } },
     { rule = { class = "Flashplayer" },
-      properties = { floating = true }, },
-    { rule = { class = "feh" },
-      properties = { floating = true } },
-    { rule = { class = "Skype" },
-      properties = { floating = true } },
-    { rule = { class = "Gimp" },
       properties = { floating = true } },
     { rule = { class = "Plugin-container"},
+      properties = { floating = true } },
+    { rule = { class = "feh" },
       properties = { floating = true } },
 }
 -- }}}
