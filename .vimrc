@@ -63,7 +63,6 @@ set title
 
 " Display line number
 set number
-"set relativenumber
 
 " Always have a status line
 set laststatus=2
@@ -113,7 +112,6 @@ autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
 " Set auto-formating
 set formatoptions+=mM
-set wrap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -125,13 +123,12 @@ noremap k gk
 " Tab naviation
 nnoremap gn :tabnew<CR>
 nnoremap gc :tabclose<CR>
-nnoremap th :tabprevious<CR>
-nnoremap tl :tabnext<CR>
+" shift+alt+h/l, tab pre/next. generate by press ctrl-v, then ...
+nnoremap H :tabprevious<CR>	
+nnoremap L :tabnext<CR>
 
+" Open file under cursor in new tab
 nnoremap gf <C-W>gf
-
-" Textwidth=78
-noremap tw :set textwidth=78
 
 " Move among windows
 noremap <C-h> <C-W>h
@@ -156,38 +153,32 @@ inoremap <F4> <ESC>"*p
 
 " SHIFT + F3 and F4: copy and paste from 'the system clipboard'
 " note <S-F3> need type by ctrl+v and shift+f3, same to <S-F4>
- vmap [1;2R "+y
- noremap [1;2S "+p
- inoremap [1;2S <ESC>"+p
+vmap [1;2R "+y
+noremap [1;2S "+p
+inoremap [1;2S <ESC>"+p
 
 "insert [time]
 noremap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
-inoremap <F5> <esc>:read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
 
 " NERDTreeToggle
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
-inoremap <silent> <F6> <ESC>:NERDTreeToggle<CR>
 
 " Quickfix window
 nnoremap <F7> :call ToggleList("Quickfix List", 'c')<CR>
-inoremap <F7> <ESC>:call ToggleList("Quickfix List", 'c')<CR>
 
 " Toggle Tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
-inoremap <silent> <F8> <ESC>:TagbarToggle<CR>
 
 " Grep search tools
 nnoremap <F9> :Rgrep<CR>
 
-" Save & Make
+" Save & Make, F10: gcc; shift+f10: make
 nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
-inoremap <F10> <ESC>:w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
+nnoremap [21;2~ :w<CR>:make!<CR>
 
 " quickfix, cn cp
 nnoremap <silent> <F11> :cprev<CR>
-inoremap <silent> <F11> <ESC>:cprev<CR>
 nnoremap <silent> <F12> :cnext<CR>
-inoremap <silent> <F12> <ESC>:cnext<CR>
 
 " Cscope mappings
 nmap <C-\>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
@@ -199,10 +190,6 @@ nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
 
-" change leader key to ,
-let mapleader = ","
-" vim-EasyMotion_leader_key 
-let g:EasyMotion_leader_key = '<Leader>'
 
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -210,6 +197,11 @@ nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" change leader key to ,
+let mapleader = ","
+" vim-EasyMotion_leader_key 
+let g:EasyMotion_leader_key = '<Leader>'
 
 " Ctrl - \ inputmethod
 let g:vimim_map='c-bslash'
