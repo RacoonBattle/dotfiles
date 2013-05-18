@@ -142,7 +142,7 @@ inoremap <c-l> <c-x><c-l>
 " Filename completion
 inoremap <c-f> <c-x><c-f>
 
-" write copy and paste
+" save
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
 
@@ -158,7 +158,8 @@ noremap [1;2S "+p
 inoremap [1;2S <ESC>"+p
 
 "insert [time]
-noremap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
+nmap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
+imap <F5> <ESC><F5>a<tab>
 
 " NERDTreeToggle
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
@@ -172,8 +173,9 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " Grep search tools
 nnoremap <F9> :Rgrep<CR>
 
-" Save & Make, F10: gcc; shift+f10: make
+" Save & Make, F10: gcc; ctrl+f10:tags; shift+f10: make
 nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
+nnoremap [21;5~ :w<CR>:!ctags -R<CR>
 nnoremap [21;2~ :w<CR>:make!<CR>
 
 " quickfix, cn cp
