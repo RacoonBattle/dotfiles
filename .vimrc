@@ -100,6 +100,9 @@ set softtabstop=8
 set shiftwidth=8
 set noexpandtab
 
+" Config C indent as kernel codingstyle
+set cinoptions=:0,l1,t0,g0
+
 filetype plugin indent on
 "for python
 autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4
