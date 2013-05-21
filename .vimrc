@@ -175,23 +175,12 @@ nnoremap <F9> :Rgrep<CR>
 
 " Save & Make, F10: gcc; ctrl+f10:tags; shift+f10: make
 nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
-nnoremap [21;5~ :w<CR>:!ctags -R<CR>
+nnoremap [21;5~ :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
 nnoremap [21;2~ :w<CR>:make!<CR>
 
 " quickfix, cn cp
 nnoremap <silent> <F11> :cprev<CR>
 nnoremap <silent> <F12> :cnext<CR>
-
-" Cscope mappings
-nmap <C-\>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
-nmap <C-\>g :scs find g <C-R>=expand("<cword>")<CR><CR>	
-nmap <C-\>c :scs find c <C-R>=expand("<cword>")<CR><CR>	
-nmap <C-\>t :scs find t <C-R>=expand("<cword>")<CR><CR>	
-nmap <C-\>e :scs find e <C-R>=expand("<cword>")<CR><CR>	
-nmap <C-\>f :scs find f <C-R>=expand("<cfile>")<CR><CR>	
-nmap <C-\>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-\>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
-
 
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -205,14 +194,30 @@ let mapleader = ","
 " vim-EasyMotion_leader_key 
 let g:EasyMotion_leader_key = '<Leader>'
 
-" Ctrl - \ inputmethod
-let g:vimim_map='c-bslash'
-
 " Set Tagbar width
 let tagbar_width = 25
 
 " Super tab completion type
 let g:SuperTabDefaultCompletionType = "context"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctags & Cscope
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Auto finding
+set tags=tags;
+
+" Use both cscope and ctag
+set cscopetag
+
+" Show msg when cscope db added
+set cscopeverbose
+
+" Use tags for definition search first
+set cscopetagorder=1
+
+" Use quickfix window to show cscope results
+set cscopequickfix=s-,g-,d-,c-,t-,e-,f-,i-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle Quickfix function
@@ -256,18 +261,21 @@ filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-
-Bundle 'Align'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Tagbar'
+
+Bundle 'Align'
 Bundle 'fcitx.vim'
-Bundle 'The-NERD-tree'
+Bundle 'DrawIt'
 Bundle 'The-NERD-Commenter'
+
+Bundle 'The-NERD-tree'
+Bundle 'Tagbar'
+Bundle 'grep.vim'
+
+Bundle 'autoload_cscope.vim'
 Bundle 'snipMate'
 Bundle 'SuperTab-continued.'
-Bundle 'grep.vim'
-Bundle 'DrawIt'
-Bundle 'git://github.com/plasticboy/vim-markdown.git'
+Bundle 'echofunc.vim'
 filetype plugin indent on
 
