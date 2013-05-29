@@ -22,9 +22,9 @@ set wildmode=longest:full,full
 set autochdir
 
 " Lines folding
-" set foldenable
-" set foldnestmax=1
-" set foldmethod=syntax
+set foldenable
+set foldnestmax=1
+set foldmethod=syntax
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backup
