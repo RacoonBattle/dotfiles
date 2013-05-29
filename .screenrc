@@ -59,16 +59,15 @@ bindkey "^[q" other
 # alt-w: window list
 bindkey "^[w" windowlist -b
 
-# Get rid of screen 0, and open new tab at current dir
-#bind c screen 1
-bind c stuff "screen -X chdir \$PWD;screen 1"
+# Get rid of screen 0
+bind c screen 1
 bind 0 select 10
 
 # Create initial window
 screen 1
 
-# alt-t: create new window, and cd current dir
-bindkey "^[t" stuff "screen -X chdir \$PWD;screen 1"
+# alt-t: create new window
+bindkey "^[t" screen 1
 
 # alt-num: select window
 bindkey "^[0" select 10
