@@ -23,7 +23,7 @@ set autochdir
 
 " Lines folding
 set foldenable
-set foldnestmax=1
+set foldnestmax=3
 set foldmethod=syntax
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -126,9 +126,12 @@ noremap k gk
 " Tab naviation
 nnoremap gn :tabnew<CR>
 nnoremap gc :tabclose<CR>
-" shift+alt+h/l, tab pre/next. generate by press ctrl-v, then ...
+" shift+alt+h/l: tab pre/next. generate by press ctrl-v, then ...
 nnoremap H :tabprevious<CR>	
 nnoremap L :tabnext<CR>
+" shift+alt+</>: tab move
+nnoremap < :tabmove -1<CR>
+nnoremap > :tabmove +1<CR>
 
 " Open file under cursor in new tab
 nnoremap gf <C-W>gf
