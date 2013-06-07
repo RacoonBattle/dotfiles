@@ -332,8 +332,6 @@ globalkeys = awful.util.table.join(
     function ()
     	os.execute("sleep 0.5")
     	awful.util.spawn("scrot -s -e 'mv $f ~/Pictures/Shot/'")
-    	os.execute("sleep 0.5")
-    	naughty.notify({ title="Screenshot", text="The selected window captured" })
     end),
     
     -- mod + e :start ranger
