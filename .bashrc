@@ -5,9 +5,9 @@ export EDITOR=vim
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # completion
-if [ -f /etc/bash_completion ]
+if [ -f /usr/share/bash-completion/bash_completion ]
 then	#fedora
-	. /etc/bash_completion
+	. /usr/share/bash-completion/bash_completion
 fi
 if [ -f /etc/profile.d/bash-completion.sh ]
 then	#gentoo
