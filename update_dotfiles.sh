@@ -22,8 +22,7 @@ link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/awesome/rc.lua
 .config/fcitx/config
 .config/fcitx/table/cangjie5.conf
-.config/fcitx/conf/fcitx-cloudpinyin.config
-.config/fcitx/conf/fcitx-classic-ui.config"
+.config/fcitx/conf/fcitx-cloudpinyin.config"
 
 for i in $link_conf_files; do
 	rm -rf ~/$i
@@ -46,7 +45,7 @@ for i in $copy_conf_files; do
 done
 
 # apply patch
-if [ $HOSTNAME = optiplex-760 ];then
+if [ $HOSTNAME = M8300t ];then
 	echo "$HOSTNAME is company's workstation"
 	sh ~/Dropbox/company_rc.sh
 	echo "apply company's patch done"
