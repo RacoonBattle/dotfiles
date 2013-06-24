@@ -1,9 +1,15 @@
 #!/bin/bash
 # xinitrc
-# in this way you have to edit /etc/slim.conf
+
+# if want to use slim, then
+# edit /etc/slim.conf
 # 1. change login_cmd to exec/bin/bash -login ~/.xinitrc %session
 # 2. comment sessiondir
 # 3. set sessions to awesome,gnome
+
+# if want to autologin, without xdm, then
+# 1. set up a rc.local file
+# 2. its content is like this " su - <username> -c startx"
 
 # Merge Xresources file
 xrdb -merge ~/.Xresources
