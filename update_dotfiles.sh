@@ -22,7 +22,8 @@ link_conf_files=".bash_profile .gitconfig .gtkrc-2.0 .gvimrc
 .config/awesome/rc.lua
 .config/fcitx/config
 .config/fcitx/table/cangjie5.conf
-.config/fcitx/conf/fcitx-cloudpinyin.config"
+.config/fcitx/conf/fcitx-cloudpinyin.config
+.config/fcitx/conf/fcitx-classic-ui.config"
 
 for i in $link_conf_files; do
 	rm -rf ~/$i
