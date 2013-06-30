@@ -311,6 +311,8 @@ globalkeys = awful.util.table.join(
 
     -- alt + contrl+l: lock screen
     awful.key({"Mod1", "Control" }, "l", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
+    awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
+    awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
     
     -- modkey + h/l: tag previous/next 
     awful.key({ modkey,     }, "h",  awful.tag.viewprev       ),
@@ -339,9 +341,6 @@ globalkeys = awful.util.table.join(
     
     -- mod + w :start pcmanfm
     awful.key({ modkey }, "w", function () awful.util.spawn("pcmanfm") end),
-    
-    -- mod + s :xterm with screen
-    awful.key({ modkey }, "s", function () awful.util.spawn("xterm -e screen") end),
     
     -- mod + d : stardict, shift + mod + d : type a word then querry
     awful.key({ modkey }, "d", function ()
