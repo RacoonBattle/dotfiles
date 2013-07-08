@@ -318,7 +318,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,     }, "h",  awful.tag.viewprev       ),
     awful.key({ modkey,     }, "l",  awful.tag.viewnext       ),
 
-    -- modkey + `: history window
+    -- modkey + esc: history monitor
+    awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
+
+    -- modkey + `: history tag
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
 
     -- modkey + Print: print full screen
