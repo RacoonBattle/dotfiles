@@ -94,25 +94,18 @@ for s = 1, screen.count() do
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 
-my_term_menu = {
+mymainmenu = awful.menu({ items = {
 	{ "Xterm", terminal },
 	{ "Screen", terminal.." -e screen" },
-}
-my_fm_menu = {
 	{ "Ranger", terminal.." -e ranger" },
 	{ "Pcmanfm", "pcmanfm" },
-}
-my_media_menu = {
 	{ "Audacious", "audacious"},
 	{ "Alsamixer",terminal.." -e alsamixer" },
-}
-mymainmenu = awful.menu({ items = { 
-	{ "Terminal", my_term_menu },
-	{ "File", my_fm_menu },
-	{ "Media", my_media_menu },
 	{ "Firefox", "firefox"},
 	{ "Gqview", "gqview"},
 	{ "Freemind", "freemind"},
+	{ "ARandR", "arandr"},
+
 }
 })
 
@@ -544,6 +537,8 @@ awful.rules.rules = {
     { rule = { class = "Plugin-container"},
       properties = { floating = true } },
     { rule = { class = "feh" },
+      properties = { floating = true } },
+    { rule = { class = "Arandr" },
       properties = { floating = true } },
 }
 -- }}}
