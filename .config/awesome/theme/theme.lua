@@ -21,7 +21,6 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
---theme_dir = "/usr/share/awesome/themes/default/"
 theme_dir = awful.util.getdir("config") .. "/theme/"
 
 -- There are other variable sets
@@ -44,8 +43,8 @@ theme.tasklist_floating_icon = theme_dir .. "tasklist/floatingw.png"
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = theme_dir .. "submenu.png"
-theme.menu_height = "15"
-theme.menu_width  = "100"
+theme.menu_height = 25
+theme.menu_width  = 120
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -77,8 +76,7 @@ theme.titlebar_maximized_button_normal_active = theme_dir .. "titlebar/maximized
 theme.titlebar_maximized_button_focus_active  = theme_dir .. "titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
--- theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/default/background.png" }
-theme.wallpaper_cmd = { "awsetbg" .. " " .. theme_dir .. "background.png" }
+theme.wallpaper = theme_dir .. "background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = theme_dir .. "layouts/fairhw.png"
