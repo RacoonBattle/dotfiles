@@ -73,6 +73,11 @@ set display=lastline
 " cursor line
 set cursorline
 
+" alarm WhitespaceEOL
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
