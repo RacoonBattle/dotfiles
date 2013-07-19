@@ -23,7 +23,7 @@ set autochdir
 
 " Lines folding
 set foldenable
-set foldnestmax=3
+set foldnestmax=1
 set foldmethod=syntax
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,7 +71,7 @@ set laststatus=2
 set display=lastline
 
 " cursor line
-set cursorline
+" set cursorline
 
 " alarm WhitespaceEOL
 highlight WhitespaceEOL ctermbg=red guibg=red
