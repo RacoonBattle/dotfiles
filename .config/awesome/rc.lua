@@ -10,7 +10,7 @@ beautiful = require("beautiful")
 -- Notification library
 naughty = require("naughty")
 menubar = require("menubar")
--- Using Vicious 
+-- Using Vicious
 	-- cd .config/awesome
 	-- git clone http://git.sysphere.org/vicious
 vicious = require("vicious")
@@ -74,13 +74,13 @@ local layouts =
   awful.layout.suit.tile,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile.bottom,
-  awful.layout.suit.tile.top,
+--  awful.layout.suit.tile.top,
   awful.layout.suit.fair,
   awful.layout.suit.fair.horizontal,
-  awful.layout.suit.spiral,
-  awful.layout.suit.spiral.dwindle,
+--  awful.layout.suit.spiral,
+--  awful.layout.suit.spiral.dwindle,
   awful.layout.suit.max,
-  awful.layout.suit.max.fullscreen,
+--  awful.layout.suit.max.fullscreen,
   awful.layout.suit.magnifier,
   awful.layout.suit.floating
 }
@@ -283,8 +283,7 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    --awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    
+
     awful.key({ modkey,           }, "j",
     function ()
     	awful.client.focus.byidx( 1)
@@ -295,19 +294,19 @@ globalkeys = awful.util.table.join(
     	awful.client.focus.byidx(-1)
     	if client.focus then client.focus:raise() end
     end),
-    
+
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -317,17 +316,17 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
-    
+
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Private global key bindings
     awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
-    awful.key({ modkey }, "e", function () awful.util.spawn("xterm -e ranger") end),
+    awful.key({ modkey }, "e", function () awful.util.spawn(terminal.." -e ranger") end),
     awful.key({ modkey }, "w", function () awful.util.spawn("pcmanfm") end),
     awful.key({ "Mod1" }, "n", naughty.toggle),
-    
+
     awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
     awful.key({ modkey }, "Tab",
@@ -351,7 +350,7 @@ globalkeys = awful.util.table.join(
     end),
 
 
-    -- mod + d : stardict, shift + mod + d : type a word then querry
+    -- mod + d : stardict
     awful.key({ modkey }, "d", function ()
         local f = io.popen("xsel -o")
         local new_word = f:read("*a")
@@ -380,31 +379,6 @@ globalkeys = awful.util.table.join(
             bg = "#FFFFCC",
             border_color = 0
         })
-    end),
-
-    awful.key({ modkey, "Shift" }, "d", function ()
-        awful.prompt.run({prompt = "Dict: "}, mypromptbox[mouse.screen].widget, function(cin_word)
-            naughty.destroy(frame)
-            if cin_word == "" then
-                return
-            end
-
-            local fc = ""
-            --local f  = io.popen("sdcv -n --utf8-output -u '21世紀英漢漢英雙向詞典' "..cin_word)
-            local f  = io.popen("sdcv -n --utf8-output "..cin_word)
-            for line in f:lines() do
-                fc = fc .. line .. '\n'
-            end
-            f:close()
-            frame = naughty.notify({
-                text = fc,
-                position = "top_left",
-                timeout = 10,
-                fg = "#000000",
-                bg = "#FFFFCC",
-                border_color = 0
-            })
-        end, nil, awful.util.getdir("cache").."/dict")
     end),
 
     awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
