@@ -4,7 +4,7 @@
 set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
 
 "Editor, C-i invokes it in text fields
-set editor=xterm\ -geometry\ 123x55\ -e\ vim
+set editor=urxvt\ -geometry\ 123x55\ -e\ vim
 
 " move faster
 noremap j 5j
