@@ -181,8 +181,8 @@ nnoremap <F7> :call ToggleList("Quickfix List", 'c')<CR>
 " Toggle Tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-" Grep search tools
-nnoremap <F9> :Rgrep<CR>
+" Searching tool
+nnoremap <F9> :Ack <C-R>=expand("<cword>")<CR>
 
 " Save & Make, F10: gcc; ctrl+f10:tags; shift+f10: make
 nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
@@ -265,7 +265,7 @@ endfunction
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 filetype off
 
@@ -282,7 +282,7 @@ Bundle 'The-NERD-Commenter'
 
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
-Bundle 'grep.vim'
+Bundle 'ack.vim'
 
 Bundle 'autoload_cscope.vim'
 Bundle 'snipMate'
