@@ -146,7 +146,6 @@ noremap <C-h> <C-W>h
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
-noremap <C-W> <C-W><C-W>
 
 " Line completion
 inoremap <c-l> <c-x><c-l>
