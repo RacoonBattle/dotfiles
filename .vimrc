@@ -132,7 +132,7 @@ noremap k gk
 nnoremap gn :tabnew<CR>
 nnoremap gc :tabclose<CR>
 " shift+alt+h/l: tab pre/next. generate by press ctrl-v, then ...
-nnoremap H :tabprevious<CR>	
+nnoremap H :tabprevious<CR>
 nnoremap L :tabnext<CR>
 " shift+alt+</>: tab move
 nnoremap < :tabmove -1<CR>
@@ -152,6 +152,9 @@ inoremap <c-l> <c-x><c-l>
 " Filename completion
 inoremap <c-f> <c-x><c-f>
 
+" Line numbers toggle
+nnoremap <silent> <F1> :set number!<CR>
+
 " save
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
@@ -160,12 +163,6 @@ inoremap <F2> <esc>:w<cr>a
 vmap <F3> "*y
 noremap <F4> "*p
 inoremap <F4> <ESC>"*p
-
-" SHIFT + F3 and F4: copy and paste from 'the system clipboard'
-" note <S-F3> need type by ctrl+v and shift+f3, same to <S-F4>
-vmap [1;2R "+y
-noremap [1;2S "+p
-inoremap [1;2S <ESC>"+p
 
 "insert [time]
 nmap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
@@ -180,13 +177,11 @@ nnoremap <F7> :call ToggleList("Quickfix List", 'c')<CR>
 " Toggle Tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-" Searching tool
-nnoremap <F9> :Ack <C-R>=expand("<cword>")<CR>
+" Ctags, Cscope
+nnoremap <F9> :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
 
-" Save & Make, F10: gcc; ctrl+f10:tags; shift+f10: make
-nnoremap <F10> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
-nnoremap [21;5~ :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
-nnoremap [21;2~ :w<CR>:make!<CR>
+" Searching tool
+nnoremap <F10> :Ack <C-R>=expand("<cword>")<CR>
 
 " quickfix, cn cp
 nnoremap <silent> <F11> :cprev<CR>
@@ -201,7 +196,7 @@ nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " change leader key to ,
 let mapleader = ","
-" vim-EasyMotion_leader_key 
+" vim-EasyMotion_leader_key
 let g:EasyMotion_leader_key = '<Leader>'
 
 " Set Tagbar width
