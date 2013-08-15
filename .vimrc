@@ -124,6 +124,10 @@ set formatoptions+=mM
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" change leader key to ,
+let mapleader = ","
+
 " move one line
 noremap j gj
 noremap k gk
@@ -164,24 +168,21 @@ vmap <F3> "*y
 noremap <F4> "*p
 inoremap <F4> <ESC>"*p
 
-"insert [time]
-nmap <F5> :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<esc>
-imap <F5> <ESC><F5>a<tab>
-
-" NERDTreeToggle
-nnoremap <silent> <F6> :NERDTreeToggle<CR>
-
-" Quickfix window
-nnoremap <F7> :call ToggleList("Quickfix List", 'c')<CR>
-
-" Toggle Tagbar
-nnoremap <silent> <F8> :TagbarToggle<CR>
+" Save & Make
+nnoremap <F5> :w<CR>:make!<CR>
+nnoremap <F6> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
 
 " Ctags, Cscope
-nnoremap <F9> :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
+nnoremap <F7> :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
+
+" Tagbar NERDTree toggle
+nnoremap <silent> <F8> :TagbarToggle<CR>:NERDTreeToggle<CR><c-w>l
 
 " Searching tool
-nnoremap <F10> :Ack <C-R>=expand("<cword>")<CR>
+nnoremap <F9> :Ack <C-R>=expand("<cword>")<CR>
+
+" ToggleQuickfixList
+nmap <script> <silent> <F10> :call ToggleQuickfixList()<CR>
 
 " quickfix, cn cp
 nnoremap <silent> <F11> :cprev<CR>
@@ -190,12 +191,13 @@ nnoremap <silent> <F12> :cnext<CR>
 " Use <space> to toggle fold
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
+" Insert time
+nnoremap <Leader>dt :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<tab>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" change leader key to ,
-let mapleader = ","
 " vim-EasyMotion_leader_key
 let g:EasyMotion_leader_key = '<Leader>'
 
@@ -204,6 +206,9 @@ let tagbar_width = 25
 
 " Super tab completion type
 let g:SuperTabDefaultCompletionType = "context"
+
+" vim-togglelist Quickfix Open Command
+let g:toggle_list_copen_command="botright copen"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags & Cscope
@@ -225,37 +230,6 @@ set cscopetagorder=1
 set cscopequickfix=s-,g-,d-,c-,t-,e-,f-,i-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle Quickfix function
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! GetBufferList()
-  redir =>buflist
-  silent! ls
-  redir END
-  return buflist
-endfunction
-
-function! ToggleList(bufname, pfx)
-  let buflist = GetBufferList()
-  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-    if bufwinnr(bufnum) != -1
-      exec(a:pfx.'close')
-      return
-    endif
-  endfor
-  if a:pfx == 'l' && len(getloclist(0)) == 0
-      echohl ErrorMsg
-      echo "Location List is Empty."
-      return
-  endif
-  let winnr = winnr()
-  exec(a:pfx.'open')
-  if winnr() != winnr
-    wincmd p
-  endif
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -273,6 +247,7 @@ Bundle 'Align'
 Bundle 'fcitx.vim'
 Bundle 'DrawIt'
 Bundle 'The-NERD-Commenter'
+Bundle 'https://github.com/milkypostman/vim-togglelist.git'
 
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
