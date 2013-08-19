@@ -1,5 +1,5 @@
 # .bashrc
-export PATH=$PATH:/usr/sbin:/sbin:~/bin
+
 export VISUAL=vim
 export EDITOR=vim
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
@@ -7,19 +7,42 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # no chase link
 set -P
 
-# completion
-if [ -f /usr/share/bash-completion/bash_completion ]
-then	#fedora
-	. /usr/share/bash-completion/bash_completion
-fi
-if [ -f /etc/profile.d/bash-completion.sh ]
-then	#gentoo
-	. /etc/profile.d/bash-completion.sh
-fi
-
 # history append
 shopt -s histappend
 PROMPT_COMMAND='history -a'
+
+# path
+pathmunge()
+{
+	case ":${PATH}:" in
+		*:"$1":*)
+			;;
+		*)
+			if [ "$2" = "after" ]; then
+				PATH=$PATH:$1
+			else
+				PATH=$1:$PATH
+			fi
+			;;
+	esac
+}
+
+pathmunge $HOME/scripts after
+pathmunge $HOME/Dropbox/scripts after
+pathmunge $HOME/Dropbox/work/scripts after
+
+export PATH
+
+
+# completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	#fedora
+	. /usr/share/bash-completion/bash_completion
+fi
+if [ -f /etc/profile.d/bash-completion.sh ]; then
+	#gentoo
+	. /etc/profile.d/bash-completion.sh
+fi
 
 #my alias
 alias ga='git add -A'
@@ -41,16 +64,16 @@ alias vi='vim'
 
 #set the screen title
 case $TERM in
-screen*)
-    # This is the escape sequence ESC k \w ESC \
-    # Use path as title
-    PATHTITLE='\[\ek\W\]\[\e\\\]'
-    # Use program name as title
-    PROGRAMTITLE='\[\ek\]\[\e\\\]'
-    PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
-    ;;
-*)
-    ;;
+	screen*)
+		# This is the escape sequence ESC k \w ESC \
+			# Use path as title
+		PATHTITLE='\[\ek\W\]\[\e\\\]'
+		# Use program name as title
+		PROGRAMTITLE='\[\ek\]\[\e\\\]'
+		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+		;;
+	*)
+		;;
 esac
 
 # colorful multi lines bash prompt ----------
@@ -86,8 +109,9 @@ IPurple='\e[0;95m'      # Purple
 ICyan='\e[0;96m'        # Cyan
 IWhite='\e[0;97m'       # White
 
-function parse_git_branch {
-   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+parse_git_branch()
+{
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 # notes:
