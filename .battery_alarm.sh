@@ -43,7 +43,7 @@ while [ true ]; do
 			if [ $PERCENT -lt $CRITICAL_BATTERY ] && [ "$STATE" = "discharging" ]; then
 				notify-send -u critical -t 15000 "Battery is less than $CRITICAL_BATTERY." "System have to shutdown"
 				sleep 30
-				notify-send -u critical -t 9000 "LOW Battery" "Power Off" 
+				notify-send -u critical -t 9000 "LOW Battery" "Power Off"
 				logger "Battery alarm: remaining capacity $PERCENT%, critical low, pow off system"
 				sleep 9
 				$($ACTION)

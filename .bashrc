@@ -18,8 +18,8 @@ then	#gentoo
 fi
 
 # history append
-shopt -s histappend 
-PROMPT_COMMAND='history -a' 
+shopt -s histappend
+PROMPT_COMMAND='history -a'
 
 #my alias
 alias ga='git add -A'
@@ -39,19 +39,19 @@ alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 alias vi='vim'
 
-#set the screen title  
-case $TERM in  
-screen*)  
-    # This is the escape sequence ESC k \w ESC \  
-    # Use path as title  
-    PATHTITLE='\[\ek\W\]\[\e\\\]'  
-    # Use program name as title  
-    PROGRAMTITLE='\[\ek\]\[\e\\\]'  
-    PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"  
-    ;;  
-*)  
-    ;;  
-esac  
+#set the screen title
+case $TERM in
+screen*)
+    # This is the escape sequence ESC k \w ESC \
+    # Use path as title
+    PATHTITLE='\[\ek\W\]\[\e\\\]'
+    # Use program name as title
+    PROGRAMTITLE='\[\ek\]\[\e\\\]'
+    PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+    ;;
+*)
+    ;;
+esac
 
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
@@ -88,7 +88,7 @@ IWhite='\e[0;97m'       # White
 
 function parse_git_branch {
    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-} 
+}
 
 # notes:
 #	if use color, then PS1 should be PS1="\[$COLOR\]", otherwise wrap will go wrong

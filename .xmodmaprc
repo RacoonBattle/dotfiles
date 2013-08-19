@@ -1,6 +1,0 @@
-! Map F1 to Escape
-keycode  67 = Escape
-
-!Map Caps_Lock to Escape 
-remove lock = Caps_Lock
-keycode 66 = Escape

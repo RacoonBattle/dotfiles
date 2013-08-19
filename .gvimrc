@@ -12,7 +12,7 @@ set guioptions-=m
 colorscheme desert
 
 "window position
-winpos 0 0 
+winpos 0 0
 
 "window size
 set lines=55 columns=88
