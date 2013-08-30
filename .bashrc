@@ -27,6 +27,7 @@ pathmunge()
 	esac
 }
 
+pathmunge /sbin:/usr/sbin after
 pathmunge $HOME/scripts after
 pathmunge $HOME/Dropbox/scripts after
 pathmunge $HOME/Dropbox/work/scripts after
