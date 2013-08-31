@@ -76,7 +76,8 @@ theme.titlebar_maximized_button_normal_active = theme_dir .. "titlebar/maximized
 theme.titlebar_maximized_button_focus_active  = theme_dir .. "titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper = theme_dir .. "background.png"
+-- theme.wallpaper = theme_dir .. "background.png"
+theme.wallpaper = os.getenv("HOME") .. "/.Wallpaper"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = theme_dir .. "layouts/fairhw.png"

@@ -9,8 +9,8 @@ URxvt.cursorBlink:True
 URxvt.saveLines:10240
 
 ! transparent
-URxvt.inheritPixmap: True
-URxvt.tintColor: Grey25
+URxvt*.transparent: true
+URxvt*.shading: 30
 
 ! foreground and background
 URxvt.foreground: white
