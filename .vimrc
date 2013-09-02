@@ -179,7 +179,7 @@ nnoremap <F7> :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > c
 nnoremap <silent> <F8> :TagbarToggle<CR>:NERDTreeToggle<CR><c-w>l
 
 " Searching tool
-nnoremap <F9> :Ack <C-R>=expand("<cword>")<CR>
+nnoremap <F9> :Rgrep<CR>
 
 " ToggleQuickfixList
 nmap <script> <silent> <F10> :call ToggleQuickfixList()<CR>
@@ -251,7 +251,7 @@ Bundle 'https://github.com/milkypostman/vim-togglelist.git'
 
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
-Bundle 'ack.vim'
+Bundle 'grep.vim'
 
 Bundle 'autoload_cscope.vim'
 Bundle 'snipMate'
