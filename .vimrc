@@ -252,6 +252,7 @@ Bundle 'https://github.com/milkypostman/vim-togglelist.git'
 Bundle 'The-NERD-tree'
 Bundle 'Tagbar'
 Bundle 'grep.vim'
+Bundle 'fugitive.vim'
 
 Bundle 'autoload_cscope.vim'
 Bundle 'snipMate'
