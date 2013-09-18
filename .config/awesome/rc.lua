@@ -324,10 +324,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
     awful.key({ modkey }, "e", function () awful.util.spawn(terminal.." -e ranger") end),
-    awful.key({ modkey }, "w", function () awful.util.spawn("pcmanfm") end),
     awful.key({ "Mod1" }, "n", naughty.toggle),
 
     awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
+    awful.key({ modkey,           }, "w", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
     awful.key({ modkey }, "Tab",
         function ()
