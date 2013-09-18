@@ -202,7 +202,8 @@ nnoremap <Leader>dt :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<tab>
 let g:EasyMotion_leader_key = '<Leader>'
 
 " Set Tagbar width
-let tagbar_width = 25
+let tagbar_width = 28
+let NERDTreeWinSize = 20
 
 " Super tab completion type
 let g:SuperTabDefaultCompletionType = "context"
