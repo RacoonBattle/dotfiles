@@ -156,17 +156,15 @@ inoremap <c-l> <c-x><c-l>
 " Filename completion
 inoremap <c-f> <c-x><c-f>
 
-" Line numbers toggle
-nnoremap <silent> <F1> :set number!<CR>
-
 " save
 noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
 
-" F3 and F4: copy and paste from 'the selection buffer'
-vmap <F3> "*y
-noremap <F4> "*p
-inoremap <F4> <ESC>"*p
+" Line numbers toggle
+nnoremap <silent> <F3> :set number!<CR>
+
+" Paste toggle
+set pastetoggle=<F4>
 
 " Save & Make
 nnoremap <F5> :w<CR>:make!<CR>
