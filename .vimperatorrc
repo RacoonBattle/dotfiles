@@ -1,10 +1,30 @@
-" vim: set ft=vimperator:
-
 " No toolbars or menus by default
-set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
+set toolbars=none,tabs
 
-"Editor, C-i invokes it in text fields
+" Focus content after a page has loaded
+set focuscontent
+
+" Editor, C-i invokes it in text fields
 set editor=urxvt\ -geometry\ 123x55\ -e\ vim
+
+" smart search
+set incsearch
+set smartcase
+set hlsearch
+
+" hint chars
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" tab number
+set tabnumbers=true
+
+set showstatuslinks=2
+set nextpattern=\\s*(下一页|下一张|下一篇|下页|后页)\\s*,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
+set previouspattern=\\s*(上一页|上一张|上一篇|上页|前页)\\s*,\\b(prev|previous)\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
+
+" prev/next page
+noremap . ]]
+noremap , [[
 
 " move faster
 noremap j 5j
@@ -14,13 +34,13 @@ noremap k 5k
 noremap h gT
 noremap l gt
 
+" for left hand
+noremap q gT
+noremap w gt
+
 " tab move
 noremap > :tabmove +1<cr>
 noremap < :tabmove -1<cr>
-
-" left hand navigation only
-noremap q gT
-noremap w gt
 
 " open tab-group
 noremap e <C-S-e>
@@ -28,37 +48,23 @@ noremap e <C-S-e>
 " next tab-group
 noremap <C-e> <C-`>
 
-" tab number
-set tabnumbers=true
-
 " toggle between two tabs
 noremap <A-Tab> <C-6>
 inoremap <A-Tab> <ESC><C-6>
-
-" prev/next page
-noremap . ]]
-noremap , [[
-
-set nextpattern=s*下一页|下一頁|下一张|下页s*,bnextb,^>$,^(>>|»)$,^(>|»),(>|»)$,bmoreb,NEXT
-set previouspattern=s*上一页|上一頁|上一张|上页s*,bprev|previousb,^<$,^(<<|«)$,^(<|«),(<|«)$,PREVIOUS
-
-" hint chars
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
-
-" Show pattern matches as you type
-set incsearch
-
-" Hilight previous search pattern matches
-set hlsearch
-
-" Override ignorecase if pattern has uppercase chars
-set smartcase
-
-" Focus content after a page has loaded
-set focuscontent
 
 " Emacs navigation in command line and insert mode
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 cnoremap <C-n> <Tab>
 cnoremap <C-p> <S-Tab>
+
+" toggle sidebar
+noremap sd :sidebar Bookmarks<CR><ESC><ESC>
+noremap sa :sidebar Pocket<CR>
+noremap sf :sidebar Downloads<CR>
+noremap ss :sbclose<CR>
+
+" AutoProxy
+noremap <silent> ca :set! extensions.autoproxy.proxyMode=auto<CR>:echo ':)'<CR>
+noremap <silent> cg :set! extensions.autoproxy.proxyMode=global<CR>:echo ':D'<CR>
+noremap <silent> cd :set! extensions.autoproxy.proxyMode=disabled<CR>:echo ':('<CR>
