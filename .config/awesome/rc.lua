@@ -327,7 +327,7 @@ globalkeys = awful.util.table.join(
     awful.key({ "Mod1" }, "n", naughty.toggle),
 
     awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey,           }, "w", function () awful.screen.focus_relative( 1) end),
+    awful.key({ modkey,           }, "q", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "`", awful.tag.history.restore),
     awful.key({ modkey }, "Tab",
         function ()
