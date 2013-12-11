@@ -48,13 +48,9 @@ fi
 #my alias
 alias ga='git add -A'
 alias gc='git commit -a'
-alias gcm='git commit -m'
 alias gd='git diff'
-alias gi='git add -i'
 alias gl='git log --graph'
-alias glp='git log --graph -p'
 alias gp='git push'
-alias gr='git ls-files -d |xargs git checkout --'
 alias gs='git status'
 alias gu='git pull'
 alias gw='git show'

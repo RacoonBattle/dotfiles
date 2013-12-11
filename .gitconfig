@@ -5,22 +5,12 @@
 	interactive = auto
 	status = auto
 [alias]
-	a = add
-	ai = add -i
-	b = branch
-	c = commit
+	br = branch
+	ci = commit -m
 	cm = commit --amend
 	co = checkout
-	dc = difftool --cached
-	d = difftool
-	fp = format-patch
-	lg = log --graph
-	l = log
-	lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	m = mergetool
-	rb = rebase
-	t = tag
-	ut = rm -r --cached
+	lg = log --oneline
+	lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cr %C(bold blue)<%an>%Creset'
 [diff]
 	tool = vimdiff
 [merge]
