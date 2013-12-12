@@ -47,10 +47,11 @@ fi
 
 #my alias
 alias ga='git add -A'
+alias gb='git branch'
 alias gc='git commit -a'
 alias gd='git diff'
 alias gl='git log --graph'
-alias gp='git push'
+alias go='git checkout'
 alias gs='git status'
 alias gu='git pull'
 alias gw='git show'
