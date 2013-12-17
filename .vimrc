@@ -47,7 +47,7 @@ autocmd BufWritePre * let &backupext = strftime(".%m-%d-%H-%M")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set colorscheme
-colorscheme torte
+colorscheme desert
 
 " Enable syntax highlight
 syntax on

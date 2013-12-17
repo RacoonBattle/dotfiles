@@ -8,13 +8,9 @@ URxvt.preeditType:Root
 URxvt.cursorBlink:True
 URxvt.saveLines:10240
 
-! transparent
-URxvt*.transparent: true
-URxvt*.shading: 30
-
 ! foreground and background
-URxvt.foreground: white
-urxvt*background: black
+URxvt.foreground: #708284
+urxvt*background: #07242E
 
 ! disable the scrollbar
 URxvt.scrollBar: False
