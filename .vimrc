@@ -62,8 +62,9 @@ set ruler
 " Dynamic title
 set title
 
-" Display line number
+" Hybrid line number
 set number
+set relativenumber 
 
 " Always have a status line
 set laststatus=2
