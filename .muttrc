@@ -1,0 +1,143 @@
+# --------------------- Account Setting ----------------------------
+source ~/.muttrc-account
+
+# ------------------------- Send ------------------------------------
+set sendmail="/usr/bin/msmtp"
+set copy=yes	# save outgoing messages to $record
+
+# --------------------- Retrieval -----------------------------------
+set mbox_type=MailDir
+set folder=~/Mail
+set spoolfile="+INBOX"
+set postponed="+Draft"
+set record="+Sent"
+	# This is meant as the primary method for saving a copy of your
+	# messages, but another way to do this is using the "my_hdr"
+	# command to create a "Bcc:" field with your email address in it.
+
+# Message cache
+# need 'configure --enable-hcache' when compiling
+#set header_cache=~/Mail/cache/header
+#set maildir_header_cache_verify=no
+#set message_cachedir=~/Mail/cache/message
+
+# Set timeout
+set timeout=30          # after 30 secs of no keypresses, start checking  new mail
+set mail_check=10       # check for new mail every 10 seconds
+
+# New mail
+set mark_old=no
+set beep_new=yes
+set check_new=yes
+
+# --------------------- Interface  -----------------------------------
+# set alias
+source ~/.mutt/alias
+set alias_file=~/.mutt/alias
+
+# status bar
+set status_on_top=yes
+
+# Pager view
+set resolve=yes
+set pager_stop=yes
+set menu_scroll=yes
+set pager_index_lines=9   # the number of lines of a mini-index
+
+# Message included in reply
+set include=yes
+
+# Include attachments in forward emails
+set mime_forward=yes
+set mime_forward_rest=yes
+
+# Traditional Fwd: subject
+set forward_format="Fwd: %s"
+
+# Show tildes at the end of mail
+set tilde=yes
+
+# thread
+set sort=reverse-threads
+set sort_aux=last-date-received
+
+# To recognize reply messages
+set reply_regexp="^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"
+
+# fast reply
+set fast_reply
+
+# set up the sidebar, need compile with sidebar patch
+set sidebar_width=42
+set sidebar_visible=yes
+set sidebar_delim='|'
+set sidebar_sort=yes
+set sidebar_shortpath = yes
+color sidebar_new yellow default # color of folders with new mail
+
+# ---------------------Key bindings----------------------------------
+bind attach i exit
+bind attach <space> view-attach
+bind browser i exit
+bind browser,index gg first-entry
+bind browser,index G last-entry
+bind browser,index,pager \cb previous-page
+bind browser,index,pager \cf next-page
+bind index \cx sync-mailbox
+bind browser <space> select-entry
+bind index,pager r group-reply
+bind index,pager R reply
+bind pager G bottom
+bind pager gg top
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
+macro attach s "<save-entry><kill-line>~/downloads/<enter>a" "Save attachment"
+macro index \cr "<tag-pattern>.\n<tag-prefix><clear-flag>N<untag-pattern>.\n" "Mark all messages as read"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager g<space> '<next-unread-mailbox>'
+macro index i '<change-folder>?<toggle-mailboxes>'
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+macro index,pager gn "<sidebar-next><sidebar-open>"
+macro index,pager gp "<sidebar-prev><sidebar-open>"
+
+# ---------------------Color theme-----------------------------------
+color normal default default
+color attachment magenta default
+color hdrdefault cyan default
+color indicator brightblack white
+color markers blue default
+color signature cyan default
+color status brightcyan black
+color tilde blue default
+color tree red default
+
+color quoted green default
+color quoted1 yellow default
+color quoted2 red default
+color hdrdefault cyan default
+color header green default ^(From|To|Cc):
+color header blue default ^Subject:
+color signature cyan default
+
+color index default default ~p # To me
+color index blue default ~P # From me
+color index green default ~N # New
+color index yellow default "~N ~p" # New to me
+color index cyan default ~T # Tagged
+color index magenta default ~D # Deleted
+color index white black ~F # Flaged
+
+color body red default "[!?]{3,}" # exclamation
+color body green default "^ *[-+*o] +" # list item
+color body brightgreen black "[;:]-*[)>(<|PD]" # :-) etc...
+color body red default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # email
+color body brightred default "(^| )[*_]+[-&[:alnum:]]+[*_]( |$)" # bold/underline
+color body yellow default "(ftp|http|https)://[\-\.\,/+=&%~_:?\#a-zA-Z0-9]+" # URL
+color body cyan default "[0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?"
+color body cyan default "(\(19|20\)?[0-9]{2}/[01]?[0-9]/[0123]?[0-9]|[0123]?[0-9][/.][01]?[0-9][/.]\(19|20\)?[0-9]{2})(( at)? +[0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?)?"
+color body cyan default "((Sun(day)?|Mon(day)?|Tue(sday)?|Wed(nesday)?|Thu(sday)?|Fri(day)?|Sat(urday)?),? +)?(Jan(uary)?|Feb(rary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(ember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)[ .]+[0-9]{1,2}(st|nd|rd|th)?,?( +(19|20)[0-9]{2}(,?( at)? [0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?)?)?"
+color body cyan default "((Sun(day)?|Mon(day)?|Tue(sday)?|Wed(nesday)?|Thu(sday)?|Fri(day)?|Sat(urday)?),? +)?[0-9]{1,2}(st|nd|rd|th)?[ .]+(Jan(uary)?|Feb(rary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(ember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?),?( +(19|20)?[0-9]{2})?(( at)? [0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?)?"
+
