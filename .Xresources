@@ -7,6 +7,7 @@
 URxvt.preeditType:Root
 URxvt.cursorBlink:True
 URxvt.saveLines:10240
+URxvt.fading: 0
 
 ! disable the scrollbar
 URxvt.scrollBar: False
