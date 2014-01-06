@@ -44,9 +44,6 @@ altscreen on
 
 # Keyboard binding --------------------
 
-# alt-d: kill the window
-bindkey "^[d" kill
-
 # alt-j next window
 bindkey "^[l" next
 
