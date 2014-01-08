@@ -163,7 +163,7 @@ noremap <F2> :w<CR>
 inoremap <F2> <esc>:w<cr>a
 
 " Line numbers toggle
-nnoremap <silent> <F3> :set number!<CR>
+nnoremap <silent> <F3> :set number!<CR> :set relativenumber!<CR>
 
 " Paste toggle
 set pastetoggle=<F4>
