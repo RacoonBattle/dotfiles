@@ -47,10 +47,6 @@ set pager_index_lines=9   # the number of lines of a mini-index
 # Message included in reply
 set include=yes
 
-# Include attachments in forward emails
-set mime_forward=yes
-set mime_forward_rest=yes
-
 # Traditional Fwd: subject
 set forward_format="Fwd: %s"
 
