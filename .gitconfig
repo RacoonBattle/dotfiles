@@ -17,3 +17,5 @@
 	tool = vimdiff
 [branch]
 	autosetuprebase = always
+[branch "master"]
+	rebase = true

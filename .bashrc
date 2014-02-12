@@ -54,7 +54,7 @@ alias gd='git diff'
 alias gl='git log --graph'
 alias go='git checkout'
 alias gs='git status'
-alias gu='git pull'
+alias gu='git pull --rebase'
 alias gw='git show'
 
 alias la='ls -lAh --color=auto'
