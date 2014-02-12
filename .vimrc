@@ -1,8 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
-
 " auto reload vimrc
 autocmd bufwritepost .vimrc source $MYVIMRC
 

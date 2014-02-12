@@ -8,6 +8,9 @@ set guifontwide=AR\ PL\ UMing\ TW\ 13
 set guioptions-=T
 set guioptions-=m
 
+"color scheme
+colorscheme desert
+
 "window position
 winpos 0 0
 
@@ -19,6 +22,3 @@ set linespace=3
 
 "Change work dir to current dir
 autocmd BufEnter * cd %:p:h
-
-"paste
-imap <S-Insert> <MiddleMouse>
