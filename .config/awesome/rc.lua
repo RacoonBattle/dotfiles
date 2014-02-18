@@ -158,6 +158,9 @@ vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 2, { "coretem
 -- Create a textclock widget
 mytextclock = awful.widget.textclock(" %a %b %d, %H:%M ", 1)
 
+calendar2 = require('calendar2')
+calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
+
 -- Private decoration
 myicon = wibox.widget.imagebox()
 myicon:set_image(beautiful.awesome_icon)
