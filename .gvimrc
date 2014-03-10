@@ -1,24 +1,19 @@
 "gvim---------------------------------------------------
 "fonts set
-
 set guifont=DejaVu\ Sans\ Mono\ 12
 set guifontwide=AR\ PL\ UMing\ TW\ 13
 
-"Toggle Menu and Toolbar
-set guioptions-=T
-set guioptions-=m
-
 "color scheme
-colorscheme desert
-
-"window position
-winpos 0 0
-
-"window size
-set lines=55 columns=88
+colorscheme morning
 
 "line space
 set linespace=3
 
 "Change work dir to current dir
 autocmd BufEnter * cd %:p:h
+
+" Cut, copy and paste
+vnoremap <S-Del> "+x
+vnoremap <C-Insert> "+y
+imap <S-Insert> <MiddleMouse>
+cmap <S-Insert> <MiddleMouse>
