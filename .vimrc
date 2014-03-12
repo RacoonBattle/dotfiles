@@ -192,7 +192,10 @@ nnoremap <silent> <F12> :cnext<CR>
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " Insert time
-nnoremap <Leader>dt :read !date +"\%a \%b \%d, \%Y"<cr>o- - -<esc>o<tab>
+nnoremap <Leader>dt <esc>:read !date +"\%a \%b \%d, \%Y"<cr>I*** <esc>A ***<cr>- - - - - - - - - - - - -<cr><esc>
+
+" Open with firefox
+nnoremap <Leader>g <esc>:!firefox % &> /dev/null<cr><cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
@@ -210,6 +213,9 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " vim-togglelist Quickfix Open Command
 let g:toggle_list_copen_command="botright copen"
+
+" disable folding when using markdown.vim
+let g:vim_markdown_folding_disabled=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags & Cscope
@@ -259,5 +265,6 @@ Bundle 'autoload_cscope.vim'
 Bundle 'snipMate'
 Bundle 'SuperTab-continued.'
 Bundle 'echofunc.vim'
+Bundle 'plasticboy/vim-markdown'
 filetype plugin indent on
 
