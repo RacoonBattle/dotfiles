@@ -192,7 +192,7 @@ nnoremap <silent> <F12> :cnext<CR>
 nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " Insert time
-nnoremap <Leader>dt <esc>:read !date +"\%a \%b \%d, \%Y"<cr>I*** <esc>A ***<cr>- - - - - - - - - - - - -<cr><esc>
+nnoremap <Leader>dt <esc>:read !date +"\%a \%b \%d, \%Y"<cr>I*** <esc>A ***<cr>- - - - - - - - - - - - -<esc>o<esc>
 
 " Open with firefox
 nnoremap <Leader>g <esc>:!firefox % &> /dev/null<cr><cr>
