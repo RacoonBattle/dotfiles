@@ -50,6 +50,9 @@ autocmd BufWritePre * let &backupext = strftime(".%m-%d-%H-%M")
 set background=dark
 colorscheme solarized
 
+" 80 column marker
+set colorcolumn=80
+
 " Enable syntax highlight
 syntax on
 
