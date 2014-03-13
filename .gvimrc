@@ -4,7 +4,7 @@ set guifont=DejaVu\ Sans\ Mono\ 12
 set guifontwide=AR\ PL\ UMing\ TW\ 13
 
 "color scheme
-colorscheme morning
+colorscheme github
 
 "line space
 set linespace=3
