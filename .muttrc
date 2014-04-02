@@ -89,6 +89,8 @@ bind pager gg top
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
+bind index <space> collapse-thread
+bind index <Esc><space> collapse-all
 
 macro attach s "<save-entry><kill-line>~/downloads/<enter>a" "Save attachment"
 macro index \cr "<tag-pattern>.\n<tag-prefix><clear-flag>N<untag-pattern>.\n" "Mark all messages as read"
