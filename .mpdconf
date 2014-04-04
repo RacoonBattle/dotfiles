@@ -1,0 +1,18 @@
+# Files and directories #######################################################
+#
+music_directory "~/Dropbox/nexus5/music/"
+playlist_directory "~/.mpd/playlists"
+db_file            "~/.mpd/database"
+#log_file           "~/.mpd/log"
+pid_file           "~/.mpd/pid"
+state_file         "~/.mpd/state"
+
+
+# Audio Output ################################################################
+#
+audio_output {
+	type		"alsa"
+	name		"My ALSA Device"
+	mixer_type      "software"
+}
+

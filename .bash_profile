@@ -6,3 +6,7 @@ then
 	. ~/.bashrc
 fi
 
+# daemon
+if [ "$(tty)" = "/dev/tty1" ]; then
+	mpd &
+fi
