@@ -107,15 +107,13 @@ for s = 1, screen.count() do
 -- Create a laucher widget and a main menu
 
 mymainmenu = awful.menu({ items = {
-	{ "URxvt", terminal },
-	{ "Screen", terminal.." -e screen" },
-	{ "Ranger", terminal.." -e ranger" },
-	{ "Pcmanfm", "pcmanfm" },
-	{ "Audacious", "audacious"},
-	{ "Alsamixer",terminal.." -e alsamixer" },
+	{ "Terminal", terminal },
 	{ "Firefox", "firefox"},
-	{ "Gqview", "gqview"},
-	{ "Freemind", "freemind"},
+	{ "PCManFM", "pcmanfm" },
+	{ "ranger", terminal.." -e ranger" },
+	{ "Gvim", "gvim" },
+	{ "Audacious", "audacious"},
+	{ "AlsaMixer",terminal.." -e alsamixer" },
 	{ "ARandR", "arandr"},
 
 }
@@ -237,8 +235,8 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(mylauncher)
     left_layout:add(myspace)
-    left_layout:add(mylayoutbox[s])
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
@@ -262,6 +260,7 @@ for s = 1, screen.count() do
     right_layout:add(myspace)
     right_layout:add(batwidget)
     right_layout:add(myspace)
+    right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
