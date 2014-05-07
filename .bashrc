@@ -7,10 +7,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # no chase link
 set -P
 
-# history append
-shopt -s histappend
-PROMPT_COMMAND='history -a'
-
 # path
 pathmunge()
 {
@@ -131,3 +127,12 @@ LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\h\[$BBlue\] $ \[$Color_Off\]"
 PS1="\n$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
 
 #- -----------------------------------
+
+
+# history
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=1024
+export HISTFILESIZE=10240
+shopt -s histappend                      # append to history, don't overwrite it
+export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+                                         # Save and reload the history after each command finishes
