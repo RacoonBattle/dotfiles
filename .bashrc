@@ -58,19 +58,6 @@ alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 alias vi='vim'
 
-#set the screen title
-case $TERM in
-	screen*)
-		# This is the escape sequence ESC k \w ESC \
-			# Use path as title
-		PATHTITLE='\[\ek\W\]\[\e\\\]'
-		# Use program name as title
-		PROGRAMTITLE='\[\ek\]\[\e\\\]'
-		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
-		;;
-	*)
-		;;
-esac
 
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
@@ -127,6 +114,42 @@ LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\h\[$BBlue\] $ \[$Color_Off\]"
 PS1="\n$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
 
 #- -----------------------------------
+
+
+# dynamic title
+case $TERM in
+	screen*)
+		# This is the escape sequence ESC k \w ESC \
+			# Use path as title
+		PATHTITLE='\[\ek\W\]\[\e\\\]'
+		# Use program name as title
+		PROGRAMTITLE='\[\ek\]\[\e\\\]'
+		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+		;;
+
+	xterm*|rxvt*)
+
+		PROMPT_COMMAND='DEFTITLE="${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}"; echo -ne "\033]0;${TITLE:-$DEFTITLE}\007"'
+
+		show_command_in_title_bar()
+		{
+			case "$BASH_COMMAND" in
+				*\033]0*)
+					# The command is trying to set the title bar as well;
+					# this is most likely the execution of $PROMPT_COMMAND.
+					# In any case nested escapes confuse the terminal, so don't
+					# output them.
+					;;
+				*)
+					echo -ne "\033]0;${BASH_COMMAND}\007"
+					;;
+			esac
+		}
+		trap show_command_in_title_bar DEBUG
+		;;
+	*)
+		;;
+esac
 
 
 # history
