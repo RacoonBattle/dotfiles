@@ -11,7 +11,7 @@ deflogin off
 shelltitle '$ |bash'
 
 # Caption String
-caption always "%{= kR}[ %{G}%H %{r}][ %{=b b}%-w%{=rb db}%>%n %t%{-}%+w%{-b}%< %=%{R}][%{M}%D %M %d %{G}%c%{R}]"
+caption always "%{= kR}[ %{=b b}%-Lw%{w}%>%n %t%{-}%+w%{-b}%< %=%{R}]"
 
 # Set scrollback
 defscrollback 10240
