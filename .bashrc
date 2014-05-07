@@ -111,7 +111,8 @@ LINE1="\[$sq_color\][$DIR_INFO\[$sq_color\]]-\[$Red\]\$(parse_git_branch)\[$sq_c
 
 LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\h\[$BBlue\] $ \[$Color_Off\]"
 
-PS1="\n$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
+PS1="$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
+PROMPT_COMMAND='echo'
 
 #- -----------------------------------
 
@@ -129,7 +130,12 @@ case $TERM in
 
 	xterm*|rxvt*)
 
-		PROMPT_COMMAND='DEFTITLE="${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}"; echo -ne "\033]0;${TITLE:-$DEFTITLE}\007"'
+		set_prompt_command()
+		{
+			DEFTITLE="${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}"
+			echo -ne "\033]0;${TITLE:-$DEFTITLE}\007"
+		}
+		PROMPT_COMMAND="$PROMPT_COMMAND; set_prompt_command"
 
 		show_command_in_title_bar()
 		{
