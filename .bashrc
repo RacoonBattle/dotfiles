@@ -163,5 +163,3 @@ export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=1024
 export HISTFILESIZE=10240
 shopt -s histappend                      # append to history, don't overwrite it
-export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
-                                         # Save and reload the history after each command finishes
