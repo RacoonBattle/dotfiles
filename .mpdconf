@@ -1,6 +1,6 @@
 # Files and directories #######################################################
 #
-music_directory "~/Dropbox/nexus5/music/"
+music_directory    "~/music/"
 playlist_directory "~/.mpd/playlists"
 db_file            "~/.mpd/database"
 #log_file           "~/.mpd/log"
