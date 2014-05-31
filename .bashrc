@@ -1,8 +1,15 @@
 # .bashrc
 
+# varialbes
 export VISUAL=vim
 export EDITOR=vim
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# history
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=1024
+export HISTFILESIZE=10240
+shopt -s histappend                      # append to history, don't overwrite it
 
 # no chase link
 set -P
@@ -117,7 +124,7 @@ PROMPT_COMMAND='echo'
 #- -----------------------------------
 
 
-# dynamic title
+# Change the window title of X terminals
 case $TERM in
 	screen*)
 		# This is the escape sequence ESC k \w ESC \
@@ -127,39 +134,13 @@ case $TERM in
 		PROGRAMTITLE='\[\ek\]\[\e\\\]'
 		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
 		;;
-
-	xterm*|rxvt*)
-
-		set_prompt_command()
-		{
-			DEFTITLE="${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}"
-			echo -ne "\033]0;${TITLE:-$DEFTITLE}\007"
-		}
-		PROMPT_COMMAND="$PROMPT_COMMAND; set_prompt_command"
-
-		show_command_in_title_bar()
-		{
-			case "$BASH_COMMAND" in
-				*\033]0*)
-					# The command is trying to set the title bar as well;
-					# this is most likely the execution of $PROMPT_COMMAND.
-					# In any case nested escapes confuse the terminal, so don't
-					# output them.
-					;;
-				*)
-					echo -ne "\033]0;${BASH_COMMAND}\007"
-					;;
-			esac
-		}
-		trap show_command_in_title_bar DEBUG
+	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix)
+		# current dir
+		PROMPT_COMMAND=''"$PROMPT_COMMAND"'; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+		# program name
+		trap 'echo -ne "\e]0;"; echo -n ${USER}@${HOSTNAME}: ${BASH_COMMAND}; echo -ne "\007"' DEBUG
 		;;
 	*)
 		;;
 esac
 
-
-# history
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
-export HISTSIZE=1024
-export HISTFILESIZE=10240
-shopt -s histappend                      # append to history, don't overwrite it
