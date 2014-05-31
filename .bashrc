@@ -9,7 +9,11 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=1024
 export HISTFILESIZE=10240
-shopt -s histappend                      # append to history, don't overwrite it
+shopt -s histappend      # append to history, don't overwrite it
+PROMPT_COMMAND="history -a"
+			 # Save history after each command finishes
+			 # please manually `history -n` to reload history file
+			 # when want to get other tty's history command
 
 # no chase link
 set -P
@@ -119,7 +123,7 @@ LINE1="\[$sq_color\][$DIR_INFO\[$sq_color\]]-\[$Red\]\$(parse_git_branch)\[$sq_c
 LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\h\[$BBlue\] $ \[$Color_Off\]"
 
 PS1="$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
-PROMPT_COMMAND='echo'
+PROMPT_COMMAND="$PROMPT_COMMAND ; echo "
 
 #- -----------------------------------
 
