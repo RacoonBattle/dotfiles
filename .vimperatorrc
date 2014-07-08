@@ -34,6 +34,9 @@ noremap k 5k
 noremap h gT
 noremap l gt
 
+" reload all tabs
+noremap <C-r> :reloadall<cr>
+
 " for left hand
 noremap q gT
 noremap w gt
