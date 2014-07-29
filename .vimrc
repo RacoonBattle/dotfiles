@@ -63,14 +63,17 @@ set showmode
 set ruler
 
 " Dynamic title
-let &titlestring = "vim(" . expand("%:t") . ")"
-if &term =~ '^screen'
-  " VimTip #1126
-  " to type ^[, which is an escape character, you need to enter CTRL+V <Esc>
-  set t_ts=k
-  set t_fs=\
-endif
-set title
+function! UpdateTitle()
+	let &titlestring = "vim(" . expand("%:t") . ")"
+	if &term =~ '^screen'
+	  " VimTip #1126
+	  " to type ^[, which is an escape character, you need to enter CTRL+V <Esc>
+	  set t_ts=k
+	  set t_fs=\
+	endif
+	set title
+endfunction
+au BufEnter * :call UpdateTitle()
 
 " Hybrid line number
 set number
