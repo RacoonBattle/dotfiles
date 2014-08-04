@@ -97,7 +97,7 @@ bind index <space> collapse-thread
 bind index <Esc><space> collapse-all
 
 macro attach s "<save-entry><kill-line>~/downloads/<enter>a" "Save attachment"
-macro index \cr "<tag-pattern>.\n<tag-prefix><clear-flag>N<untag-pattern>.\n" "Mark all messages as read"
+macro index <esc>\cr "<tag-pattern>.\n<tag-prefix><clear-flag>N<untag-pattern>.\n" "Mark all messages as read"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager g<space> '<next-unread-mailbox>'
 macro index i '<change-folder>?<toggle-mailboxes>'
