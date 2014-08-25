@@ -80,6 +80,7 @@ bind browser,index G last-entry
 bind browser,index,pager \cb previous-page
 bind browser,index,pager \cf next-page
 bind index \cx sync-mailbox
+bind index gN  toggle-new
 bind browser <space> select-entry
 bind index,pager N search-opposite
 bind index,pager r group-reply
