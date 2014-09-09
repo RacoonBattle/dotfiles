@@ -89,6 +89,7 @@ bind index,pager J next-thread
 bind index,pager K previous-thread
 bind index,pager gj next-entry
 bind index,pager gk previous-entry
+bind pager \e<tab> previous-new-then-unread
 bind pager G bottom
 bind pager gg top
 bind index,pager \CP sidebar-prev
