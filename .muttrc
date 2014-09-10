@@ -38,6 +38,13 @@ set alias_file=~/.mutt/alias
 # status bar
 set status_on_top=yes
 
+# Mailcap
+set mailcap_path=~/.mutt/mailcap
+
+# Auto view
+auto_view application/msword application/pdf application/vnd.oasis.opendocument.text text/html
+alternative_order text/plain text/html
+
 # Pager view
 set resolve=yes
 set pager_stop=yes
