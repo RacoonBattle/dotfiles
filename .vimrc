@@ -221,9 +221,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 let tagbar_width = 28
 let NERDTreeWinSize = 20
 
-" Super tab completion type
-let g:SuperTabDefaultCompletionType = "context"
-
 " vim-togglelist Quickfix Open Command
 let g:toggle_list_copen_command="botright copen"
 
