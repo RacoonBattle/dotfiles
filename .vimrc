@@ -214,9 +214,6 @@ nnoremap <Leader>g <esc>:!firefox % &> /dev/null<cr><cr>
 " Plugins setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" vim-EasyMotion_leader_key
-let g:EasyMotion_leader_key = '<Leader>'
-
 " Set Tagbar width
 let tagbar_width = 28
 let NERDTreeWinSize = 20
@@ -258,7 +255,6 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'Align'
 Bundle 'fcitx.vim'
