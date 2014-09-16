@@ -208,7 +208,7 @@ nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 nnoremap <Leader>dt <esc>:read !date +"\%a \%b \%d, \%Y"<cr>I*** <esc>A ***<cr>- - - - - - - - - - - - -<esc>o<esc>
 
 " Open with firefox
-nnoremap <Leader>g <esc>:!firefox % &> /dev/null<cr><cr>
+nnoremap <Leader>f <esc>:!firefox % &> /dev/null<cr><cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins setting
