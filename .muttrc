@@ -31,6 +31,10 @@ set beep_new=yes
 set check_new=yes
 
 # --------------------- Interface  -----------------------------------
+
+# Change tmpdir, because found that vim not backup file in /tmp dir
+set tmpdir=~/Mail
+
 # set alias
 source ~/.mutt/alias
 set alias_file=~/.mutt/alias
