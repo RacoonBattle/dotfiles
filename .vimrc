@@ -40,7 +40,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap,/tmp
 
 " Keep more backups for one file
-autocmd BufWritePre * let &backupext = strftime(".%m-%d-%H-%M")
+autocmd BufWritePre * let &backupext = strftime(".%Y%m%d_%H%M")
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
