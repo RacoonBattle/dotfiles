@@ -89,9 +89,10 @@ set display=lastline
 " cursor line
 " set cursorline
 
-" alarm WhitespaceEOL
+" alarm trailing whitespace, except markdown
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+autocmd FileType markdown match
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,7 +133,7 @@ autocmd FileType flexwiki setlocal noexpandtab smarttab shiftwidth=4 softtabstop
 "for mail
 autocmd FileType mail set textwidth=72
 "for markdown
-autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Set auto-formating
 set formatoptions+=mM
