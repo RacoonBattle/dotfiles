@@ -74,6 +74,7 @@ function! UpdateTitle()
 	set title
 endfunction
 au BufEnter * :call UpdateTitle()
+auto VimLeave * :set t_ts=k\
 
 " Hybrid line number
 set number
