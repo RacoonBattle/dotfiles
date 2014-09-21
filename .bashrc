@@ -57,7 +57,7 @@ fi
 #my alias
 alias ga='git add -A'
 alias gb='git branch'
-alias gc='git commit -a'
+alias gc='git commit'
 alias gd='git diff'
 alias gl='git log'
 alias go='git checkout'

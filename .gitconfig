@@ -6,8 +6,8 @@
 	status = auto
 [alias]
 	br = branch
-	ci = commit -m
-	cm = commit --amend
+	ca = commit -a
+	cm = commit -m
 	co = checkout
 	cp = cherry-pick
 	lg = log --oneline
