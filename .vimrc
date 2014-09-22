@@ -191,7 +191,7 @@ nnoremap <F6> :w<CR>:make! %< CC=gcc CFLAGS="-g -Wall"<CR>:!./%<<CR>
 nnoremap <F7> :w<CR>:!find $(pwd) -name "*.h" -o -name "*.c" -o -name "*.cc" > cscope.files; cscope -Rbkq -i cscope.files; ctags -R --fields=+lS .<CR><CR>
 
 " Tagbar NERDTree toggle
-nnoremap <silent> <F8> :TagbarToggle<CR>:NERDTreeToggle<CR><c-w>l
+nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " Searching tool
 nnoremap <F9> :Rgrep<CR>
@@ -217,8 +217,10 @@ nnoremap <Leader>f <esc>:!firefox % &> /dev/null<cr><cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set Tagbar width
-let tagbar_width = 28
-let NERDTreeWinSize = 20
+let tagbar_width = 32
+
+" Tagbar on left
+let tagbar_left=1
 
 " vim-togglelist Quickfix Open Command
 let g:toggle_list_copen_command="botright copen"
