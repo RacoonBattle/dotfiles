@@ -259,6 +259,7 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-multiple-cursors'
 
 Bundle 'Align'
 Bundle 'fcitx.vim'
