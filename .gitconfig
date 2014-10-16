@@ -6,12 +6,15 @@
 	status = auto
 [alias]
 	br = branch
-	ca = commit -a
-	cm = commit -m
+	ci = commit
 	co = checkout
 	cp = cherry-pick
-	lg = log --oneline
-	lp = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cr %C(bold blue)<%an>%Creset'
+	st = status
+	sb = show-branch
+	lo = log --pretty=format:"%s"
+	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%cn]\\ %Creset%s" --date=short
+	ll = log --pretty=format:"%n\\ \\*\\ %C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%cn]\\ %Creset%s%n\\ ...%Cred%d" --decorate --date=short --stat
+
 [diff]
 	tool = vimdiff
 [merge]
