@@ -16,7 +16,7 @@ URxvt.scrollBar: False
 URxvt.urgentOnBell: True
 
 ! font
-URxvt.font:xft:DejaVu Sans Mono:pixelsize=16:antialias=false,\
+URxvt.font:xft:Terminus:pixelsize=20,\
 xft:AR PL UMing TW:pixelsize=18:antialias=false
 
 ! URL
