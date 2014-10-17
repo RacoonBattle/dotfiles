@@ -86,6 +86,9 @@ set sidebar_sort=yes
 set sidebar_shortpath = yes
 color sidebar_new yellow default # color of folders with new mail
 
+# Pipe tagged messages one-by-one, used for applying patches
+set pipe_split=yes
+
 # ---------------------Key bindings----------------------------------
 bind attach i exit
 bind attach <space> view-attach
