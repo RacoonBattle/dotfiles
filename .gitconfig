@@ -12,8 +12,8 @@
 	st = status
 	sb = show-branch
 	lo = log --pretty=format:"%s"
-	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%cn]\\ %Creset%s" --date=short
-	ll = log --pretty=format:"%n\\ \\*\\ %C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%cn]\\ %Creset%s%n\\ ...%Cred%d" --decorate --date=short --stat
+	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%an]\\ %Creset%s" --date=short
+	ll = log --pretty=format:"%n\\*\\ %C(yellow)%H%n...\\ %Cgreen%ad\\ %Cblue%an\\ <%ae>%n...%Cred%d\\ %n%w(76,4,4)%B" --decorate --date=short --stat
 
 [diff]
 	tool = vimdiff
