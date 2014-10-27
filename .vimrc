@@ -256,26 +256,25 @@ set cscopequickfix=s-,g-,d-,c-,t-,e-,f-,i-
 filetype off
 
 set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'vim-multiple-cursors'
+call vundle#begin()
+Plugin 'gmarik/vundle'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'milkypostman/vim-togglelist'
+Plugin 'vim-multiple-cursors'
 
-Bundle 'Align'
-Bundle 'fcitx.vim'
-Bundle 'DrawIt'
-Bundle 'The-NERD-Commenter'
-Bundle 'https://github.com/milkypostman/vim-togglelist.git'
+Plugin 'Align'
+Plugin 'autoload_cscope.vim'
+Plugin 'DrawIt'
+Plugin 'echofunc.vim'
+Plugin 'fcitx.vim'
+Plugin 'Tagbar'
+Plugin 'grep.vim'
+Plugin 'fugitive.vim'
+Plugin 'snipMate'
+Plugin 'SuperTab--Van-Dewoestine'
+Plugin 'The-NERD-Commenter'
 
-Bundle 'The-NERD-tree'
-Bundle 'Tagbar'
-Bundle 'grep.vim'
-Bundle 'fugitive.vim'
-
-Bundle 'autoload_cscope.vim'
-Bundle 'snipMate'
-Bundle 'SuperTab-continued.'
-Bundle 'echofunc.vim'
-Bundle 'plasticboy/vim-markdown'
+call vundle#end()
 filetype plugin indent on
 
