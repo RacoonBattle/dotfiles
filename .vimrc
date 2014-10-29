@@ -262,6 +262,8 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'vim-multiple-cursors'
+Plugin 'ervandew/supertab'
+Plugin 'ervandew/snipmate.vim'
 
 Plugin 'Align'
 Plugin 'autoload_cscope.vim'
@@ -271,8 +273,6 @@ Plugin 'fcitx.vim'
 Plugin 'Tagbar'
 Plugin 'grep.vim'
 Plugin 'fugitive.vim'
-Plugin 'snipMate'
-Plugin 'SuperTab--Van-Dewoestine'
 Plugin 'The-NERD-Commenter'
 
 call vundle#end()
