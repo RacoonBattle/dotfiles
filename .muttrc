@@ -15,11 +15,10 @@ set record="+Sent"
 	# messages, but another way to do this is using the "my_hdr"
 	# command to create a "Bcc:" field with your email address in it.
 
-# Message cache
+# Message cache, to improve speed when opening folders
 # need 'configure --enable-hcache' when compiling
-#set header_cache=~/Mail/cache/header
-#set maildir_header_cache_verify=no
-#set message_cachedir=~/Mail/cache/message
+set header_cache=~/.mutt/cache/header
+set maildir_header_cache_verify=no
 
 # Set timeout
 set timeout=30          # after 30 secs of no keypresses, start checking  new mail
