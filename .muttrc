@@ -106,6 +106,9 @@ bind index,pager J next-thread
 bind index,pager K previous-thread
 bind index,pager gj next-entry
 bind index,pager gk previous-entry
+bind index zt current-top
+bind index zz current-middle
+bind index zb current-bottom
 bind pager \e<tab> previous-new-then-unread
 bind pager G bottom
 bind pager gg top
