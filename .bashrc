@@ -69,6 +69,8 @@ alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 alias vi='vim'
 
+alias emacs='TERM=xterm emacs'	# workaround for emacs-color-theme-solarized issue #62
+alias emacsclient='TERM=xterm emacsclient'
 
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
