@@ -44,17 +44,15 @@ altscreen on
 
 # Keyboard binding --------------------
 
-# alt-j next window
-bindkey "^[l" next
+# change command character to ctrl-j
+escape ^Jj
 
-# alt-k previous window
-bindkey "^[h" prev
+# alt-`: other window
+bindkey "^[`" other
 
-# alt-q: other window
-bindkey "^[q" other
-
-# alt-w: window list
-bindkey "^[w" windowlist -b
+# alt-n/p next/previous window
+bindkey "^[n" next
+bindkey "^[p" prev
 
 # Get rid of screen 0
 bind c screen 1
@@ -63,8 +61,8 @@ bind 0 select 10
 # Create initial window
 screen 1
 
-# alt-t: create new window
-bindkey "^[t" screen 1
+# alt-shift-t: create new window
+bindkey "^[T" screen 1
 
 # alt-num: select window
 bindkey "^[0" select 10
