@@ -71,6 +71,8 @@ alias vi='vim'
 
 alias emacs='TERM=xterm emacs'	# workaround for emacs-color-theme-solarized issue #62
 alias emacsclient='TERM=xterm emacsclient'
+alias e='emacs -nw'
+alias ec='emacsclient -t -a ""'
 
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
