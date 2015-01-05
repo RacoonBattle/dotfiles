@@ -326,7 +326,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
     awful.key({ modkey }, "e", function () awful.util.spawn("pcmanfm") end),
-    awful.key({ "Mod1" }, "n", naughty.toggle),
+    awful.key({ modkey, "Mod1" }, "n", naughty.toggle),
 
     awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "q", function () awful.screen.focus_relative( 1) end),
@@ -387,12 +387,12 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioStop", function () awful.util.spawn("mpc stop") end),
     awful.key({}, "XF86AudioPrev", function () awful.util.spawn("mpc prev") end),
     awful.key({}, "XF86AudioNext", function () awful.util.spawn("mpc next") end),
-    awful.key({ "Mod1" }, "Down", function () awful.util.spawn("mpc toggle") end),
-    awful.key({ "Mod1" }, "Up", function () awful.util.spawn("mpc stop") end),
-    awful.key({ "Mod1" }, "Left", function () awful.util.spawn("mpc prev") end),
-    awful.key({ "Mod1" }, "Right", function () awful.util.spawn("mpc next") end),
+    awful.key({ modkey, "Mod1" }, "Down", function () awful.util.spawn("mpc toggle") end),
+    awful.key({ modkey, "Mod1" }, "Up", function () awful.util.spawn("mpc stop") end),
+    awful.key({ modkey, "Mod1" }, "Left", function () awful.util.spawn("mpc prev") end),
+    awful.key({ modkey, "Mod1" }, "Right", function () awful.util.spawn("mpc next") end),
 
-    awful.key({ "Mod1" }, "i", function()
+    awful.key({ modkey, "Mod1" }, "i", function()
 	    local song = awful.util.pread("mpc status"):sub(1,-2)
 	    if song:len() == 0 then
 		    song = "- nothing playing -"
