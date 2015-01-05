@@ -45,6 +45,15 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
 (load-theme 'solarized-dark t)
 
+;; Workaround broken solarized colours in emacsclient. Issue #60
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+	      (lambda (frame)
+		(select-frame frame)
+		(load-theme 'solarized-dark t)))
+      (load-theme 'solarized-dark t))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Indent
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
