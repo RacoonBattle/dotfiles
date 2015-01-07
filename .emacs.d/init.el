@@ -8,6 +8,10 @@
 ;; set text-mode as default major-mode
 (setq default-major-mode 'text-mode)
 
+;; set current_dir/filename as buffer name, and show in mode line
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 ;; use UTF-8 encoding
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
