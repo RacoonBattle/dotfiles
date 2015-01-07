@@ -87,6 +87,15 @@
 		(load-theme 'solarized-dark t)))
       (load-theme 'solarized-dark t))
 
+;; Automatically set screen title
+;; ref http://vim.wikia.com/wiki/Automatically_set_screen_title
+;; FIXME: emacsclient in xterm will have problem if emacs daemon start in screen
+(defun update-title ()
+  (interactive)
+  (if (getenv "STY")	; check whether in GNU screen
+      (send-string-to-terminal (concat "\033k\033\134\033k" "Emacs("(buffer-name)")" "\033\134"))
+    (send-string-to-terminal (concat "\033]2; " "Emacs("(buffer-name)")" "\007"))))
+(add-hook 'post-command-hook 'update-title)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Indent
