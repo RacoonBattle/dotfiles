@@ -69,8 +69,18 @@
 ;; Interface
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; no menu-bar
+;; no menu-bar, tool-bar, scroll-bar
 (menu-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
+
+;; GUI font
+(if (display-graphic-p)
+    (progn
+      (set-frame-font "Terminus-15")
+      (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")))
 
 ;; show column-number
 (setq column-number-mode t)
