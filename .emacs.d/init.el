@@ -5,6 +5,9 @@
 ;; use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Interactively open files and buffers
+(ido-mode 1)
+
 ;; set text-mode as default major-mode
 (setq default-major-mode 'text-mode)
 
