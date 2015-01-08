@@ -75,6 +75,11 @@
 ;; show column-number
 (setq column-number-mode t)
 
+;; line number
+(global-linum-mode t)
+(setq linum-format "%4d ")
+(global-set-key (kbd "<f3>") 'linum-mode)
+
 ;; show matching parenthesis.
 (show-paren-mode 1)
 
