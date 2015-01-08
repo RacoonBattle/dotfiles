@@ -110,6 +110,9 @@
 ;; shell-script: use tab to indent
 (setq sh-basic-offset 8)
 
+;; Automatically indent new line according to its context
+(electric-indent-mode 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode
