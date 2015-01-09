@@ -69,6 +69,9 @@
 ;; Interface
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; no startup message
+(setq inhibit-startup-message t)
+
 ;; no menu-bar, tool-bar, scroll-bar
 (menu-bar-mode -1)
 (if (display-graphic-p)
