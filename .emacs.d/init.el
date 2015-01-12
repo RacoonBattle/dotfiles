@@ -162,7 +162,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; default load-path
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
