@@ -91,7 +91,6 @@
 ;; line number
 (global-linum-mode t)
 (setq linum-format "%4d ")
-(global-set-key (kbd "<f3>") 'linum-mode)
 
 ;; show matching parenthesis.
 (show-paren-mode 1)
@@ -154,3 +153,11 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hotkeys
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "<f2>") 'save-buffer)
+(global-set-key (kbd "<f3>") 'linum-mode)
