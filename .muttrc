@@ -34,9 +34,9 @@ set check_new=yes
 # Change tmpdir, because found that vim not backup file in /tmp dir
 set tmpdir=~/Mail
 
-# Reset the title to mutt after leaving Vim
+# Reset the title to mutt after leaving Vim/Emacs
 # the issue always happend when using mutt in screen
-set editor="sh -c 'vim $0 && echo -ne \"\\033kmutt\\033\\134\"' "
+set editor="sh -c '$EDITOR $0 && echo -ne \"\\033kmutt\\033\\134\"' "
 
 # set alias
 source ~/.mutt/alias

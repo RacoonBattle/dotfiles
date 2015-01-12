@@ -1,8 +1,8 @@
 # .bashrc
 
 # varialbes
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL="TERM=xterm emacs -nw"
+export EDITOR="$VISUAL"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # history
@@ -67,12 +67,14 @@ alias gw='git show'
 
 alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
-alias vi='vim'
 
 alias emacs='TERM=xterm emacs'	# workaround for emacs-color-theme-solarized issue #62
 alias emacsclient='TERM=xterm emacsclient'
 alias e='emacs -nw'
-alias ec='emacsclient -t -a ""'
+alias ec='emacsclient -t -a ""'	# start emacs server if no daemon exit
+alias et='emacsclient -t'	  # open frame on the current terminal
+alias en='emacsclient -n'	  # send the file to the running emacs instance
+alias vi='e'
 
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
