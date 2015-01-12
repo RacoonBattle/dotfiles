@@ -176,6 +176,9 @@
 	    (setq retain-trailing-whitespace t)
 	    (set (make-local-variable 'electric-indent-mode) nil)))
 
+;; Undo Tree
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hotkeys
