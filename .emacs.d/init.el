@@ -154,6 +154,12 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; Diable markdown-mode’s auto-indent and trailing whitespace clean
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (setq retain-trailing-whitespace t)
+	    (set (make-local-variable 'electric-indent-mode) nil)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hotkeys
