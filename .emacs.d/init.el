@@ -130,6 +130,21 @@
 ;; Automatically indent new line according to its context
 (electric-indent-mode 1)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Mail with mutt
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))
+(setq mail-header-separator "")			; for M-q and auto-fill to work correctly
+(add-hook 'message-mode-hook 'auto-fill-mode)	; break lines at text width=72
+(add-hook 'message-mode-hook			; colorizing multiply-quoted lines
+	  (lambda ()
+	    (font-lock-add-keywords nil
+				    '(("^[ \t]*>[ \t]*>[ \t]*>.*$"
+				       (0 'message-multiply-quoted-text-face))
+				      ("^[ \t]*>[ \t]*>.*$"
+				                         (0 'message-double-quoted-text-face))))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode
