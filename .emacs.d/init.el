@@ -10,9 +10,6 @@
 ;; make whitespace-mode use just basic coloring
 (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
 
-;; Interactively open files and buffers
-(ido-mode 1)
-
 ;; set text-mode as default major-mode
 (setq default-major-mode 'text-mode)
 
@@ -184,6 +181,15 @@
 
 ;; default load-path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+;; Ido, Interactively open files and buffers
+(ido-mode 1)
+
+;; Smex, a M-x enhancement for Emacs
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
