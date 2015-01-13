@@ -5,6 +5,11 @@
 ;; use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; remember last edit position
+(setq save-place-file "~/.emacs.d/saveplace")
+(setq-default save-place t)
+(require 'saveplace)
+
 ;; cleanup trailing whitespace when saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; make whitespace-mode use just basic coloring
