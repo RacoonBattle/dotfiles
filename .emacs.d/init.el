@@ -5,6 +5,11 @@
 ;; use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; cleanup trailing whitespace when saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
+;; make whitespace-mode use just basic coloring
+(setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
+
 ;; Interactively open files and buffers
 (ido-mode 1)
 
@@ -189,8 +194,10 @@
 ;; Diable markdown-mode’s auto-indent and trailing whitespace clean
 (add-hook 'markdown-mode-hook
 	  (lambda ()
-	    (setq retain-trailing-whitespace t)
-	    (set (make-local-variable 'electric-indent-mode) nil)))
+	    (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+	    (set (make-local-variable 'electric-indent-mode) nil)
+	    (define-key markdown-mode-map (kbd "RET") 'newline)
+	    ))
 
 ;; Undo Tree
 (require 'undo-tree)
