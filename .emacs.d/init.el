@@ -180,6 +180,38 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; Smart mode-line
+(setq sml/name-width		40
+      sml/line-number-format	"%4l"
+      sml/mode-width		'full
+      sml/themea		'dark
+      sml/no-confirm-load-theme t)
+(require 'smart-mode-line)
+(sml/setup)
+
+;; Hidden minor-mode, by rich-minority
+(setq rm-excluded-modes
+      '(" Guide"			;; guide-key mode
+	" hc"				;; hardcore mode
+	" AC"				;; auto-complete
+	" vl"				;; global visual line mode enabled
+	" Wrap"				;; shows up if visual-line-mode is enabled for that buffer
+	" Omit"				;; omit mode in dired
+	" yas"				;; yasnippet
+	" drag"				;; drag-stuff-mode
+	" VHl"				;; volatile highlights
+	" ctagsU"			;; ctags update
+	" Undo-Tree"			;; undo tree
+	" wr"				;; Wrap Region
+	" SliNav"			;; elisp-slime-nav
+	" Fly"				;; Flycheck
+	" PgLn"				;; page-line-break
+	" GG"				;; ggtags
+	" ElDoc"			;; eldoc
+	" hl-highlight"			;; hl-anything
+	))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hotkeys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
