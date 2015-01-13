@@ -146,7 +146,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path "~/.emacs.d/evil")
-(setq evil-toggle-key ""); remove default evil-toggle-key C-z, manually setup later
+(setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
+(setq evil-want-C-i-jump nil)	; don't bind [tab] to evil-jump-forward
 (require 'evil)
 (evil-mode 1)
 
