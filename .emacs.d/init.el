@@ -223,6 +223,10 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+;; read file's vim modeline to set Emacs's file local variables
+(require 'vim-modeline)
+(add-to-list 'find-file-hook 'vim-modeline/do)
+
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
