@@ -147,7 +147,7 @@
       version-control t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Indent
+;; Programming
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; C-indenting: use Linux kernel coding style
@@ -155,6 +155,11 @@
 
 ;; shell-script: use tab to indent
 (setq sh-basic-offset 8)
+
+;; disable bash here document completion, when typing <<
+(add-hook 'sh-mode-hook
+	  (lambda ()
+	    (sh-electric-here-document-mode -1)))
 
 ;; Automatically indent new line according to its context
 (electric-indent-mode 1)
