@@ -5,6 +5,9 @@
 ;; use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; wrap long lines
+(global-visual-line-mode)
+
 ;; remember last edit position
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
