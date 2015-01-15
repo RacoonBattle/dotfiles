@@ -57,8 +57,18 @@
    (setq interprogram-cut-function 'xsel-cut-function)
    (setq interprogram-paste-function 'xsel-paste-function)))
 
-;; hippie-expand for completion
-(global-set-key (kbd "TAB") 'hippie-expand)
+;; remove the prompt for killing emacsclient buffers
+(defun server-remove-kill-buffer-hook () (remove-hook
+'kill-buffer-query-functions 'server-kill-buffer-query-function))
+(add-hook 'server-visit-hook 'server-remove-kill-buffer-hook)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Auto completion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Set hippie-expand for auto completion
+(global-set-key "\M- " 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
 	try-expand-dabbrev-visible
@@ -69,10 +79,13 @@
 	try-expand-line
 	))
 
-;; remove the prompt for killing emacsclient buffers
-(defun server-remove-kill-buffer-hook () (remove-hook
-'kill-buffer-query-functions 'server-kill-buffer-query-function))
-(add-hook 'server-visit-hook 'server-remove-kill-buffer-hook)
+;; Mimic Vim's superTab, try: completion; except: insert tab.
+(defun my-indent-or-complete ()
+  (interactive)
+  (if (looking-at "\\>")
+      (hippie-expand nil)
+    (insert "\t")))
+(global-set-key (kbd "TAB") 'my-indent-or-complete)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -183,7 +196,7 @@
 	    (define-key input-decode-map "\e\eOD" [(meta left)])
 	    (define-key input-decode-map "\e\eOC" [(meta right)])
 	    ;; Restore TAB behavior
-	    (define-key markdown-mode-map (kbd "TAB") 'hippie-expand)
+	    (define-key markdown-mode-map (kbd "TAB") 'my-indent-or-complete)
 	    (define-key evil-normal-state-map (kbd "TAB") 'markdown-cycle)
 	    ))
 
