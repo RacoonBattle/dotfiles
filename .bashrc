@@ -1,7 +1,7 @@
 # .bashrc
 
 # varialbes
-export VISUAL="TERM=xterm emacs -nw"
+export VISUAL="$HOME/.emacs.d/my-editor.sh"
 export EDITOR="$VISUAL"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
