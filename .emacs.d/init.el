@@ -150,6 +150,9 @@
 ;; Programming
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Automatically indent new line according to its context
+(electric-indent-mode 1)
+
 ;; C-indenting: use Linux kernel coding style
 (setq c-default-style "linux")
 
@@ -161,8 +164,28 @@
 	  (lambda ()
 	    (sh-electric-here-document-mode -1)))
 
-;; Automatically indent new line according to its context
-(electric-indent-mode 1)
+;; Markdown mode
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Diable markdown-mode’s auto-indent and trailing whitespace clean
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+	    (set (make-local-variable 'electric-indent-mode) nil)
+	    (define-key markdown-mode-map (kbd "RET") 'newline)
+	    ;; Fix some keybindings not working in terminal mode
+	    (define-key markdown-mode-map (kbd "M-RET") 'markdown-insert-list-item)
+	    (define-key input-decode-map "\e\eOA" [(meta up)])
+	    (define-key input-decode-map "\e\eOB" [(meta down)])
+	    (define-key input-decode-map "\e\eOD" [(meta left)])
+	    (define-key input-decode-map "\e\eOC" [(meta right)])
+	    ;; Restore TAB behavior
+	    (define-key markdown-mode-map (kbd "TAB") 'hippie-expand)
+	    (define-key evil-normal-state-map (kbd "TAB") 'markdown-cycle)
+	    ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail with mutt
@@ -229,20 +252,6 @@
 ;; read file's vim modeline to set Emacs's file local variables
 (require 'vim-modeline)
 (add-to-list 'find-file-hook 'vim-modeline/do)
-
-;; Markdown mode
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-;; Diable markdown-mode’s auto-indent and trailing whitespace clean
-(add-hook 'markdown-mode-hook
-	  (lambda ()
-	    (remove-hook 'before-save-hook 'delete-trailing-whitespace)
-	    (set (make-local-variable 'electric-indent-mode) nil)
-	    (define-key markdown-mode-map (kbd "RET") 'newline)
-	    ))
 
 ;; Undo Tree
 (require 'undo-tree)
