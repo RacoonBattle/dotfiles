@@ -57,8 +57,8 @@
    (setq interprogram-cut-function 'xsel-cut-function)
    (setq interprogram-paste-function 'xsel-paste-function)))
 
-;;;hippie-expand
-(global-set-key (kbd "M-/") 'hippie-expand)
+;; hippie-expand for completion
+(global-set-key (kbd "TAB") 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
 	try-expand-dabbrev-visible
@@ -205,6 +205,9 @@
 
 ;; ESC to switch back normal-state
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+;; TAB to indent in normal-state
+(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
