@@ -18,8 +18,8 @@
 ;; make whitespace-mode use just basic coloring
 (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
 
-;; set text-mode as default major-mode
-(setq default-major-mode 'text-mode)
+;; set markdown-mode as default major-mode
+(setq default-major-mode 'markdown-mode)
 
 ;; set current_dir/filename as buffer name, and show in mode line
 (require 'uniquify)
@@ -209,6 +209,9 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Markdown previewer
+(custom-set-variables '(markdown-command "/usr/bin/markdown_py"))
 
 ;; Diable markdown-mode’s auto-indent and trailing whitespace clean
 (add-hook 'markdown-mode-hook
