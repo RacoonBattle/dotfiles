@@ -261,6 +261,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path "~/.emacs.d/evil")
+
+;; setup evil leader key
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+
+;; Enable evil
 (setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
 (setq evil-want-C-i-jump nil)	; don't bind [tab] to evil-jump-forward
 (require 'evil)
@@ -335,6 +342,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hotkeys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(evil-leader/set-key
+ "," 'other-window
+ "f" 'ido-find-file
+ "b" 'ido-switch-buffer
+ "k" 'kill-buffer
+ "w" 'save-buffer
+ "p" 'browse-url-of-file
+ )
 
 (global-set-key (kbd "<f2>") 'save-buffer)
 (global-set-key (kbd "<f3>") 'linum-mode)
