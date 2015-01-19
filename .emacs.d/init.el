@@ -149,14 +149,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
 (load-theme 'solarized-dark t)
 
-;; Workaround broken solarized colours in emacsclient. Issue #60
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-	      (lambda (frame)
-		(select-frame frame)
-		(load-theme 'solarized-dark t)))
-      (load-theme 'solarized-dark t))
-
 ;; Automatically set screen title
 ;; ref http://vim.wikia.com/wiki/Automatically_set_screen_title
 ;; FIXME: emacsclient in xterm will have problem if emacs daemon start in screen
