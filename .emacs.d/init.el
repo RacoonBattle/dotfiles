@@ -317,7 +317,7 @@
 (setq sml/name-width		40
       sml/line-number-format	"%4l"
       sml/mode-width		'full
-      sml/themea		'dark
+      sml/theme 		'dark
       sml/no-confirm-load-theme t)
 (require 'smart-mode-line)
 (sml/setup)
