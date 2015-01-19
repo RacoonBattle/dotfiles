@@ -33,7 +33,7 @@
  '(mode-line-buffer-id ((t :inherit sml/filename :foreground nil :background nil))) 
  '(mode-line-inactive ((t :foreground "gray60" :background "#404045" :inverse-video nil)))
  '(mode-line     ((t :foreground "gray60" :background "black" :inverse-video nil)))
- '(sml/global    ((t :foreground "gray50" :inverse-video nil)))
+ '(sml/global    ((t :foreground "Gray" :inverse-video nil)))
  '(sml/modes     ((t :inherit sml/global :foreground "White")))
  '(sml/filename  ((t :inherit sml/global :foreground "#eab700" :weight bold)))
  '(sml/prefix    ((t :inherit sml/global :foreground "#bf6000")))
