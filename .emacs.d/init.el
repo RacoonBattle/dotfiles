@@ -229,16 +229,16 @@
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 
-;; setup evil leader key
-(require 'evil-leader)
-(global-evil-leader-mode)
-(evil-leader/set-leader ",")
-
 ;; Enable evil
 (setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
 (setq evil-want-C-i-jump nil)	; don't bind [tab] to evil-jump-forward
 (require 'evil)
 (evil-mode 1)
+
+;; Setup evil leader key
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
 
 ;; remove all keybindings from insert-state keymap, use emacs-state when editing
 (setcdr evil-insert-state-map nil)
