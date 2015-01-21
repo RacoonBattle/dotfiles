@@ -81,12 +81,12 @@
 	try-expand-line
 	))
 
-;; Mimic Vim's superTab, try: completion; except: insert tab.
+;; Mimic Vim's superTab, try: completion; except: tab-to-tab-stop
 (defun my-indent-or-complete ()
   (interactive)
   (if (looking-at "\\>")
       (hippie-expand nil)
-    (insert "\t")))
+    (tab-to-tab-stop)))
 (global-set-key (kbd "TAB") 'my-indent-or-complete)
 
 
