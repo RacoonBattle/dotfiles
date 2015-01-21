@@ -326,5 +326,5 @@
  )
 
 (global-set-key (kbd "<f2>") 'save-buffer)
-(global-set-key (kbd "<f3>") 'linum-mode)
-(global-set-key (kbd "<f4>") 'ttypaste-mode)
+(global-set-key (kbd "<f11>") 'linum-mode)
+(global-set-key (kbd "<f12>") 'ttypaste-mode)
