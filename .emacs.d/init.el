@@ -196,6 +196,9 @@
 	    (define-key markdown-mode-map (kbd "TAB") 'my-indent-or-complete)
 	    (define-key evil-normal-state-map (kbd "TAB") 'markdown-cycle)
 	    ))
+;; Treat underscore as word character
+(add-hook 'text-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mail with mutt
