@@ -18,9 +18,6 @@
 ;; make whitespace-mode use just basic coloring
 (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
 
-;; set markdown-mode as default major-mode
-(setq default-major-mode 'markdown-mode)
-
 ;; set current_dir/filename as buffer name, and show in mode line
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
