@@ -281,6 +281,11 @@
 (defvar my-packages
   '(
     git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
+		    rich-minority smart-mode-line
+		    dash
+		    smex
+		    undo-tree
+		    markdown-mode
     )
   "A list of packages to ensure are installed at launch.")
 
