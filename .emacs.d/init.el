@@ -271,6 +271,19 @@
   (package-initialize)
   )
 
+;; let ELPA auto install packages in the list
+(defvar my-packages
+  '(
+    git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
+    )
+  "A list of packages to ensure are installed at launch.")
+
+(unless package-archive-contents	; fetch the list of packages available
+    (package-refresh-contents))
+
+(dolist (p my-packages)			; install the missing packages
+  (unless (package-installed-p p)
+    (package-install p)))
 
 ;; default load-path, for manually configuration
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
