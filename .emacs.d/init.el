@@ -16,6 +16,7 @@
 (defvar my-packages
   '(git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
 		    rich-minority smart-mode-line
+		    evil evil-leader
 		    dash
 		    smex
 		    undo-tree
@@ -262,8 +263,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'load-path "~/.emacs.d/evil")
 
 ;; Enable evil
 (setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
