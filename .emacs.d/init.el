@@ -260,7 +260,19 @@
 ;; Plugins
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; default load-path
+;; enable ELPA - Emacs Lisp Package Archive
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (setq package-archives '(
+			   ("gnu" . "http://elpa.gnu.org/packages/")
+			   ("melpa" . "http://melpa.milkbox.net/packages/")
+			   ("marmalade" . "http://marmalade-repo.org/packages/")
+			   ))
+  (package-initialize)
+  )
+
+
+;; default load-path, for manually configuration
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ;; Ido, Interactively open files and buffers
