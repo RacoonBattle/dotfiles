@@ -16,6 +16,7 @@
 (defvar my-packages
   '(git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
 		    rich-minority smart-mode-line
+		    color-theme-solarized
 		    evil evil-leader
 		    dash
 		    smex
@@ -106,7 +107,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Solarized color theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
 (load-theme 'solarized-dark t)
 
 ;; No startup message
