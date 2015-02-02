@@ -255,6 +255,12 @@
 (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
 (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
+;; Enter specified state for some mode
+(loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
+			      (git-commit-mode . insert)
+			      (git-rebase-mode . emacs)
+			      (dired-mode . emacs))
+      do (evil-set-initial-state mode state))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugins
