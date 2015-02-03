@@ -17,8 +17,10 @@
   '(git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
 		    rich-minority smart-mode-line
 		    color-theme-solarized
+		    yasnippet
+		    auto-complete
+		    auto-complete-clang auto-complete-c-headers
 		    evil evil-leader
-		    auto-complete yasnippet
 		    dash
 		    smex
 		    undo-tree
@@ -97,6 +99,10 @@
 (setq ac-use-menu-map t)		; select candidates with C-n/C-p
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+
+;; Setup auto-complete-clang
+(require 'auto-complete-clang)
+(require 'auto-complete-clang-extension) ; fix clang's include file search path
 
 ;; Set hippie-expand for auto completion
 (global-set-key "\M- " 'hippie-expand)
