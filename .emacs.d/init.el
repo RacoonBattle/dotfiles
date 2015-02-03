@@ -18,6 +18,7 @@
 		    rich-minority smart-mode-line
 		    color-theme-solarized
 		    evil evil-leader
+		    auto-complete yasnippet
 		    dash
 		    smex
 		    undo-tree
@@ -81,6 +82,21 @@
 ;; Enable Undo Tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; Enable YASnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; Enable Auto-Complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+(setq ac-delay 0.5)			; delay showing ac prompt
+(setq ac-auto-show-menu 0.8)		; delay showing completion menu
+(setq ac-use-quick-help nil)		; not to use quick help
+(setq ac-use-menu-map t)		; select candidates with C-n/C-p
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; Set hippie-expand for auto completion
 (global-set-key "\M- " 'hippie-expand)
@@ -159,11 +175,9 @@
 (setq rm-excluded-modes
       '(" Guide"			;; guide-key mode
 	" hc"				;; hardcore mode
-	" AC"				;; auto-complete
 	" vl"				;; global visual line mode enabled
 	" Wrap"				;; shows up if visual-line-mode is enabled for that buffer
 	" Omit"				;; omit mode in dired
-	" yas"				;; yasnippet
 	" drag"				;; drag-stuff-mode
 	" VHl"				;; volatile highlights
 	" ctagsU"			;; ctags update
