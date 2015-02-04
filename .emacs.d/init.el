@@ -24,6 +24,8 @@
 		    dash
 		    smex
 		    undo-tree
+		    multi-term
+		    use-package
 		    markdown-mode))
 
 (unless package-archive-contents	; fetch the list of packages available
@@ -357,6 +359,34 @@
 (add-hook 'server-visit-hook 'server-remove-kill-buffer-hook)
 
 
+;; Use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
+
+;; When cursor is on edge, move to the other side, as in a toroidal space
+(setq windmove-wrap-around t )
+
+;; Setup multi-term
+(global-set-key (kbd "<C-next>") 'multi-term-next) ; C-PgUp/PgDn to siwtch mutli-term
+(global-set-key (kbd "<C-prior>") 'multi-term-prev)
+(when (require 'term nil t) ; only if term can be loaded..
+  (setq term-bind-key-alist ; let history behavior like bash read-line
+	(list (cons "C-c C-c"	'term-interrupt-subjob)
+	      (cons "C-c C-j"	'term-line-mode)
+	      (cons "C-c C-k"	'term-char-mode)
+	      (cons "M-."	'term-send-raw-meta)
+	      (cons "M-#"	'term-send-raw-meta)
+	      (cons "C-p"	'term-send-up)
+	      (cons "C-n"	'term-send-down)
+	      (cons "M-f"	'term-send-forward-word)
+	      (cons "M-b"	'term-send-backward-word)
+	      (cons "M-DEL"	'term-send-backward-kill-word)
+	      (cons "M-d"	'term-send-forward-kill-word)
+	      (cons "<C-left>"	'term-send-backward-word)
+	      (cons "<C-right>" 'term-send-forward-word)
+	      (cons "C-r"	'term-send-reverse-search-history)
+	      (cons "C-y"	'term-send-raw))))
+(add-hook 'term-mode-hook '(lambda () (linum-mode 0))) ; turn-off line number
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hotkeys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -378,5 +408,17 @@
 
 ;; Keybind with function keys
 (global-set-key (kbd "<f2>") 'save-buffer)
+(global-set-key (kbd "<f4>") '(lambda () ; split-window and open multi-term
+				(interactive)
+				(split-window-right)
+				(other-window 1)
+				(multi-term)
+				))
 (global-set-key (kbd "<f11>") 'linum-mode)
 (global-set-key (kbd "<f12>") 'ttypaste-mode)
+
+
+;; Keybinding to override all minor modes, provided by use-package
+(require 'bind-key)
+(bind-keys*
+ ("M-TAB" . other-window))
