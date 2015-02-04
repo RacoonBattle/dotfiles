@@ -74,6 +74,8 @@ alias ec='emacsclient -t -a ""'	# start emacs server if no daemon exit
 alias et='emacsclient -t'	  # open frame on the current terminal
 alias en='emacsclient -n'	  # send the file to the running emacs instance
 
+alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
 # colorful multi lines bash prompt ----------
 Color_Off='\e[0m'       # Text Reset
 
@@ -151,4 +153,3 @@ case $TERM in
 	*)
 		;;
 esac
-
