@@ -114,6 +114,17 @@ parse_git_branch()
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+get_default_ip()
+{
+	default_ip4=`hostname`
+	default_nic=$(ip route | awk '/default/{match($0,"dev ([^ ]+)",M); print M[1]; exit}')
+	[ -n "$default_nic" ] && {
+		default_ip4=$(ip addr show $default_nic \
+		| awk '/inet .*'"$flg"'/{match($0,"inet ([0-9.]+)",M); print M[1]}')
+	}
+	echo $default_ip4
+}
+
 # notes:
 #	if use color, then PS1 should be PS1="\[$COLOR\]", otherwise wrap will go wrong
 #	the basic multi lines should be PS1="\342\224\214\342\224\200\n\342\224\224\342\224\200\342\224\200>"
@@ -124,11 +135,11 @@ sq_color="\[$IBlue\]"
 # xx files yy totle
 DIR_INFO="\[$ICyan\]\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files\[$IYellow\] \$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')"
 
-LINE1="\[$sq_color\][$DIR_INFO\[$sq_color\]]-\[$Red\]\$(parse_git_branch)\[$sq_color\][\[$IGreen\]\w\[$sq_color\]]"
+LINE1="\[$sq_color\][$DIR_INFO\[$sq_color\]]-\[$Green\]\$(parse_git_branch)\[$sq_color\][\[$Blue\]\w\[$sq_color\]]"
 
-LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\h\[$BBlue\] $ \[$Color_Off\]"
+LINE2="\[$IWhite\]\u\[$White\]@\[$IWhite\]\$(get_default_ip)\[$BBlue\] $ \[$Color_Off\]"
 
-PS1="$sq_color\342\224\214\342\224\200$LINE1\n$sq_color\342\224\224\342\224\200\342\224\200>$LINE2"
+PS1="$sq_color\342\224\214\342\224\200$LINE1\n$sq_color╰-->$LINE2"
 PROMPT_COMMAND="$PROMPT_COMMAND ; echo "
 
 #- -----------------------------------
