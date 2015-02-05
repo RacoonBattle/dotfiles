@@ -120,7 +120,7 @@
 ;; Mimic Vim's superTab, try: completion; except: tab-to-tab-stop
 (defun my-indent-or-complete ()
   (interactive)
-  (if (looking-at "\\>")
+  (if (looking-at "\\_>")
       (hippie-expand nil)
     (tab-to-tab-stop)))
 (global-set-key (kbd "TAB") 'my-indent-or-complete)
