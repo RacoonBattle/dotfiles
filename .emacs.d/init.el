@@ -319,6 +319,15 @@
 			      (dired-mode . emacs))
       do (evil-set-initial-state mode state))
 
+;; Function to insert date
+(defun insert-date ()
+  "Insert current date yyyy-mm-dd."
+  (interactive)
+  (when (use-region-p)
+    (delete-region (region-beginning) (region-end) )
+    )
+  (insert (format-time-string "%Y-%m-%d"))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc
@@ -400,6 +409,7 @@
 ;; Keybind with evil-leader
 (evil-leader/set-key
   "," 'other-window
+  "dt"'insert-date
   "f" 'ido-find-file
   "b" 'ido-switch-buffer
   "k" 'kill-buffer
