@@ -174,7 +174,7 @@ DIR_INFO="$Color_Off\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files \$
 LINE1="$sq_color\342\224\214\342\224\200[$DIR_INFO$sq_color]-[$Blue\w$sq_color]"
 LINE2="$sq_color\n╰-->$White\u@\$(get_default_ip)$sq_color $ $Color_Off"
 
-PROMPT_COMMAND='export PS1="${LINE1}$(bash_git_prompt)${LINE2}"; echo'
+PROMPT_COMMAND=''"$PROMPT_COMMAND"'; export PS1="${LINE1}$(bash_git_prompt)${LINE2}"; echo'
 
 
 # ------ Change the window title of X terminals ----------------
@@ -185,7 +185,7 @@ case $TERM in
 		PATHTITLE='\[\ek\W\]\[\e\\\]'
 		# Use program name as title
 		PROGRAMTITLE='\[\ek\]\[\e\\\]'
-		PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+		PROMPT_COMMAND=''"$PROMPT_COMMAND"'; export PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"'
 		;;
 	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix)
 		# current dir
