@@ -131,7 +131,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Solarized color theme
-(load-theme 'solarized-dark t)
+(load-theme 'solarized t)
+;; Auto use light frames in GUI and dark frames in terminal
+(add-hook 'after-make-frame-functions
+	  (lambda (frame)
+	    (set-frame-parameter frame
+				 'background-mode
+				 (if (display-graphic-p frame) 'light 'dark))
+	    (enable-theme 'solarized)))
 
 ;; No startup message
 (setq inhibit-startup-message t)
@@ -146,7 +153,7 @@
 ;; GUI font
 (if (display-graphic-p)
     (progn
-      (set-frame-font "Terminus-15")
+      (set-frame-font "DejaVu Sans Mono-11.5")
       (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")))
 
 ;; Show column-number
