@@ -90,6 +90,9 @@
 ;; Enable YASnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)	; Remove Yasnippet's default tab key binding
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "RET") 'yas-expand)	; Set Yasnippet's key binding to RET
 
 ;; Enable Auto-Complete
 (require 'auto-complete-config)
@@ -98,8 +101,8 @@
 (setq ac-delay 0.5)			; delay showing ac prompt
 (setq ac-auto-show-menu 0.8)		; delay showing completion menu
 (setq ac-use-quick-help nil)		; not to use quick help
-(setq ac-use-menu-map t)		; select candidates with C-n/C-p
-(define-key ac-menu-map "\C-n" 'ac-next)
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next); select candidates with C-n/C-p
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; Setup auto-complete-clang
