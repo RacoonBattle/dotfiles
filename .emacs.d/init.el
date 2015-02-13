@@ -105,6 +105,11 @@
 (define-key ac-menu-map "\C-n" 'ac-next); select candidates with C-n/C-p
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
+(global-auto-complete-mode t)			; enable auto-complete globally
+(defun auto-complete-mode-maybe ()		; overwrite the function to avoid AC only work for ac-modes list
+  (unless (minibufferp (current-buffer))	; but except minibuffer
+        (auto-complete-mode 1)))
+
 ;; Setup auto-complete-clang
 (require 'auto-complete-clang)
 (require 'auto-complete-clang-extension) ; fix clang's include file search path
