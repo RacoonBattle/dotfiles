@@ -255,9 +255,14 @@
 	  (lambda ()
 	    (sh-electric-here-document-mode -1)))
 
-;; TCL script: use tab to indent
-(setq tcl-indent-level 8)
+;; TCL script
+(setq tcl-indent-level 8)		; use tab to indent
 (setq tcl-continued-indent-level 8)
+(add-hook 'tcl-mode-hook
+	  (lambda ()
+	    ;; overwrite tcl-indent-command
+	    (define-key tcl-mode-map "\t" 'my-indent-or-complete)
+	    ))
 
 ;; Org-mode
 (setq org-startup-indented t)
