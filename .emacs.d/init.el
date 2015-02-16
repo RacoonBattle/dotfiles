@@ -269,6 +269,11 @@
 (setq org-hide-leading-stars t)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done 'time)
+(add-hook 'org-mode-hook
+	  (lambda()
+	    ;; TAB to org-cycle in evil normal-state
+	    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
+	    ))
 
 ;; Mail with mutt
 (add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))
