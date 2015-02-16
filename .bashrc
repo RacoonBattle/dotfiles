@@ -130,11 +130,9 @@ bash_git_prompt()
 	git_prompt_symbol=
 	git_color=
 
-	# check if in git work tree
-	gitsym=`git symbolic-ref HEAD 2>/dev/null` || return
-
 	# get current branch
-	git_branch="${gitsym##refs/heads/}"
+	git_branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+	[ -n "$git_branch" ] || return
 
 	# check if have untracked files
 	git ls-files --exclude-standard --others 2>/dev/null \
