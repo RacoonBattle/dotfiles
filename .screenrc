@@ -50,9 +50,9 @@ escape ^Jj
 # alt-`: other window
 bindkey "^[`" other
 
-# alt-n/p next/previous window
-bindkey "^[n" next
-bindkey "^[p" prev
+# alt-shift-h/l next/previous window
+bindkey "^[L" next
+bindkey "^[H" prev
 
 # Get rid of screen 0
 bind c screen 1
