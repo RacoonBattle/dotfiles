@@ -35,5 +35,5 @@ fcitx &
 # battery alarm
 ~/.battery_alarm.sh &
 
-#awesome
-exec awesome -c ~/.config/awesome/rc.lua
+# start awesome WM with ConsoleKit support
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome
