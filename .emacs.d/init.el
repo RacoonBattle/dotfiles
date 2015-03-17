@@ -347,6 +347,9 @@
 			      (dired-mode . emacs))
       do (evil-set-initial-state mode state))
 
+;; Set default state into insert
+(setq evil-default-state 'insert)
+
 ;; Function to insert date
 (defun insert-date ()
   "Insert current date yyyy-mm-dd."
