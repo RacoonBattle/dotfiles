@@ -68,11 +68,10 @@ alias gw='git show'
 alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 
-alias e='emacs -nw'
-alias ec='emacsclient -t -a ""'	# start emacs server if no daemon exit
-alias et='emacsclient -t'	  # open frame on the current terminal
-alias en='emacsclient -n'	  # send the file to the running emacs instance
-alias vi=ec
+alias emacs='emacs -nw'
+alias em='emacs'
+alias e='emacsclient -t -a ""'	# start emacs server if no daemon exit
+alias vi=vim
 
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
