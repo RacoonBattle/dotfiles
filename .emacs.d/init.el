@@ -364,6 +364,36 @@
 ;; Misc
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Access X clipboard by xsel
+;; From https://stackoverflow.com/questions/64360/how-to-copy-text-from-emacs-to-another-application-on-linux/19625063#19625063
+
+(defun copy-to-x-clipboard ()
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (message "Yanked region to x-clipboard!")
+        (call-interactively 'clipboard-kill-ring-save)
+        )
+    (if (region-active-p)
+        (progn
+          (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+          (message "Yanked region to clipboard!")
+          (deactivate-mark))
+      (message "No region active; can't yank to clipboard!")))
+  )
+
+(defun paste-from-x-clipboard ()
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (clipboard-yank)
+        (message "graphics active")
+        )
+    (insert (shell-command-to-string "xsel -o -b"))
+    )
+  )
+
+
 ;; Mimic Vim's set paste
 ;; From http://stackoverflow.com/questions/18691973/is-there-a-set-paste-option-in-emacs-to-paste-paste-from-external-clipboard
 (defvar ttypaste-mode nil)
