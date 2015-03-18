@@ -479,14 +479,15 @@
 
 ;; Keybind with function keys
 (global-set-key (kbd "<f2>") 'save-buffer)
+(global-set-key (kbd "<f3>") 'linum-mode)
 (global-set-key (kbd "<f4>") '(lambda () ; split-window and open multi-term
 				(interactive)
 				(split-window-right)
 				(other-window 1)
 				(multi-term)
 				))
-(global-set-key (kbd "<f11>") 'linum-mode)
-(global-set-key (kbd "<f12>") 'ttypaste-mode)
+(global-set-key (kbd "<f11>") 'copy-to-x-clipboard)
+(global-set-key (kbd "<f12>") 'paste-from-x-clipboard)
 
 
 ;; Keybinding to override all minor modes, provided by use-package
