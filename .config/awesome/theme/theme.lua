@@ -76,8 +76,17 @@ theme.titlebar_maximized_button_normal_active = theme_dir .. "titlebar/maximized
 theme.titlebar_maximized_button_focus_active  = theme_dir .. "titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
--- theme.wallpaper = theme_dir .. "background.png"
-theme.wallpaper = os.getenv("HOME") .. "/.Wallpaper"
+wallpaper1 = os.getenv("HOME") .. "/.wallpaper"
+wallpaper2 = theme_dir .. "background.png"
+wallpaper3 = "/usr/share/awesome/themes/default/background.png"
+
+if awful.util.file_readable(wallpaper1) then
+    theme.wallpaper =  wallpaper1
+elseif awful.util.file_readable(wallpaper2) then
+    theme.wallpaper =  wallpaper2
+else
+    theme.wallpaper =  wallpaper3
+end
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = theme_dir .. "layouts/fairhw.png"
