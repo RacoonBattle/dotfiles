@@ -160,7 +160,7 @@
 ;; GUI font
 (if (display-graphic-p)
     (progn
-      (set-frame-font "DejaVu Sans Mono-11.5")
+      (set-frame-font "Terminus 14")
       (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")))
 
 ;; Show column-number
