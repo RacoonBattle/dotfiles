@@ -477,7 +477,7 @@
   "p" 'browse-url-of-file)
 
 ;; Keybind with global-set-key
-(global-set-key "\C-x\M-d" `insert-date)
+(global-set-key (kbd "C-c id") 'insert-date)
 (global-set-key (kbd "<f2>") 'save-buffer)
 (global-set-key (kbd "<f3>") 'linum-mode)
 (global-set-key (kbd "<f4>") '(lambda () ; split-window and open multi-term
