@@ -344,6 +344,7 @@
 (loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
 			      (git-commit-mode . insert)
 			      (git-rebase-mode . emacs)
+			      (undo-tree-visualizer-mode . emacs)
 			      (dired-mode . emacs))
       do (evil-set-initial-state mode state))
 
