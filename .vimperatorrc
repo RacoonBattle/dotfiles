@@ -1,5 +1,5 @@
 " No toolbars or menus by default
-set toolbars=none,tabs
+set toolbars=none,tabs,navigation
 
 " Focus content after a page has loaded
 set focuscontent
