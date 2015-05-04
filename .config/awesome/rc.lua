@@ -149,7 +149,32 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Battery
 batwidget = wibox.widget.textbox()
-vicious.register(batwidget, vicious.widgets.bat, "$2 $1", 10, "BAT0")
+vicious.register(batwidget, vicious.widgets.bat,
+    function (widget, args)
+	if args[1] == "⌁" then	-- Unknown, AC
+	    return ""
+	elseif args[1] == "↯" or args[1] == "+" then	-- Full or Charging
+	    return "" .. colwhi .. "Bat: " .. coldef .. colbwhi .. args[2] .. "% " .. "" .. coldef .. ""
+	else			-- Discharging
+	    if args[2] >= 75 then
+		colset = colbwhi
+	    elseif args[2] >= 50 and args[2] < 75 then
+		colset = colyel
+	    elseif args[2] >= 20 and args[2] < 50 then
+		colset = colred
+	    elseif args[2] >= 5 and args[2] < 20 then
+		colset = colred
+		naughty.notify({ title = "Battery Warning", text = "Battery low! "..args[2].."% left!\nBetter get some power.",
+			timeout = 2, position = "top_right", preset = naughty.config.presets.critical,})
+	    elseif args[2] < 5 then
+		colset = colred
+		naughty.notify({ title = "Battery Warning", text = "Battery low! "..args[2].."% left!\nForce to suspend.",
+			timeout = 5, position = "top_right", preset = naughty.config.presets.critical,})
+		awful.util.spawn_with_shell("sleep 7; sudo /usr/sbin/pm-suspend& slock")
+	    end
+	    return "" .. colwhi .. "BAT: " .. coldef .. colset .. args[2] .. "% " .. "(" .. args[3] .. ")" .. "" .. coldef .. ""
+	end
+    end, 10, "BAT0")
 
 -- Volume
 volwidget = wibox.widget.textbox()
