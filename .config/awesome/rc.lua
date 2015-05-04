@@ -19,6 +19,26 @@ vicious = require("vicious")
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
+-- COLOURS
+coldef  = "</span>"
+colblk  = "<span color='#1a1a1a'>"
+colred  = "<span color='#b23535'>"
+colgre  = "<span color='#60801f'>"
+colyel  = "<span color='#be6e00'>"
+colblu  = "<span color='#1f6080'>"
+colmag  = "<span color='#8f46b2'>"
+colcya  = "<span color='#73afb4'>"
+colwhi  = "<span color='#b2b2b2'>"
+colbblk = "<span color='#333333'>"
+colbred = "<span color='#ff4b4b'>"
+colbgre = "<span color='#9bcd32'>"
+colbyel = "<span color='#d79b1e'>"
+colbblu = "<span color='#329bcd'>"
+colbmag = "<span color='#cd64ff'>"
+colbcya = "<span color='#9bcdff'>"
+colbwhi = "<span color='#ffffff'>"
+
+
 -- Private naughty config
 naughty.config.defaults.timeout          = 8
 naughty.config.defaults.screen           = 1
@@ -133,7 +153,14 @@ vicious.register(batwidget, vicious.widgets.bat, "$2 $1", 10, "BAT0")
 
 -- Volume
 volwidget = wibox.widget.textbox()
-vicious.register(volwidget, vicious.widgets.volume, "$1$2", 1, "Master")
+    vicious.register(volwidget, vicious.widgets.volume,
+        function (widget, args)
+            if args[1] == 0 or args[2] == "♩" then
+                return "" .. colwhi .. "Vol: " .. coldef .. colbred .. "mute" .. coldef .. ""
+            else
+                return "" .. colwhi .. "Vol: " .. coldef .. colbwhi .. args[1] .. "% " .. coldef .. ""
+            end
+        end, 2, "Master" )
 
 -- Uptime
 uptimewidget = wibox.widget.textbox()
