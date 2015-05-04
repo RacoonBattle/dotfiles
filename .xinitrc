@@ -32,8 +32,5 @@ fcitx &
 # dropbox
 ~/.dropbox-dist/dropboxd &
 
-# battery alarm
-~/.battery_alarm.sh &
-
 # start awesome WM with ConsoleKit support
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome
