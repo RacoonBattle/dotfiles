@@ -137,24 +137,21 @@ vicious.register(volwidget, vicious.widgets.volume, "$1$2", 1, "Master")
 
 -- Uptime
 uptimewidget = wibox.widget.textbox()
-vicious.register(uptimewidget, vicious.widgets.uptime, "load: $4 | up: $1d, $2:$3", 2)
+vicious.register(uptimewidget, vicious.widgets.uptime, "up $1 days, $2:$3, load: $4", 2)
 
 -- Memory usage
 memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "mem: $1%", 2)
+vicious.register(memwidget, vicious.widgets.mem, "Mem: $1%", 2)
 
 -- Cpu usage
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "cpu: $1%", 2)
+vicious.register(cpuwidget, vicious.widgets.cpu, "CPU: $1%", 2)
 
--- CPU temperature
-local thermalwidget = wibox.widget.textbox()
-vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 2, { "coretemp.0", "core"} )
 -- }}}
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock(" %a %b %d, %H:%M ", 1)
+mytextclock = awful.widget.textclock("%a %b %d, %H:%M ", 1)
 
 calendar2 = require('calendar2')
 calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
@@ -245,21 +242,17 @@ for s = 1, screen.count() do
     right_layout:add(myspace)
     right_layout:add(myspace)
     right_layout:add(myspace)
+    right_layout:add(uptimewidget)
+    right_layout:add(myseperator)
     right_layout:add(memwidget)
     right_layout:add(myseperator)
     right_layout:add(cpuwidget)
-    right_layout:add(thermalwidget)
     right_layout:add(myseperator)
-    right_layout:add(uptimewidget)
+    right_layout:add(volwidget)
+    right_layout:add(batwidget)
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(myseperator)
     right_layout:add(mytextclock)
-    right_layout:add(myseperator)
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(myspace)
-    right_layout:add(volwidget)
-    right_layout:add(myspace)
-    right_layout:add(batwidget)
-    right_layout:add(myspace)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
