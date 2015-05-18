@@ -122,7 +122,7 @@
 (defun my-indent-or-complete ()
   (interactive)
   (if (looking-at "\\_>")
-      (hippie-expand nil)
+      (ac-start)
     (tab-to-tab-stop)))
 (global-set-key (kbd "TAB") 'my-indent-or-complete)
 
