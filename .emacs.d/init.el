@@ -17,7 +17,6 @@
   '(git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
 		    rich-minority smart-mode-line
 		    color-theme-solarized
-		    yasnippet
 		    auto-complete
 		    auto-complete-clang auto-complete-c-headers
 		    evil evil-leader
@@ -86,13 +85,6 @@
 ;; Enable Undo Tree
 (require 'undo-tree)
 (global-undo-tree-mode)
-
-;; Enable YASnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)	; Remove Yasnippet's default tab key binding
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "RET") 'yas-expand)	; Set Yasnippet's key binding to RET
 
 ;; Enable Auto-Complete
 (require 'auto-complete-config)
