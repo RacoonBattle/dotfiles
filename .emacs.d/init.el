@@ -90,8 +90,10 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+(setq ac-auto-start t)			; ac-start by default
 (setq ac-delay 0.1)			; delay showing ac prompt
 (setq ac-auto-show-menu 0.2)		; delay showing completion menu
+(global-set-key "\t" 'ac-start)	; use tab to force triger ac-start
 (setq ac-use-quick-help nil)		; not to use quick help
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next); select candidates with C-n/C-p
