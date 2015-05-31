@@ -25,5 +25,5 @@
 [branch "master"]
 	rebase = true
 [user]
-	email = charmont.chen@gmail.com
-	name = Charmont Chen
+	email = nzjachen@gmail.com
+	name = Jason Chen
