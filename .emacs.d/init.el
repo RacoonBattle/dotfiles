@@ -303,6 +303,9 @@
 	    (define-key evil-normal-state-map (kbd "TAB") 'markdown-cycle)
 	    ))
 
+;; highlight trailing whitespace
+(setq-default show-trailing-whitespace t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil
