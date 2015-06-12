@@ -115,6 +115,7 @@ bind pager gg top
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
+bind index,pager \CL sidebar-open
 bind index <space> collapse-thread
 bind index <Esc><space> collapse-all
 
