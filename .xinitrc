@@ -20,8 +20,7 @@ xset dpms 0 0 0
 
 # sync all clipboards
 # work around firefox (gtk program) cannot access primary clipboard by Shift-Insert
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
+parcellite &
 
 #fcitx
 export XMODIFIERS="@im=fcitx"
