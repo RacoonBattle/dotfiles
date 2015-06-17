@@ -3,6 +3,13 @@
 
 !--------------------------- urxvt -------------------------------
 
+! Extensions
+! default path is /usr/lib64/urxvt/perl
+! after 9.14 the path includes $HOME/.urxvt/ext
+! can modify by setting URXVT_PERL_LIB environment variable
+! wget https://github.com/muennich/urxvt-perls/raw/master/clipboard -O ~/.urxvt/ext/clipboard
+URxvt.perl-ext-common:  default,matcher,clipboard
+
 ! general
 URxvt.preeditType:Root
 URxvt.cursorBlink:True
@@ -20,11 +27,16 @@ URxvt.font:xft:Terminus:pixelsize=20,\
 xft:AR PL UMing TW:pixelsize=18:antialias=false
 
 ! URL
-URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 URxvt.colorUL: #4682B4
 
+! copy/paste with Ctrl+Shift+c/v
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
 
 !----------------- Solarized color scheme -----------------------
 !
