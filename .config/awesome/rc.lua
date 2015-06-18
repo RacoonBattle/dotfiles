@@ -372,6 +372,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
     awful.key({ modkey }, "e", function () awful.util.spawn("pcmanfm") end),
     awful.key({ modkey, "Mod1" }, "n", naughty.toggle),
+    awful.key({ modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("amixer set Master toggle") end),
 
     awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "q", function () awful.screen.focus_relative( 1) end),
