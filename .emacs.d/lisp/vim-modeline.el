@@ -47,8 +47,8 @@
     ("nonu" . vim-modeline/nonumber)
     ("expandtab" . vim-modeline/expandtab)
     ("et" . vim-modeline/expandtab)
-    ("noexpandtab" . vim-modeline/expandtab)
-    ("noet" . vim-modeline/expandtab))
+    ("noexpandtab" . vim-modeline/noexpandtab)
+    ("noet" . vim-modeline/noexpandtab))
   "Alist of VIM option names and handlers")
 
 ;;;
