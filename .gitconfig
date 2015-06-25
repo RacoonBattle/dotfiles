@@ -12,9 +12,9 @@
 	ri = rebase -i
 	st = status
 	sb = show-branch
-	lo = log --pretty=format:"%s"
-	ls = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%an]\\ %Creset%s" --date=short
-	ll = log --pretty=format:"%n\\*\\ %C(yellow)%H%n...\\ %Cgreen%ad\\ %Cblue%an\\ <%ae>%n...%Cred%d\\ %n%w(76,4,4)%B" --decorate --date=short --stat
+	ls = log --pretty=format:"%s"
+	lo = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad\\ %Cblue[%an]\\ %Creset%s" --date=short
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [diff]
 	tool = vimdiff
