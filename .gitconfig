@@ -21,9 +21,9 @@
 [merge]
 	tool = vimdiff
 [branch]
-	autosetuprebase = always
+	autosetuprebase = never
 [branch "master"]
-	rebase = true
+	rebase = false
 [user]
 	email = nzjachen@gmail.com
 	name = Jason Chen
