@@ -362,6 +362,28 @@
 ;; Misc
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Enable mouse support for emacs-nox
+;; only non-modified single clicks are supported
+;; Can use Shift-mouse for workaround
+(defun enable-mouse-in-terminal (&optional frame)
+  (unless window-system
+    (require 'mouse)
+    (xterm-mouse-mode t)
+    (setq select-active-regions nil)
+    (setq mouse-drag-copy-region t)
+    (global-set-key [mouse-2] 'mouse-yank-at-click)
+    (global-set-key [mouse-4] '(lambda ()
+				 (interactive)
+				 (scroll-down 1)))
+    (global-set-key [mouse-5] '(lambda ()
+				 (interactive)
+				 (scroll-up 1)))
+    (defun track-mouse (e))
+    (setq mouse-sel-mode t)
+    ))
+(enable-mouse-in-terminal)
+(add-hook 'after-make-frame-functions 'enable-mouse-in-terminal) ; for emacsclient
+
 ;; Access X clipboard by xsel
 ;; From https://stackoverflow.com/questions/64360/how-to-copy-text-from-emacs-to-another-application-on-linux/19625063#19625063
 
