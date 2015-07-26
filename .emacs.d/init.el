@@ -391,6 +391,34 @@
     )
   )
 
+;; Use xsel to copy/paste in emacs-nox
+;; From https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
+(unless window-system
+  (when (getenv "DISPLAY")
+    (defun xsel-cut-function (text &optional push)
+      (with-temp-buffer
+	(insert text)
+	(call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+    (defun xsel-paste-function()
+      (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+	(unless (string= (car kill-ring) xsel-output)
+	  xsel-output )))
+    (setq interprogram-cut-function 'xsel-cut-function)
+    (setq interprogram-paste-function 'xsel-paste-function)
+    (defun toggle-xsel-copy-paste()
+      "Toggle if use xsel as default clipboard"
+      (interactive)
+      (if (eq interprogram-cut-function nil)
+	  (progn
+	    (setq interprogram-cut-function 'xsel-cut-function)
+	    (setq interprogram-paste-function 'xsel-paste-function)
+	    (message "Using X PRIMARY selection to copy/paste by xsel"))
+	(progn
+	  (setq interprogram-cut-function nil)
+	  (setq interprogram-paste-function nil)
+	  (message "Using Emacs internal clipboard to copy/paste"))
+	))
+    ))
 
 ;; Mimic Vim's set paste
 ;; From http://stackoverflow.com/questions/18691973/is-there-a-set-paste-option-in-emacs-to-paste-paste-from-external-clipboard
@@ -484,7 +512,7 @@
 				(other-window 1)
 				(multi-term)
 				))
-(global-set-key (kbd "<f11>") 'copy-to-x-clipboard)
+(global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
 (global-set-key (kbd "<f12>") 'paste-from-x-clipboard)
 
 
