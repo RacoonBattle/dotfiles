@@ -521,3 +521,6 @@
 (require 'bind-key)
 (bind-keys*
  ("M-TAB" . other-window))
+
+;; CUA mote, redefine C-x, C-c, C-v, and C-z
+(cua-mode t)
