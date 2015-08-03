@@ -426,6 +426,7 @@
 (add-to-list 'minor-mode-alist '(ttypaste-mode " Paste"))
 (defun ttypaste-mode ()
   (interactive)
+  (message "Start ttypaste-mode")
   (let ((buf (current-buffer))
 	(ttypaste-mode t))
     (with-temp-buffer
@@ -513,7 +514,7 @@
 				(multi-term)
 				))
 (global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
-(global-set-key (kbd "<f12>") 'paste-from-x-clipboard)
+(global-set-key (kbd "<f12>") 'ttypaste-mode)
 
 
 ;; Keybinding to override all minor modes, provided by use-package
