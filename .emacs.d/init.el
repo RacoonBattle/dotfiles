@@ -144,17 +144,14 @@
 ;; No startup message
 (setq inhibit-startup-message t)
 
-;; No menu-bar, tool-bar, scroll-bar
-(menu-bar-mode -1)
-(if (display-graphic-p)
-    (progn
-      (tool-bar-mode -1)
-      (scroll-bar-mode -1)))
+;; No menu-bar in terminal
+(unless (display-graphic-p)
+  (menu-bar-mode -1))
 
 ;; GUI font
 (if (display-graphic-p)
     (progn
-      (set-frame-font "Terminus 14")
+      (set-frame-font "Dejavu Sans Mono 12")
       (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")))
 
 ;; Show column-number
@@ -175,7 +172,7 @@
   (if (getenv "STY")	; check whether in GNU screen
       (send-string-to-terminal (concat "\033k\033\134\033k" "Emacs("(buffer-name)")" "\033\134"))
     (send-string-to-terminal (concat "\033]2; " "Emacs("(buffer-name)")" "\007"))))
-(add-hook 'post-command-hook 'update-title)
+(add-hook 'after-make-frame-functions-hook 'update-title)
 
 
 ;; Smart mode-line
