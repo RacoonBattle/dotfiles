@@ -139,7 +139,10 @@
 
 (if window-system		   	; for emacs startup
     (enable-theme 'adwaita)
-  (enable-theme 'solarized))
+  (progn
+    (set-terminal-parameter nil 'background-mode 'dark)
+    (set-frame-parameter nil 'background-mode 'dark)
+      (enable-theme 'solarized)))
 
 (add-hook 'after-make-frame-functions	; for emacsclient
 	  (lambda (frame)

@@ -73,6 +73,7 @@ alias em='emacs'
 alias e='emacsclient -t -a ""'	# start emacs server if no daemon exit
 alias vi=vim
 
+alias ssh="TERM=xterm-256color ssh"
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 
