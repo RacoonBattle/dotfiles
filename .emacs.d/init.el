@@ -131,15 +131,28 @@
 ;; Interface
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Solarized color theme
+;; Color theme: Auto use light frames in GUI and dark frames in terminal
 (load-theme 'solarized t)
-;; Auto use light frames in GUI and dark frames in terminal
-(add-hook 'after-make-frame-functions
+(load-theme 'adwaita t)
+(disable-theme 'solarized)
+(disable-theme 'adwaita)
+
+(if window-system		   	; for emacs startup
+    (enable-theme 'adwaita)
+  (enable-theme 'solarized))
+
+(add-hook 'after-make-frame-functions	; for emacsclient
 	  (lambda (frame)
-	    (set-frame-parameter frame
-				 'background-mode
-				 (if (display-graphic-p frame) 'light 'dark))
-	    (enable-theme 'solarized)))
+	    (select-frame frame)
+	    (if (display-graphic-p frame)
+		(progn
+		  (disable-theme 'solarized)
+		  (enable-theme 'adwaita))
+	      (progn
+		(disable-theme 'adwaita)
+		(set-terminal-parameter frame 'background-mode 'dark)
+		(set-frame-parameter frame 'background-mode 'dark)
+		(enable-theme 'solarized)))))
 
 ;; No startup message
 (setq inhibit-startup-message t)
