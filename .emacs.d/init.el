@@ -14,18 +14,18 @@
 
 ;; Let ELPA automatically install packages in the list
 (defvar my-packages
-  '(git-commit-mode git-rebase-mode gitconfig-mode gitignore-mode
-		    rich-minority smart-mode-line
-		    color-theme-solarized
-		    auto-complete
-		    auto-complete-clang auto-complete-c-headers
-		    evil evil-leader
-		    dash
-		    smex
-		    undo-tree
-		    multi-term
-		    use-package
-		    markdown-mode))
+  '(magit git-commit
+    rich-minority smart-mode-line
+    color-theme-solarized
+    auto-complete
+    auto-complete-clang auto-complete-c-headers
+    evil evil-leader
+    dash
+    smex
+    undo-tree
+    multi-term
+    use-package
+    markdown-mode))
 
 (unless package-archive-contents	; fetch the list of packages available
   (package-refresh-contents))
@@ -71,6 +71,11 @@
 
 ;; Enable Ido - Interactively open files and buffers
 (ido-mode 1)
+
+;; Git modes
+(require 'git-commit)
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Enable Smex - a M-x enhancement for Emacs
 (require 'smex)
