@@ -324,6 +324,15 @@
 ;; highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
 
+;; Spell Checker
+(defun turn-spell-checking-on ()
+  "Turn speck-mode or flyspell-mode on."
+  ;; (speck-mode 1)
+  (flyspell-mode 1)
+  )
+
+(add-hook 'text-mode-hook 'turn-spell-checking-on)
+(add-hook 'message-mode-hook 'turn-spell-checking-on)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil
