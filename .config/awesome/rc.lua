@@ -130,7 +130,8 @@ mymainmenu = awful.menu({ items = {
 	{ "Terminal", terminal },
 	{ "Firefox", "firefox"},
 	{ "PCManFM", "pcmanfm" },
-	{ "ranger", terminal.." -e ranger" },
+	{ "Ranger", terminal.." -e ranger" },
+	{ "Emacs", "emacs" },
 	{ "Gvim", "gvim" },
 	{ "Audacious", "audacious"},
 	{ "AlsaMixer",terminal.." -e alsamixer" },
@@ -371,6 +372,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
     awful.key({ modkey }, "e", function () awful.util.spawn("pcmanfm") end),
+    awful.key({ modkey }, "w", function () awful.util.spawn("emacs") end),
     awful.key({ modkey, "Mod1" }, "n", naughty.toggle),
     awful.key({ modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("amixer set Master toggle") end),
 
