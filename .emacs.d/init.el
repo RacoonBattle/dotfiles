@@ -249,10 +249,6 @@
 ;; Programming & Editing
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Treat underscore as word character
-(add-hook 'text-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-
 ;; Automatically indent new line according to its context
 (electric-indent-mode 1)
 
