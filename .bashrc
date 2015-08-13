@@ -67,6 +67,7 @@ alias gw='git show'
 
 alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
+alias grep='grep --color'
 
 alias emacs='emacs -nw'
 alias em='emacs'
