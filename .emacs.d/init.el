@@ -123,6 +123,11 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; Jump ring
+(global-set-key (kbd "C-o") 'recent-jump-jump-backward)
+(global-set-key (kbd "M-o") 'recent-jump-jump-forward)
+(require 'recent-jump)
+
 ;; Enable Auto-Complete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
