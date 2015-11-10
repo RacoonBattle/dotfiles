@@ -20,8 +20,8 @@
     auto-complete
     auto-complete-clang auto-complete-c-headers
     evil evil-leader
+    helm helm-swoop
     dash
-    smex
     undo-tree
     multi-term
     use-package
@@ -69,19 +69,51 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; Enable Ido - Interactively open files and buffers
-(ido-mode 1)
+;; Helm - incremental completion and selection narrowing framework for Emacs.
+;; refer to http://tuhdo.github.io/helm-intro.html
+
+(require 'helm)
+(require 'helm-swoop)
+(require 'helm-config)
+
+(global-set-key (kbd "C-c h") 'helm-command-prefix) ; change default helm prefix
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c o") 'helm-swoop)
+(global-set-key (kbd "C-c m") 'helm-semantic-or-imenu)
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+(helm-autoresize-mode 1)                      ; resize its buffer automatically to fit with the number of candidates
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-M-x-fuzzy-match                  t ; fuzzy match candidates
+      helm-buffers-fuzzy-matching           t
+      helm-locate-fuzzy-match               t
+      helm-recentf-fuzzy-match              t
+      helm-semantic-fuzzy-match             t
+      helm-imenu-fuzzy-match                t
+      helm-ff-file-name-history-use-recentf t)
+
+(helm-mode 1)
 
 ;; Git modes
 (require 'git-commit)
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
-
-;; Enable Smex - a M-x enhancement for Emacs
-(require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Read file's vim modeline to set Emacs's file local variables
 (require 'vim-modeline)
@@ -223,6 +255,7 @@
 	" GG"				;; ggtags
 	" ElDoc"			;; eldoc
 	" hl-highlight"			;; hl-anything
+	" Helm"
 	))
 
 
@@ -521,8 +554,6 @@
 ;; Keybind with evil-leader
 (evil-leader/set-key
   "," 'other-window
-  "f" 'ido-find-file
-  "b" 'ido-switch-buffer
   "k" 'kill-buffer
   "w" 'save-buffer
   "p" 'browse-url-of-file)
