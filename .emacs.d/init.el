@@ -556,6 +556,10 @@
 (define-key input-decode-map "\e\eOD" [(meta left)])
 (define-key input-decode-map "\e\eOC" [(meta right)])
 
+;; Mark function
+(global-unset-key (kbd "C-SPC"))
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+
 ;; Keybind with evil-leader
 (evil-leader/set-key
   "," 'other-window
