@@ -86,13 +86,13 @@ DoubleSwitchKey=False
 # Interval of Two Key Input
 TimeInterval=250
 # Hotkey of Switching Virtual Keyboard
-VKSwitchKey=CTRL_ALT_B
+VKSwitchKey=
 # Hotkey of Switching Remind Mode
 RemindSwitchKey=
 # Hotkey of Switching Full Width Character Mode
 FullWidthSwitchKey=SHIFT_SPACE
 # Hotkey of Switch Full Width Punc Mode
-PuncSwitchKey=ALT_SPACE
+PuncSwitchKey=SHIFT_ALT_SPACE
 # Hotkey of Going Prev Page
 PrevPageKey=-
 # Hotkey of Going Next Page
@@ -100,7 +100,7 @@ NextPageKey==
 # Hotkey to Choose Second and Third Candidate Word
 SecondThirdCandWordKey=SHIFT
 # Hotkey of Saving All Config and Input History
-SaveAllKey=CTRL_ALT_S
+SaveAllKey=
 # Hotkey of Switch Embeded Preedit
-SwitchPreedit=CTRL_ALT_P
+SwitchPreedit=
 
