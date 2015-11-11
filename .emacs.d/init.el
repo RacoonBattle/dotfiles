@@ -82,19 +82,17 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c o") 'helm-swoop)
+(global-set-key (kbd "C-s") 'helm-swoop) ; overwrite default isearch
+(global-set-key (kbd "C-r") 'helm-resume); call back previous helm session
 (global-set-key (kbd "C-c m") 'helm-semantic-or-imenu)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
-(global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+(global-set-key (kbd "C-c SPC") 'helm-all-mark-rings)
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
+(define-key helm-map (kbd "C-r") 'helm-previous-line) ; Move up and down like isearch
+(define-key helm-map (kbd "C-s") 'helm-next-line)
 (helm-autoresize-mode 1)                      ; resize its buffer automatically to fit with the number of candidates
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
