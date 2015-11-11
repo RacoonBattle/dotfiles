@@ -573,8 +573,11 @@
 				(interactive)
 				(split-window-right)
 				(other-window 1)
-				(multi-term)
-				))
+				(multi-term)))
+(global-set-key (kbd "<f9>") '(lambda () ; Recursive grep in directory
+				(interactive)
+				(let ((current-prefix-arg 't))
+				  (call-interactively 'helm-do-grep))))
 (global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
 (global-set-key (kbd "<f12>") 'ttypaste-mode)
 
