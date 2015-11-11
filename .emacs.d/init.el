@@ -20,7 +20,7 @@
     auto-complete
     auto-complete-clang auto-complete-c-headers
     evil evil-leader
-    helm helm-swoop
+    helm helm-swoop helm-projectile
     dash
     undo-tree
     multi-term
@@ -106,6 +106,9 @@
       helm-imenu-fuzzy-match                t
       helm-ff-file-name-history-use-recentf t)
 
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 (helm-mode 1)
 
 ;; Git modes
@@ -578,6 +581,7 @@
 				(interactive)
 				(let ((current-prefix-arg 't))
 				  (call-interactively 'helm-do-grep))))
+(global-set-key (kbd "<f10>") 'helm-projectile-find-file)
 (global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
 (global-set-key (kbd "<f12>") 'ttypaste-mode)
 
