@@ -93,6 +93,8 @@
 
 (define-key helm-map (kbd "C-r") 'helm-previous-line) ; Move up and down like isearch
 (define-key helm-map (kbd "C-s") 'helm-next-line)
+(define-key helm-map (kbd "C-l") 'helm-execute-persistent-action) ; to jump to the search result without colse the helm buffer
+
 (helm-autoresize-mode 1)                      ; resize its buffer automatically to fit with the number of candidates
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
