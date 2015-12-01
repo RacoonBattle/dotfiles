@@ -302,6 +302,9 @@
 ;; Shell-script: use tab to indent
 (setq sh-basic-offset 8)
 (setq sh-indentation 8)
+(add-hook 'sh-mode-hook
+	  (lambda()
+	    (setq evil-shift-width sh-indentation)))
 
 ;; Disable bash here document completion, when typing <<
 (add-hook 'sh-mode-hook
