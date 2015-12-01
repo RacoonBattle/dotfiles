@@ -390,6 +390,9 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 
+;; Treat underscore as part of the word when searching
+(setq-default evil-symbol-word-search 'symbol)
+
 ;; Remove all keybindings from insert-state keymap, use emacs-state when editing
 (setcdr evil-insert-state-map nil)
 
