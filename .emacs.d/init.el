@@ -45,6 +45,9 @@
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Enable cua-mode by default
+(cua-mode t)
+
 ;; Wrap long lines
 (global-visual-line-mode)
 
