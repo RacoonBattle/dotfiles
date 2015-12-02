@@ -69,9 +69,8 @@ alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 alias grep='grep --color'
 
-alias emacs='emacs -nw'
-alias em='emacs'
-alias e='emacsclient -t -a ""'	# start emacs server if no daemon exit
+alias e='emacsclient -t -a ""'
+alias em='emacsclient -s gui -n'
 alias vi=vim
 
 alias ssh="TERM=xterm-256color ssh"
