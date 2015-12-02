@@ -42,6 +42,28 @@
 ;; General
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Start seperate daemons for gui and tty, and init related setting
+(require 'server)
+(if window-system
+    (progn
+      (set-scroll-bar-mode 'right)
+      (set-frame-font "Dejavu Sans Mono 11")
+      (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")
+      (global-set-key (kbd "C-x C-c") 'my-done)
+      (setq server-name "gui"))
+  (progn
+    (menu-bar-mode -1)
+    (setq server-name "server")))
+
+(or (server-running-p)
+    (server-start))
+
+;; Avoid C-x C-c close the gui instance and daemon
+(defun my-done ()
+  "Exit server buffers and hide the main Emacs window"
+  (interactive)
+  (server-edit)
+  (make-frame-invisible nil t))
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -207,16 +229,6 @@
 
 ;; No startup message
 (setq inhibit-startup-message t)
-
-;; No menu-bar in terminal
-(unless (display-graphic-p)
-  (menu-bar-mode -1))
-
-;; GUI font
-(if (display-graphic-p)
-    (progn
-      (set-frame-font "Dejavu Sans Mono 12")
-      (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")))
 
 ;; Show column-number
 (setq column-number-mode t)
