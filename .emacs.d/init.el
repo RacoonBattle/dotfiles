@@ -65,7 +65,7 @@
 (cua-mode t)
 
 ;; Wrap long lines
-(global-visual-line-mode)
+(global-visual-line-mode 0)
 
 ;; Remember last edit position
 (setq save-place-file "~/.emacs.d/saveplace")
