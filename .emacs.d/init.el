@@ -42,28 +42,22 @@
 ;; General
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Start seperate daemons for gui and tty, and init related setting
+;; Start seperate daemons for gui and tty
 (require 'server)
 (if window-system
     (progn
-      (set-scroll-bar-mode 'right)
-      (set-frame-font "Dejavu Sans Mono 11")
-      (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12")
-      (global-set-key (kbd "C-x C-c") 'my-done)
-      (setq server-name "gui"))
-  (progn
-    (menu-bar-mode -1)
-    (setq server-name "server")))
+      (setq server-name "gui")
+      (unless (server-running-p)
+	(server-start)
+	(global-set-key (kbd "C-x C-c") '(lambda () ;Avoid C-x C-c close the gui daemon
+					   (interactive)
+					   (server-edit)
+					   (make-frame-invisible nil t)))))
+      (progn
+	(setq server-name "server")
+	(unless (server-running-p)
+	  (server-start))))
 
-(or (server-running-p)
-    (server-start))
-
-;; Avoid C-x C-c close the gui instance and daemon
-(defun my-done ()
-  "Exit server buffers and hide the main Emacs window"
-  (interactive)
-  (server-edit)
-  (make-frame-invisible nil t))
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -226,6 +220,18 @@
 		(set-terminal-parameter frame 'background-mode 'dark)
 		(set-frame-parameter frame 'background-mode 'dark)
 		(enable-theme 'solarized)))))
+
+;; No scroll bar
+(set-scroll-bar-mode nil)
+
+;; GUI font
+(if window-system
+    (set-frame-font "Dejavu Sans Mono 11")
+    (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12"))
+
+;; No menu bar in tty
+(unless window-system
+  (menu-bar-mode -1))
 
 ;; No startup message
 (setq inhibit-startup-message t)
