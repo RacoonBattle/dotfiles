@@ -230,8 +230,14 @@
 
 ;; GUI font
 (if window-system
-    (set-frame-font "Dejavu Sans Mono 11")
-    (set-fontset-font "fontset-default" 'han "AR PL UMing TW-12"))
+    (progn
+      (set-face-attribute ; Setting English Font
+       'default nil :font "Dejavu Sans Mono 12")
+      (dolist (charset '(kana han symbol cjk-misc bopomofo)) ;; Chinese Font
+	(set-fontset-font (frame-parameter nil 'font)
+			  charset
+			  (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))))
+
 
 ;; No menu bar in tty
 (unless window-system
