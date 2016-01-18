@@ -374,6 +374,25 @@
 		  (add-to-list 'ac-stop-words
 			       (concat "<" (car template))))))
 
+;; Org Capture
+(global-set-key "\C-cc" 'org-capture)
+(setq org-directory "~/Dropbox/Personal/org")
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+datetree (concat org-directory "/daily.org"))
+	 "* TODO %?\n")
+	("l" "Long Todo" entry (file+headline (concat org-directory "/long-to-do.org") "Long Todo")
+	 "* %?\nAdded: %U\n")
+	("d" "Daily" entry (file+datetree (concat org-directory "/daily.org"))
+	 "* %?\n")
+	("n" "Notes, Ideas, Topics" entry (file (concat org-directory "/notes.org"))
+	 "* %?\nAdded: %U")
+	("s" "Scratch" plain (file "~/Dropbox/scratch.org")
+	"* %?\n")
+	("p" "Pastebin" plain (file "~/Dropbox/scratch.org")
+	 "* %U\n#+BEGIN_SRC\n%x%?\n#+END_SRC")
+	))
+
+
 ;; Mail with mutt
 (add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))
 (setq mail-header-separator "")			; for M-q and auto-fill to work correctly
@@ -642,7 +661,7 @@
 ;; Keybind with global-set-key
 (global-set-key (kbd "C-c id") 'insert-date)
 (global-set-key (kbd "<f2>") 'save-buffer)
-(global-set-key (kbd "<f3>") 'linum-mode)
+(global-set-key (kbd "<f3>") 'org-capture)
 (global-set-key (kbd "<f4>") '(lambda () ; split-window and open multi-term
 				(interactive)
 				(split-window-right)
