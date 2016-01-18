@@ -357,6 +357,8 @@
 	  (lambda()
 	    ;; TAB to org-cycle in evil normal-state
 	    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
+	    ;; Auto-indent text content
+	    (local-set-key (kbd "RET") 'newline-and-indent)
 	    ))
 
 ;; Mail with mutt
