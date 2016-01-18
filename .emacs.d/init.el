@@ -19,6 +19,7 @@
     color-theme-solarized
     auto-complete
     auto-complete-clang auto-complete-c-headers
+    org-ac
     evil evil-leader
     helm helm-swoop helm-projectile
     dash
@@ -171,6 +172,9 @@
 (defun auto-complete-mode-maybe ()		; overwrite the function to avoid AC only work for ac-modes list
   (unless (minibufferp (current-buffer))	; but except minibuffer
         (auto-complete-mode 1)))
+
+(require 'org-ac)			;  auto-complete for org-mode
+(org-ac/config-default)
 
 ;; Setup auto-complete-clang
 (require 'auto-complete-clang)
@@ -364,7 +368,11 @@
 	    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
 	    ;; Auto-indent text content
 	    (local-set-key (kbd "RET") 'newline-and-indent)
-	    ))
+	    ;; avoid competing with org-mode templates with '<s'.
+	    (make-local-variable 'ac-stop-words)
+	    (loop for template in org-structure-template-alist do
+		  (add-to-list 'ac-stop-words
+			       (concat "<" (car template))))))
 
 ;; Mail with mutt
 (add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))
