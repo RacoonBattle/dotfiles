@@ -349,6 +349,7 @@
 	    ))
 
 ;; Org-mode
+(setq org-startup-truncated nil); wraps the lines in org-mode
 (setq org-startup-indented t)
 (setq org-hide-leading-stars t)
 (define-key global-map "\C-ca" 'org-agenda)
