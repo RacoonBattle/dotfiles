@@ -192,8 +192,12 @@
   (if (looking-at "\\_>")
       (ac-start)
     (tab-to-tab-stop)))
-(global-set-key (kbd "TAB") 'my-indent-or-complete)
+(defun enable-my-super-tab ()
+  (global-set-key (kbd "TAB") 'my-indent-or-complete))
 
+(add-hook 'fundamental-mode-hook 'enable-my-super-tab)
+(add-hook 'prog-mode-hook 'enable-my-super-tab)
+(add-hook 'text-mode-hook 'enable-my-super-tab)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Interface
