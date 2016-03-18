@@ -19,7 +19,6 @@
     color-theme-solarized
     auto-complete
     auto-complete-clang auto-complete-c-headers
-    org-ac
     evil evil-leader
     helm helm-swoop helm-projectile
     dash
@@ -176,8 +175,6 @@
   (unless (minibufferp (current-buffer))	; but except minibuffer
         (auto-complete-mode 1)))
 
-(require 'org-ac)			;  auto-complete for org-mode
-(org-ac/config-default)
 
 ;; Setup auto-complete-clang
 (require 'auto-complete-clang)
