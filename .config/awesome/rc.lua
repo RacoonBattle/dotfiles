@@ -293,6 +293,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(myspace)
+    right_layout:add(volwidget)
     right_layout:add(batwidget)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(myseperator)
@@ -632,5 +633,4 @@ function run_once(prg,arg_string,pname,screen)
     end
 end
 
-run_once("volumeicon")
 run_once("nm-applet")
