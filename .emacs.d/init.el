@@ -106,7 +106,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c s") 'helm-swoop)
 (global-set-key (kbd "C-c r") 'helm-resume)
-(global-set-key (kbd "C-c /") 'helm-do-grep)
+(global-set-key (kbd "C-c /") 'helm-grep-do-git-grep)
 (global-set-key (kbd "C-c m") 'helm-semantic-or-imenu)
 (global-set-key (kbd "C-c j") 'helm-all-mark-rings) ; help jump back in mark rings
 
@@ -667,7 +667,7 @@
 (global-set-key (kbd "<f9>") '(lambda () ; Recursive grep in directory
 				(interactive)
 				(let ((current-prefix-arg 't))
-				  (call-interactively 'helm-do-grep))))
+				  (call-interactively 'helm-grep-do-git-grep))))
 (global-set-key (kbd "<f10>") 'helm-projectile-find-file)
 (global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
 (global-set-key (kbd "<f12>") 'ttypaste-mode)
