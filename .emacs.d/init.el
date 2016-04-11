@@ -104,14 +104,11 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-s") 'helm-swoop) ; overwrite default isearch
-(global-set-key (kbd "C-r") 'helm-swoop) ; overwrite default isearch
-(global-set-key (kbd "C-c s") 'helm-multi-swoop-all)
+(global-set-key (kbd "C-c s") 'helm-swoop)
+(global-set-key (kbd "C-c r") 'helm-resume)
 (global-set-key (kbd "C-c /") 'helm-do-grep)
-(global-set-key (kbd "C-c r") 'helm-resume); call back previous helm session
-(global-set-key (kbd "M-r") 'helm-resume)
 (global-set-key (kbd "C-c m") 'helm-semantic-or-imenu)
-(global-set-key (kbd "C-c SPC") 'helm-all-mark-rings)
+(global-set-key (kbd "C-c j") 'helm-all-mark-rings) ; help jump back in mark rings
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
