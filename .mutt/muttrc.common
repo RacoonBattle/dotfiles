@@ -1,56 +1,52 @@
-# --------------------- Account Setting ----------------------------
-source ~/.muttrc-account
+# MIME alternative
+unalternative_order *
+alternative_order text/html text/plain
 
-# ------------------------- Send ------------------------------------
-set sendmail="/usr/bin/msmtp"
-set copy=yes	# save outgoing messages to $record
+# Ignoring (weeding) unwanted message headers
+ignore *
+unignore from date subject to cc
+unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
+unignore posted-to:
 
-# --------------------- Retrieval -----------------------------------
-set mbox_type=MailDir
-set folder=~/Mail
-set spoolfile="+INBOX"
-set postponed="+Draft"
-set record="+Sent"
-	# This is meant as the primary method for saving a copy of your
-	# messages, but another way to do this is using the "my_hdr"
-	# command to create a "Bcc:" field with your email address in it.
+# Pipe tagged messages one-by-one, used for applying patches
+set pipe_split=yes
 
-# Message cache, to improve speed when opening folders
-# need 'configure --enable-hcache' when compiling
-set header_cache=~/.mutt/cache/header
-set maildir_header_cache_verify=no
+# Display status on the first line
+set status_on_top=yes
 
-# Set timeout
-set timeout=30          # after 30 secs of no keypresses, start checking  new mail
-set mail_check=10       # check for new mail every 10 seconds
+# Reset the title to mutt after leaving Vim/Emacs
+# the issue always happend when using mutt in screen
+set editor="sh -c '$EDITOR $0 && echo -ne \"\\033kmutt\\033\\134\"' "
+
+# Change tmpdir, because found that vim not backup file in /tmp dir
+set tmpdir=~/Mail/tmp
+
+# Alias file
+source ~/.mutt/alias
+set alias_file=~/.mutt/alias
+
+# Message cache
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+
+# Certificate file
+set certificate_file =~/.mutt/certificates
 
 # New mail
 set mark_old=no
 set beep_new=yes
 set check_new=yes
 
-# --------------------- Interface  -----------------------------------
-
-# Change tmpdir, because found that vim not backup file in /tmp dir
-set tmpdir=~/Mail
-
-# Reset the title to mutt after leaving Vim/Emacs
-# the issue always happend when using mutt in screen
-set editor="sh -c '$EDITOR $0 && echo -ne \"\\033kmutt\\033\\134\"' "
-
-# set alias
-source ~/.mutt/alias
-set alias_file=~/.mutt/alias
-
-# status bar
-set status_on_top=yes
+# Set timeout
+set timeout=30          # after 30 secs of no keypresses, start checking  new mail
+set mail_check=10       # check for new mail every 10 seconds
 
 # Mailcap
 set mailcap_path=~/.mutt/mailcap
+mime_lookup application/octet-stream
 
 # Auto view
 auto_view application/msword application/pdf application/vnd.oasis.opendocument.text text/html
-alternative_order text/plain text/html
 
 # Pager view
 set resolve=yes
@@ -60,6 +56,13 @@ set pager_index_lines=9   # the number of lines of a mini-index
 
 # Message included in reply
 set include=yes
+
+# To recognize reply messages
+set reply_regexp="^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"
+
+# Include attachments in forward emails
+set mime_forward=yes
+set mime_forward_rest=yes
 
 # Traditional Fwd: subject
 set forward_format="Fwd: %s"
@@ -71,9 +74,6 @@ set tilde=yes
 set sort=threads
 set sort_aux=reverse-last-date-received
 
-# To recognize reply messages
-set reply_regexp="^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"
-
 # fast reply
 set fast_reply
 
@@ -81,18 +81,10 @@ set fast_reply
 set sidebar_width=42
 set sidebar_visible=yes
 set sidebar_delim='|'
-set sidebar_sort=yes
+#set sidebar_sort=yes
 set sidebar_shortpath = yes
 color sidebar_new yellow default # color of folders with new mail
 
-# Pipe tagged messages one-by-one, used for applying patches
-set pipe_split=yes
-
-# Ignoring (weeding) unwanted message headers
-ignore *
-unignore from date subject to cc
-unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
-unignore posted-to:
 
 # ---------------------Key bindings----------------------------------
 bind attach i exit
@@ -105,15 +97,12 @@ bind browser,index,pager \cf next-page
 bind index \cx sync-mailbox
 bind index gN  toggle-new
 bind browser <space> select-entry
+bind index j next-entry
+bind index k previous-entry
 bind index,pager N search-opposite
 bind index,pager r group-reply
 bind index,pager R reply
-bind index,pager gj next-entry
-bind index,pager gk previous-entry
-bind index zt current-top
-bind index zz current-middle
 bind index \cl current-middle
-bind index zb current-bottom
 bind pager \e<tab> previous-new-then-unread
 bind pager G bottom
 bind pager gg top
