@@ -67,9 +67,9 @@ set forward_format="Fwd: %s"
 # Show tildes at the end of mail
 set tilde=yes
 
-# thread
-set sort=reverse-threads
-set sort_aux=last-date-received
+# thread view like gmail
+set sort=threads
+set sort_aux=reverse-last-date-received
 
 # To recognize reply messages
 set reply_regexp="^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"
