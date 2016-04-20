@@ -108,12 +108,11 @@ bind browser <space> select-entry
 bind index,pager N search-opposite
 bind index,pager r group-reply
 bind index,pager R reply
-bind index,pager J next-thread
-bind index,pager K previous-thread
 bind index,pager gj next-entry
 bind index,pager gk previous-entry
 bind index zt current-top
 bind index zz current-middle
+bind index \cl current-middle
 bind index zb current-bottom
 bind pager \e<tab> previous-new-then-unread
 bind pager G bottom
@@ -121,11 +120,11 @@ bind pager gg top
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
-bind index,pager \CL sidebar-open
 bind index <space> collapse-thread
 bind index <Esc><space> collapse-all
 
 macro attach s "<save-entry><kill-line>~/downloads/<enter>a" "Save attachment"
+macro index \cr <read-thread><current-middle>
 macro index <esc>\cr "<tag-pattern>.\n<tag-prefix><clear-flag>N<untag-pattern>.\n" "Mark all messages as read"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager g<space> '<next-unread-mailbox>'
@@ -134,6 +133,11 @@ macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 macro index,pager gn "<sidebar-next><sidebar-open>"
 macro index,pager gp "<sidebar-prev><sidebar-open>"
+macro index <TAB> <next-new-then-unread><current-middle>
+macro index n <search-next><current-middle>
+macro index N <search-opposite><current-middle>
+macro index J <next-thread><current-middle>
+macro index K <previous-thread><current-middle>
 
 # ---------------------Color theme-----------------------------------
 color normal default default
