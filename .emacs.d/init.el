@@ -192,7 +192,7 @@
   (interactive)
   (if (looking-at "\\_>")
       (ac-start)
-    (tab-to-tab-stop)))
+    (indent-relative)))
 (defun enable-my-super-tab ()
   (global-set-key (kbd "TAB") 'my-indent-or-complete))
 
