@@ -187,18 +187,13 @@
 	try-complete-file-name-partially
 	try-complete-file-name))
 
-;; Mimic Vim's superTab, try: completion; except: tab-to-tab-stop
-(defun my-indent-or-complete ()
+
+;; Mimic Vim's superTab, ref https://www.emacswiki.org/emacs/TabCompletion
+(defun indent-or-complete ()
   (interactive)
   (if (looking-at "\\_>")
       (ac-start)
-    (indent-relative)))
-(defun enable-my-super-tab ()
-  (global-set-key (kbd "TAB") 'my-indent-or-complete))
-
-(add-hook 'fundamental-mode-hook 'enable-my-super-tab)
-(add-hook 'prog-mode-hook 'enable-my-super-tab)
-(add-hook 'text-mode-hook 'enable-my-super-tab)
+    (indent-for-tab-command)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Interface
@@ -350,8 +345,9 @@
 (add-hook 'tcl-mode-hook
 	  (lambda ()
 	    ;; overwrite tcl-indent-command
-	    (define-key tcl-mode-map "\t" 'my-indent-or-complete)
+	    (define-key tcl-mode-map "\t" 'indent-or-complete)
 	    ))
+
 
 ;; Org-mode
 (setq org-startup-truncated nil); wraps the lines in org-mode
@@ -402,6 +398,11 @@
 				      ("^[ \t]*>[ \t]*>.*$"
 				       (0 'message-double-quoted-text-face))))))
 
+;; Text mode
+(add-hook 'text-mode-hook
+	  (lambda ()
+	    (define-key text-mode-map (kbd "TAB") 'indent-or-complete)))
+
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -419,8 +420,8 @@
 	    (define-key markdown-mode-map (kbd "RET") 'newline)
 	    ;; Fix M-RET not working in terminal mode
 	    (define-key markdown-mode-map (kbd "M-RET") 'markdown-insert-list-item)
-	    ;; Restore TAB behavior
-	    (define-key markdown-mode-map (kbd "TAB") 'my-indent-or-complete)
+	    ;; overwrite TAB behavior
+	    (define-key markdown-mode-map (kbd "TAB") 'indent-or-complete)
 	    (define-key evil-normal-state-map (kbd "TAB") 'markdown-cycle)
 	    ))
 
