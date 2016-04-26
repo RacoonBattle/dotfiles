@@ -156,7 +156,7 @@
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
-(global-set-key "\t" 'company-complete-common)
+(global-set-key "\t" 'company-indent-or-complete-common)
 (setq company-selection-wrap-around t)
 (setq company-minimum-prefix-length 2)
 (setq company-require-match 'never) ; to cancel selections by typing non-matching characters
@@ -170,9 +170,8 @@
      (setq company-backends
 	   '((company-files
 	      company-keywords
-	      company-capf
-	      company-yasnippet)
-	     (company-abbrev company-dabbrev company-dabbrev-code)))
+	      company-dabbrev-code)
+	      (company-abbrev company-dabbrev)))
      (define-key company-active-map (kbd "TAB") 'company-complete)
      (define-key company-active-map (kbd "M-n") nil)
      (define-key company-active-map (kbd "M-p") nil)
