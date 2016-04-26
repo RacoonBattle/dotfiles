@@ -350,6 +350,10 @@
 
 ;; Python
 (elpy-enable)
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (remove-hook 'elpy-modules 'elpy-module-flymake)
+	    (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)))
 
 ;; Org-mode
 (setq org-startup-truncated nil); wraps the lines in org-mode
