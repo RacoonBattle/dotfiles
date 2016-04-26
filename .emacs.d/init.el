@@ -6,11 +6,11 @@
 ;; Enable ELPA - Emacs Lisp Package Archive
 (when (>= emacs-major-version 24)
   (require 'package)
-  (setq package-archives '(
-			   ("gnu" . "http://elpa.gnu.org/packages/")
-			   ("melpa" . "http://melpa.milkbox.net/packages/")
-			   ("marmalade" . "http://marmalade-repo.org/packages/")))
-  (package-initialize))
+  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			   ("popkit" . "http://elpa.popkit.org/packages/")
+			   ("marmalade" . "https://marmalade-repo.org/packages/")
+			   ("melpa" . "https://melpa.org/packages/")))
+    (package-initialize))
 
 ;; Let ELPA automatically install packages in the list
 (defvar my-packages
