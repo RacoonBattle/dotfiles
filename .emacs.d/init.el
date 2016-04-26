@@ -17,10 +17,10 @@
   '(magit git-commit
     rich-minority smart-mode-line
     color-theme-solarized
-    auto-complete
-    auto-complete-clang auto-complete-c-headers
     evil evil-leader
     helm helm-swoop helm-projectile
+    company elpy
+    flycheck
     dash
     undo-tree
     multi-term
@@ -154,28 +154,36 @@
 (global-set-key (kbd "M-o") 'recent-jump-jump-forward)
 (require 'recent-jump)
 
-;; Enable Auto-Complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(setq ac-auto-start t)			; ac-start by default
-(setq ac-delay 0.1)			; delay showing ac prompt
-(setq ac-auto-show-menu 0.2)		; delay showing completion menu
-(global-set-key "\t" 'ac-start)	; use tab to force triger ac-start
-(setq ac-use-quick-help nil)		; not to use quick help
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next); select candidates with C-n/C-p
-(define-key ac-menu-map "\C-p" 'ac-previous)
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
+(global-set-key "\t" 'company-complete-common)
+(setq company-selection-wrap-around t)
+(setq company-minimum-prefix-length 2)
+(setq company-require-match 'never) ; to cancel selections by typing non-matching characters
+(setq company-dabbrev-other-buffers t)
+(setq company-dabbrev-downcase nil)
+(setq company-dabbrev-ignore-case nil)
+(setq company-tooltip-align-annotations t)
 
-(global-auto-complete-mode t)			; enable auto-complete globally
-(defun auto-complete-mode-maybe ()		; overwrite the function to avoid AC only work for ac-modes list
-  (unless (minibufferp (current-buffer))	; but except minibuffer
-        (auto-complete-mode 1)))
+(eval-after-load 'company
+  '(progn
+     (setq company-backends
+	   '((company-files
+	      company-keywords
+	      company-capf
+	      company-yasnippet)
+	     (company-abbrev company-dabbrev company-dabbrev-code)))
+     (define-key company-active-map (kbd "TAB") 'company-complete)
+     (define-key company-active-map (kbd "M-n") nil)
+     (define-key company-active-map (kbd "M-p") nil)
+     (define-key company-active-map (kbd "C-n") #'company-select-next)
+     (define-key company-active-map (kbd "C-p") #'company-select-previous)))
 
-
-;; Setup auto-complete-clang
-(require 'auto-complete-clang)
-(require 'auto-complete-clang-extension) ; fix clang's include file search path
+(defun indent-or-complete ()
+  (interactive)
+  (if (looking-at "\\_>")
+      (company-complete-common)
+    (indent-for-tab-command)))
 
 ;; Set hippie-expand for auto completion
 (global-set-key "\M- " 'hippie-expand)
@@ -186,14 +194,6 @@
 	try-expand-dabbrev-from-kill
 	try-complete-file-name-partially
 	try-complete-file-name))
-
-
-;; Mimic Vim's superTab, ref https://www.emacswiki.org/emacs/TabCompletion
-(defun indent-or-complete ()
-  (interactive)
-  (if (looking-at "\\_>")
-      (ac-start)
-    (indent-for-tab-command)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Interface
@@ -348,6 +348,8 @@
 	    (define-key tcl-mode-map "\t" 'indent-or-complete)
 	    ))
 
+;; Python
+(elpy-enable)
 
 ;; Org-mode
 (setq org-startup-truncated nil); wraps the lines in org-mode
@@ -360,12 +362,7 @@
 	    ;; TAB to org-cycle in evil normal-state
 	    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
 	    ;; Auto-indent text content
-	    (local-set-key (kbd "RET") 'newline-and-indent)
-	    ;; avoid competing with org-mode templates with '<s'.
-	    (make-local-variable 'ac-stop-words)
-	    (loop for template in org-structure-template-alist do
-		  (add-to-list 'ac-stop-words
-			       (concat "<" (car template))))))
+	    (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;; Org Capture
 (global-set-key "\C-cc" 'org-capture)
