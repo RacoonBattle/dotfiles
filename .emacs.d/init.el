@@ -323,19 +323,21 @@
 ;; Automatically indent new line according to its context
 (electric-indent-mode 1)
 
-;; C-indenting: use Linux kernel coding style
+;; C programming
 (setq c-default-style "linux")
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends)
+		 '(company-clang))))
 
-;; Shell-script: use tab to indent
+;; Shell script
 (setq sh-basic-offset 8)
 (setq sh-indentation 8)
 (add-hook 'sh-mode-hook
 	  (lambda()
-	    (setq evil-shift-width sh-indentation)))
-
-;; Disable bash here document completion, when typing <<
-(add-hook 'sh-mode-hook
-	  (lambda ()
+	    ;; unify tab width
+	    (setq evil-shift-width sh-indentation)
+	    ;; Disable bash here document completion, when typing <<
 	    (sh-electric-here-document-mode -1)))
 
 ;; TCL script
