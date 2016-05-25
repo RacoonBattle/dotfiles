@@ -39,7 +39,6 @@ pathmunge $HOME/bin after
 pathmunge $HOME/scripts after
 pathmunge $HOME/Dropbox/scripts after
 pathmunge $HOME/Dropbox/work/scripts after
-pathmunge /opt/android-sdk-update-manager/platform-tools/
 
 export PATH
 
