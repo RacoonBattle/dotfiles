@@ -8,13 +8,15 @@
 ! after 9.14 the path includes $HOME/.urxvt/ext
 ! can modify by setting URXVT_PERL_LIB environment variable
 ! wget https://github.com/muennich/urxvt-perls/raw/master/clipboard -O ~/.urxvt/ext/clipboard
-URxvt.perl-ext-common:  default,matcher,clipboard,font-size
+URxvt.perl-ext-common:  default,matcher,clipboard,font-size,urxvt-colors
 
 ! general
 URxvt.preeditType:Root
 URxvt.cursorBlink:True
 URxvt.saveLines:10240
 URxvt.fading: 0
+xterm*dynamicColors: true
+URxvt*dynamicColors: on
 
 ! disable the scrollbar
 URxvt.scrollBar: False
@@ -25,13 +27,10 @@ URxvt.urgentOnBell: True
 ! font
 URxvt.font:xft:Terminus:pixelsize=20,\
 xft:AR PL UMing TW:pixelsize=18:antialias=false
-! URxvt.keysym.C-equal:   font-size:increase
-! URxvt.keysym.C-minus:   font-size:decrease
-! URxvt.keysym.C-0:       font-size:reset
-URxvt.keysym.C-equal:   font-size:incglobal
+URxvt.keysym.C-plus:    font-size:incglobal
 URxvt.keysym.C-minus:   font-size:decglobal
 URxvt.keysym.C-0:       font-size:reset
-
+URxvt*keysym.C-equal:   perl:urxvt-colors
 
 ! URL
 URxvt.url-launcher:      /usr/bin/firefox
