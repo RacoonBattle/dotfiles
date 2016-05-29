@@ -357,11 +357,16 @@
 	    (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)))
 
 ;; Org-mode
-(setq org-list-description-max-indent 5) ; set maximum indentation for description lists
-(setq org-adapt-indentation nil)	 ; prevent demoting heading also shifting text inside sections
-(setq org-startup-truncated nil)	 ; wraps the lines in org-mode
+(setq org-log-done 'time
+      org-list-description-max-indent 5 ; set maximum indentation for description lists
+      org-adapt-indentation nil	 ; prevent demoting heading also shifting text inside sections
+      org-startup-truncated nil	 ; wraps the lines in org-mode
+      org-src-fontify-natively t
+      org-src-tab-acts-natively t
+      org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0)
+
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done 'time)
 (add-hook 'org-mode-hook
 	  (lambda()
 	    ;; TAB to org-cycle in evil normal-state
