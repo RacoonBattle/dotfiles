@@ -357,9 +357,9 @@
 	    (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)))
 
 ;; Org-mode
-(setq org-startup-truncated nil); wraps the lines in org-mode
-(setq org-startup-indented t)
-(setq org-hide-leading-stars t)
+(setq org-list-description-max-indent 5) ; set maximum indentation for description lists
+(setq org-adapt-indentation nil)	 ; prevent demoting heading also shifting text inside sections
+(setq org-startup-truncated nil)	 ; wraps the lines in org-mode
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done 'time)
 (add-hook 'org-mode-hook
