@@ -67,6 +67,13 @@
 ;; Enable cua-mode by default
 (cua-mode t)
 
+;; Use shift + arrow keys to select text
+(global-unset-key (vector (list 'shift 'left)))
+(global-unset-key (vector (list 'shift 'right)))
+(global-unset-key (vector (list 'shift 'up)))
+(global-unset-key (vector (list 'shift 'down)))
+(setq shift-selection-mode t)
+
 ;; Wrap long lines
 (global-visual-line-mode 0)
 
@@ -612,10 +619,6 @@
   (remove-hook
    'kill-buffer-query-functions 'server-kill-buffer-query-function))
 (add-hook 'server-visit-hook 'server-remove-kill-buffer-hook)
-
-
-;; Use Shift+arrow_keys to move cursor around split panes
-(windmove-default-keybindings)
 
 ;; When cursor is on edge, move to the other side, as in a toroidal space
 (setq windmove-wrap-around t )
