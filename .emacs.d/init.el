@@ -368,6 +368,7 @@
       org-list-description-max-indent 5 ; set maximum indentation for description lists
       org-adapt-indentation nil	 ; prevent demoting heading also shifting text inside sections
       org-startup-truncated nil	 ; wraps the lines in org-mode
+      org-confirm-babel-evaluate nil
       org-src-fontify-natively t
       org-src-tab-acts-natively t
       org-src-preserve-indentation nil
@@ -380,6 +381,15 @@
 	    (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
 	    ;; Auto-indent text content
 	    (local-set-key (kbd "RET") 'newline-and-indent)))
+
+;; make org mode allow eval of some langs
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (C . t)
+   (python . t)
+   (sh . t)))
+
 
 ;; Org Capture
 (global-set-key "\C-cc" 'org-capture)
