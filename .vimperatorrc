@@ -5,7 +5,7 @@ set toolbars=none,tabs,navigation
 set focuscontent
 
 " Editor, C-i invokes it in text fields
-set editor=emacs
+set editor='emacsclient -s gui'
 
 " smart search
 set incsearch
