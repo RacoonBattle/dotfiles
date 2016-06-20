@@ -363,7 +363,7 @@ globalkeys = awful.util.table.join(
     -- Private global key bindings
     awful.key({ modkey }, "s", function () awful.util.spawn_with_shell("xset dpms 0 0 5 ; slock ; xset dpms 0 0 0") end),
     awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("sudo /usr/sbin/pm-suspend& slock") end),
-    awful.key({ modkey }, "e", function () awful.util.spawn("emacs") end),
+    awful.key({ modkey }, "e", function () awful.util.spawn("emacsclient -s gui -c -n") end),
     awful.key({ modkey, "Mod1" }, "n", naughty.toggle),
     awful.key({ modkey, "Shift" }, "m", function () awful.util.spawn_with_shell("amixer set Master toggle") end),
 
