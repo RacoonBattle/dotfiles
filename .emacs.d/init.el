@@ -18,7 +18,7 @@
     rich-minority smart-mode-line
     color-theme-solarized
     evil evil-leader
-    helm helm-swoop helm-projectile
+    helm helm-swoop
     company elpy
     flycheck
     dash
@@ -138,9 +138,6 @@
       helm-imenu-fuzzy-match                t
       helm-ff-file-name-history-use-recentf t)
 
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
 (helm-mode 1)
 
 ;; Git modes
@@ -689,7 +686,6 @@
 				(interactive)
 				(let ((current-prefix-arg 't))
 				  (call-interactively 'helm-grep-do-git-grep))))
-(global-set-key (kbd "<f10>") 'helm-projectile-find-file)
 (global-set-key (kbd "<f11>") 'toggle-xsel-copy-paste)
 (global-set-key (kbd "<f12>") 'ttypaste-mode)
 
