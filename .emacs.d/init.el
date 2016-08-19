@@ -228,7 +228,8 @@
 		(enable-theme 'solarized)))))
 
 ;; No scroll bar
-(set-scroll-bar-mode nil)
+(if window-system
+    (set-scroll-bar-mode nil))
 
 ;; GUI font
 (if window-system
