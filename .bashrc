@@ -52,6 +52,11 @@ if [ -f /etc/profile.d/bash-completion.sh ]; then
 	#gentoo
 	. /etc/profile.d/bash-completion.sh
 fi
+if [ -f /usr/local/etc/bash_completion ]; then
+	#macos brew
+	. /usr/local/etc/bash_completion
+
+fi
 
 #my alias
 alias ga='git add -A'
