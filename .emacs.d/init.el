@@ -562,34 +562,51 @@
     )
   )
 
-;; Use xsel to copy/paste in emacs-nox
+;; Make copy/paste function working in terminal
 ;; From https://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
-(unless window-system
-  (when (getenv "DISPLAY")
-    (defun xsel-cut-function (text &optional push)
-      (with-temp-buffer
-	(insert text)
-	(call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-    (defun xsel-paste-function()
-      (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-	(unless (string= (car kill-ring) xsel-output)
-	  xsel-output )))
-    (setq interprogram-cut-function 'xsel-cut-function)
-    (setq interprogram-paste-function 'xsel-paste-function)
-    (defun toggle-xsel-copy-paste()
-      "Toggle if use xsel as default clipboard"
-      (interactive)
-      (if (eq interprogram-cut-function nil)
-	  (progn
-	    (setq interprogram-cut-function 'xsel-cut-function)
-	    (setq interprogram-paste-function 'xsel-paste-function)
-	    (message "Using X PRIMARY selection to copy/paste by xsel"))
-	(progn
-	  (setq interprogram-cut-function nil)
-	  (setq interprogram-paste-function nil)
-	  (message "Using Emacs internal clipboard to copy/paste"))
-	))
-    ))
+;; https://gist.github.com/the-kenny/267162
+(cond
+ ((string-equal system-type "gnu/linux") ; linux
+  (progn
+    (unless window-system
+      (when (getenv "DISPLAY")
+	(defun xsel-cut-function (text &optional push)
+	  (with-temp-buffer
+	    (insert text)
+	    (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+	(defun xsel-paste-function()
+	  (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+	    (unless (string= (car kill-ring) xsel-output)
+	      xsel-output )))
+	(defun toggle-xsel-copy-paste()
+	  "Toggle if use xsel as default clipboard"
+	  (interactive)
+	  (if (eq interprogram-cut-function nil)
+	      (progn
+		(setq interprogram-cut-function 'xsel-cut-function)
+		(setq interprogram-paste-function 'xsel-paste-function)
+		(message "Using X PRIMARY selection to copy/paste by xsel"))
+	    (progn
+	      (setq interprogram-cut-function nil)
+	      (setq interprogram-paste-function nil)
+	      (message "Using Emacs internal clipboard to copy/paste"))
+	    ))
+	))))
+
+    ((string-equal system-type "darwin") ; Mac OS X
+     (unless window-system
+       (progn
+	 (defun copy-from-osx ()
+	   (shell-command-to-string "pbpaste"))
+	 (defun paste-to-osx (text &optional push)
+	   (let ((process-connection-type nil))
+	     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+	       (process-send-string proc text)
+	       (process-send-eof proc)))))
+
+       (setq interprogram-cut-function 'paste-to-osx)
+       (setq interprogram-paste-function 'copy-from-osx)
+       )))
 
 ;; Mimic Vim's set paste
 ;; From http://stackoverflow.com/questions/18691973/is-there-a-set-paste-option-in-emacs-to-paste-paste-from-external-clipboard
