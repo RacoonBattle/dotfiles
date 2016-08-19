@@ -167,7 +167,7 @@ get_default_ip()
 # multi line color
 sq_color="$Color_Off"
 
-DIR_INFO="$Color_Off\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files \$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')"
+DIR_INFO="$Color_Off\$(ls -1 | wc -l | sed 's: ::g') files \$(ls -lah | grep -m 1 total | sed 's/total //')"
 LINE1="$sq_color\342\224\214\342\224\200[$DIR_INFO$sq_color]-[$Blue\w$sq_color]"
 LINE2="$sq_color\n╰-->$White\u@\$(get_default_ip)$sq_color $ $Color_Off"
 
@@ -187,8 +187,6 @@ case $TERM in
 	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix)
 		# current dir
 		PROMPT_COMMAND=''"$PROMPT_COMMAND"'; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-		# program name
-		trap 'echo -ne "\e]0;"; echo -n ${USER}@${HOSTNAME}: ${BASH_COMMAND}; echo -ne "\007"' DEBUG
 		;;
 	*)
 		;;
