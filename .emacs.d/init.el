@@ -229,17 +229,22 @@
 
 ;; No scroll bar
 (if window-system
-    (set-scroll-bar-mode nil))
+    (progn
+      (tool-bar-mode -1)
+      (set-scroll-bar-mode nil)))
 
 ;; GUI font
 (if window-system
-    (progn
-      (set-face-attribute ; Setting English Font
-       'default nil :font "Dejavu Sans Mono 12")
-      (dolist (charset '(kana han symbol cjk-misc bopomofo)) ;; Chinese Font
-	(set-fontset-font (frame-parameter nil 'font)
-			  charset
-			  (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))))
+    (cond
+     ((string-equal system-type "gnu/linux") ; linux
+      (progn
+	(set-face-attribute ; Setting English Font
+	 'default nil :font "Dejavu Sans Mono 12")
+	(dolist (charset '(kana han symbol cjk-misc bopomofo)) ;; Chinese Font
+	  (set-fontset-font (frame-parameter nil 'font)
+			    charset
+			    (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))))
+     ))
 
 
 ;; No menu bar in tty
