@@ -34,6 +34,7 @@ pathmunge()
 	esac
 }
 
+pathmunge /usr/local/opt/coreutils/libexec/gnubin before
 pathmunge /sbin:/usr/sbin after
 pathmunge $HOME/bin after
 pathmunge $HOME/scripts after
@@ -41,7 +42,7 @@ pathmunge $HOME/Dropbox/scripts after
 pathmunge $HOME/Dropbox/work/scripts after
 
 export PATH
-
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # completion
 if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -69,7 +70,6 @@ alias gs='git status'
 alias gu='git pull --rebase'
 alias gw='git show'
 
-alias la='ls -lAh --color=auto'
 alias ll='ls -lh --color=auto'
 alias grep='grep --color'
 
