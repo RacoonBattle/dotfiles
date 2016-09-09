@@ -5,7 +5,13 @@ set toolbars=none,tabs,navigation
 set focuscontent
 
 " Editor, C-i invokes it in text fields
-set editor='emacsclient -s gui'
+javascript <<EOF
+if (liberator.has("MacUnix")) {
+    liberator.execute('set\ editor="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -s gui"');
+} else {
+    liberator.execute('set\ editor="emacsclient -s gui"');
+}
+EOF
 
 " smart search
 set incsearch
