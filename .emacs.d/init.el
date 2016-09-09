@@ -51,11 +51,44 @@
 	(global-set-key (kbd "C-x C-c") '(lambda () ;Avoid C-x C-c close the gui daemon
 					   (interactive)
 					   (server-edit)
-					   (make-frame-invisible nil t)))))
+					   (delete-frame-or-hide-emacs)))))
       (progn
 	(setq server-name "server")
 	(unless (server-running-p)
 	  (server-start))))
+
+
+;; Hide Emacs instead of killing it when last frame will be closed.
+;; refer to https://lists.gnu.org/archive/html/help-gnu-emacs/2016-01/msg00236.html
+;; http://emacs.stackexchange.com/questions/13485/something-like-delete-frame-but-that-would-also-delete-the-last-frame-like-al
+(defun handle-delete-frame-without-kill-emacs (event)
+  (interactive "e")
+  (let ((frame (posn-window (event-start event)))
+        (i 0)
+        (tail (frame-list)))
+    (while tail
+      (and (frame-visible-p (car tail))
+           (not (eq (car tail) frame))
+           (setq i (1+ i)))
+      (setq tail (cdr tail)))
+    (if (> i 0)
+        (delete-frame frame t)
+      ;; Not (save-buffers-kill-emacs) but instead:
+      (ns-do-hide-emacs))))
+
+(defun delete-frame-or-hide-emacs ()
+  "Delete the selected frame.  If the last one, kill emacsclient."
+  (interactive)
+  (condition-case nil (delete-frame) (error (ns-do-hide-emacs))))
+
+(if window-system
+    (when (eq system-type 'darwin)
+      (progn
+       ;; handle clik close button
+       (advice-add 'handle-delete-frame :override
+		   #'handle-delete-frame-without-kill-emacs)
+       ;; handle cmd-w operation
+       (global-set-key [remap delete-frame] 'delete-frame-or-hide-emacs))))
 
 ;; Automatically update file if the buffer is modified outside emacs
 (global-auto-revert-mode 1)
