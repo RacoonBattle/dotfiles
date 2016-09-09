@@ -575,6 +575,14 @@
 (enable-mouse-in-terminal)
 (add-hook 'after-make-frame-functions 'enable-mouse-in-terminal) ; for emacsclient
 
+;; Smooth Scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
+
 ;; Access X clipboard by xsel
 ;; From https://stackoverflow.com/questions/64360/how-to-copy-text-from-emacs-to-another-application-on-linux/19625063#19625063
 
