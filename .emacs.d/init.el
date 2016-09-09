@@ -96,9 +96,6 @@
 ;; Use y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Enable cua-mode by default
-(cua-mode t)
-
 ;; Use shift + arrow keys to select text
 (global-unset-key (vector (list 'shift 'left)))
 (global-unset-key (vector (list 'shift 'right)))
