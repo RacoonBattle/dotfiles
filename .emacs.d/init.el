@@ -274,6 +274,15 @@
 	  (set-fontset-font (frame-parameter nil 'font)
 			    charset
 			    (font-spec :family "WenQuanYi Micro Hei Mono" :size 16)))))
+
+     ((string-equal system-type "darwin") ; Mac OS X
+      (progn
+	(set-face-attribute
+	 'default nil :font "Monaco 12")
+	(dolist (charset '(kana han symbol cjk-misc bopomofo))
+	  (set-fontset-font (frame-parameter nil 'font)
+			    charset
+			    (font-spec :family "PingFang SC" :size 13)))))
      ))
 
 
