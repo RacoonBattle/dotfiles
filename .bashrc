@@ -170,14 +170,9 @@ get_default_ip()
 }
 
 # multi line color
-sq_color="$Color_Off"
-
-DIR_INFO="$Color_Off\$(ls -1 | wc -l | sed 's: ::g') files \$(ls -lah | grep -m 1 total | sed 's/total //')"
-LINE1="$sq_color\342\224\214\342\224\200[$DIR_INFO$sq_color]-[$Blue\w$sq_color]"
-LINE2="$sq_color\n╰-->$White\u@\$(get_default_ip)$sq_color $ $Color_Off"
-
-PROMPT_COMMAND=''"$PROMPT_COMMAND"'; export PS1="${LINE1}$(bash_git_prompt)${LINE2}"; echo'
-
+LINE1="[$BYellow\t $BGreen\u@\$(get_default_ip):$BBlue\w$Color_Off]"
+LINE2="$Color_Off\n$ "
+PROMPT_COMMAND=''"$PROMPT_COMMAND"'; export PS1="${LINE1} $(bash_git_prompt)${LINE2}"; echo'
 
 # ------ Change the window title of X terminals ----------------
 case $TERM in
