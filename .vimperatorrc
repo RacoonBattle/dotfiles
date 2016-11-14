@@ -2,7 +2,7 @@
 set toolbars=none,tabs,navigation
 
 " Focus content after a page has loaded
-set focuscontent
+" set focuscontent
 
 " Editor, C-i invokes it in text fields
 javascript <<EOF
@@ -43,10 +43,6 @@ noremap l gt
 " reload all tabs
 noremap <C-r> :reloadall<cr>
 
-" for left hand
-noremap q gT
-noremap w gt
-
 " tab move
 noremap > :tabmove +1<cr>
 noremap < :tabmove -1<cr>
@@ -67,11 +63,13 @@ inoremap <C-n> <Down>
 cnoremap <C-n> <Tab>
 cnoremap <C-p> <S-Tab>
 
-" toggle sidebar
-noremap sd :sidebar Bookmarks<CR><ESC><ESC>
-noremap sa :sidebar Pocket<CR>
-noremap sf :sidebar Downloads<CR>
-noremap ss :sbclose<CR>
+" for left hand
+cmap <C-g> <Esc>
+imap <C-g> <Esc>
+noremap <C-g> <Esc>
+noremap v f
+noremap s gT
+noremap f gt
 
 " AutoProxy
 noremap <silent> ca :set! extensions.autoproxy.proxyMode=auto<CR>:echo ':)'<CR>
