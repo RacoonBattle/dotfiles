@@ -72,6 +72,6 @@ noremap s gT
 noremap f gt
 
 " AutoProxy
-noremap <silent> ca :set! extensions.autoproxy.proxyMode=auto<CR>:echo ':)'<CR>
-noremap <silent> cg :set! extensions.autoproxy.proxyMode=global<CR>:echo ':D'<CR>
-noremap <silent> cd :set! extensions.autoproxy.proxyMode=disabled<CR>:echo ':('<CR>
+noremap <silent> ca :set! extensions.pan.proxyMode=auto<CR>:reload<CR>:echo ':)'<CR>
+noremap <silent> cg :set! extensions.pan.proxyMode=global<CR>:reload<CR>:echo ':D'<CR>
+noremap <silent> cd :set! extensions.pan.proxyMode=disabled<CR>:reload<CR>:echo ':('<CR>
